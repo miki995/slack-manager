@@ -1,15 +1,15 @@
 import { Action } from '@ngrx/store';
 
-export const LAYOUT_ACTION = '[Layout]: action';
+export const LAYOUT_SET_CURRENT_ROUTE = '[Layout]: set current route';
 
-export class LayoutAction implements Action {
-  readonly type = LAYOUT_ACTION;
+export class LayoutSetCurrentRoute implements Action {
+  readonly type = LAYOUT_SET_CURRENT_ROUTE;
 
-  constructor(public payload?: any) {
+  constructor(public payload: string) {
   }
 }
 
 export type Actions =
-  | LayoutAction;
+  | LayoutSetCurrentRoute;
 
 

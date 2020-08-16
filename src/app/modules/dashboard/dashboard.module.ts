@@ -8,10 +8,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { FilesService } from '../../services/files.service';
 import { RouterModule } from '@angular/router';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    SidebarComponent
   ],
     imports: [
         CommonModule,

@@ -1,23 +1,23 @@
 import * as layoutActions from './layout.actions';
 
 export interface ILayout {
-  data: string;
+  currentRoute: string;
 }
 
 const initialState: ILayout = {
-  data: null,
+  currentRoute: null,
 };
 
 export function layoutReducer(state: ILayout = initialState, action: layoutActions.Actions): ILayout {
 
   switch (action.type) {
 
-    case layoutActions.LAYOUT_ACTION:
+  /*  case layoutActions.LAYOUT_SET_CURRENT_ROUTE:
 
       return {
-        ...initialState,
+        currentRoute: action.payload
       };
-
+*/
     default:
       return state;
   }

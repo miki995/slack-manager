@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Actions } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { config } from '../../config/config';
+import { switchMap } from 'rxjs/operators';
+import * as layoutActions from './layout.actions';
+import { of } from 'rxjs';
+import { getLocation } from '../../modules/shared/helpers/router.helper';
 
 @Injectable()
 export class LayoutEffects {
