@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SLACK_CLEANER_TOKEN } from '../helpers/token.helper';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
 
   constructor(
     private router: Router) {
@@ -19,8 +19,8 @@ export class HomeGuard implements CanActivate {
     const token = localStorage.getItem(SLACK_CLEANER_TOKEN);
     const tokenPresent = !!token && token !== 'undefined';
 
-    if (tokenPresent) {
-      this.router.navigateByUrl('/dashboard');
+    if (!tokenPresent) {
+      this.router.navigateByUrl('/');
       return false;
     }
 
