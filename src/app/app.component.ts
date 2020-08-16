@@ -11,9 +11,8 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent implements OnInit {
-  title = 'slack-cleaner';
-  files = [];
+export class AppComponent {
+/*  files = [];
 
   constructor(
     private readonly httpService: HttpService,
@@ -50,6 +49,6 @@ export class AppComponent implements OnInit {
       });
     }
 
-  }
+  }*/
 }
 

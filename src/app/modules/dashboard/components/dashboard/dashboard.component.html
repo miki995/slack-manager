@@ -1,0 +1,6 @@
+<a href="https://slack.com/oauth/v2/authorize?user_scope=channels:read,channels:history,files:read,remote_files:read,files:write,remote_files:write&client_id=511475946403.1296558517926"><img src="https://api.slack.com/img/sign_in_with_slack.png" /></a>
+
+<div *ngFor="let file of files">
+  <a [href]="file?.thumb_pdf">{{ file?.name }}</a>
+  <img [src]="file?.thumb_pdf"/>
+</div>
