@@ -1,6 +1,7 @@
 import { Route, RouterModule } from '@angular/router';
 import { HomeComponent } from './modules/home/components/home/home.component';
 import { DashboardComponent } from './modules/dashboard/components/dashboard/dashboard.component';
+import { HomeGuard } from './guards/home.guard';
 
 const routes: Route[] = [
   {
@@ -11,6 +12,7 @@ const routes: Route[] = [
     path: '',
     pathMatch: 'full',
     component: HomeComponent,
+    canActivate: [HomeGuard],
   },
   {
     path: '**', component: HomeComponent
