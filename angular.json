@@ -24,9 +24,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss",
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -89,9 +91,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss",
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         },
         "lint": {
@@ -120,6 +124,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "slack-cleaner"
+    }
+  },
+  "defaultProject": "slack-cleaner",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
