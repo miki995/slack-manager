@@ -1,3 +1,5 @@
+@import "../../../../.././assets/global/landing/scss/style.scss";
+
 .sign-in-button {
   width: 250px;
   border-radius: 10px;
@@ -10,6 +12,11 @@
   opacity: 1;
   transition: all 0.3s;
 }
+
+.sign-in-button:active {
+  background-color: white;
+}
+
 
 .sign-in-button .text {
   color: rgb(218, 85, 47);
