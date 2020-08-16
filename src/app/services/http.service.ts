@@ -45,7 +45,6 @@ export class HttpService {
 
   get(url: string, options?: any): Observable<any> {
 
-    console.error(this.httpParams);
     return this.httpClient
       .get(`${url}&${this.httpParams.toString()}`, options)
       .pipe(
