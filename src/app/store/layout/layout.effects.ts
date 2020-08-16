@@ -1,31 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { config } from '../../config/config';
-import { switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import * as layoutActions from './layout.actions';
 import { of } from 'rxjs';
-import { getLocation } from '../../modules/shared/helpers/router.helper';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { HttpService } from '../../services/http.service';
+import { SLACK_CLEANER_TOKEN } from '../../helpers/token.helper';
 
 @Injectable()
 export class LayoutEffects {
 
-  private i18nAPI = config.apiEndpoint + '/api/i18n';  // URL to i18nUrl api
-
-
-  /*@Effect()
-  languageLoad$ = this.actions$
+  @Effect()
+  exchangeCode$ = this.actions$
     .pipe(
-      ofType(layoutActions.LAYOUT_LANGUAGE_LOAD),
-      switchMap((action: layoutActions.LayoutLanguageLoad) => {
+      ofType(layoutActions.LAYOUT_EXCHANGE_CODE_FOR_TOKEN),
+      switchMap((action: layoutActions.LayoutExchangeCodeForToken) => {
 
-        return this.httpService.get(`${this.i18nAPI}/${action.payload}`)
+        return this.authService.exchangeCodeForToken(action.payload)
           .pipe(
-            catchError((error) => of(new layoutActions.LayoutLanguageLoadFail(error))),
-            map((response) => new layoutActions.LayoutLanguageLoadSuccess(response))
+            catchError((error) => of(new layoutActions.LayoutExchangeCodeForTokenFail(error))),
+            map((response) => {
+
+              if (response.ok) {
+                localStorage.setItem(SLACK_CLEANER_TOKEN, response.authed_user.access_token);
+                this.httpService.setToken(response.authed_user.access_token);
+                this.router.navigateByUrl('/dashboard');
+              }
+
+              return new layoutActions.LayoutExchangeCodeForTokenSuccess(response);
+            })
           );
       })
-    );*/
+    );
 
-  constructor(private readonly actions$: Actions) {
+  constructor(
+    private readonly actions$: Actions,
+    private readonly authService: AuthService,
+    private readonly router: Router,
+    private readonly httpService: HttpService) {
   }
 }
