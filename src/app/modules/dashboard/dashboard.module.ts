@@ -5,11 +5,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { metaReducers, reducers } from './store';
 import { DashboardEffects } from './store/dashboard/dashboard.effects';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SharedModule } from '../shared/shared.module';
-import { FilesService } from '../../services/files.service';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
+import { DashboardRoutingModule } from './dashboard.routing';
 
 @NgModule({
   declarations: [
@@ -17,18 +16,16 @@ import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.
     SidebarComponent,
     SidebarRightComponent
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        StoreModule.forFeature('dashboard', reducers, { metaReducers }),
-        EffectsModule.forFeature([
-            DashboardEffects,
-        ]),
-        RouterModule,
-    ],
-  providers: [
-    FilesService,
-  ]
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    StoreModule.forFeature('dashboard', reducers, { metaReducers }),
+    EffectsModule.forFeature([
+      DashboardEffects,
+    ]),
+    RouterModule,
+  ],
+  providers: []
 })
 export class DashboardModule {
 }
