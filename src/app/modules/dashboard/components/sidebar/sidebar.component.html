@@ -1,20 +1,20 @@
 <!-- begin::navigation -->
 <div class="navigation">
   <div class="logo">
-    <a routerLink="/dashboard">
+    <a routerLink="/dashboard/home">
       <img width="64" height="64" src="assets/images/slackCleaner.png" alt="logo">
     </a>
   </div>
   <ul>
     <li>
-      <a [routerLink]="['/dashboard']" routerLinkActive="active" class="cursor-mouse">
+      <a [routerLink]="['/dashboard/home']" routerLinkActive="active" class="cursor-mouse">
         <i class="nav-link-icon ti-pie-chart"></i>
         <span class="nav-link-label">Dashboard</span>
         <span class="badge badge-danger badge-small">2</span>
       </a>
     </li>
     <li>
-      <a  href="files.html">
+      <a [routerLink]="['/dashboard/files']" routerLinkActive="active">
         <i class="nav-link-icon ti-file"></i>
         <span class="nav-link-label">Files</span>
       </a>
