@@ -1,0 +1,35 @@
+<div class="card border-0">
+  <h6 class="card-title">My Folders</h6>
+  <div id="files" class="jstree jstree-1 jstree-default" role="tree">
+    <ul class="jstree-container-ul jstree-children jstree-no-dots" role="group">
+      <li [ngClass]="{ 'jstree-closed' : filesFilter !== filesFilterEnum?.files }"
+          role="treeitem" class="jstree-node">
+        <i class="jstree-icon jstree-ocl" role="presentation"></i>
+        <a
+          #files
+          (click)="filesFilterChange.emit(filesFilterEnum?.files)"
+          [ngClass]="{ 'jstree-clicked' : filesFilter === filesFilterEnum?.files }"
+          (mouseover)="addClass(true)"
+          (mouseleave)="removeClass(true)"
+          class="jstree-anchor" tabindex="-1">
+          <i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom"
+             role="presentation"></i>Files
+        </a>
+      </li>
+      <li [ngClass]="{ 'jstree-closed' : filesFilter !== filesFilterEnum?.remoteFiles }"
+          role="treeitem" class="jstree-node">
+        <i class="jstree-icon jstree-ocl" role="presentation"></i>
+        <a
+          #remoteFiles
+          (click)="filesFilterChange.emit(filesFilterEnum?.remoteFiles)"
+          [ngClass]="{ 'jstree-clicked' : filesFilter === filesFilterEnum?.remoteFiles }"
+          (mouseover)="addClass()"
+          (mouseleave)="removeClass()"
+          class="jstree-anchor" tabindex="-1">
+          <i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom"
+             role="presentation"></i>Remote Files
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,15 +1,16 @@
 import { Action } from '@ngrx/store';
+import { EFilesFilter } from '../../../../models/file-filter';
 
-export const DASHBOARD_ACTION = '[Dashboard]: action';
+export const DASHBOARD_SET_FILES_FILTER = '[Dashboard]: set files filter';
 
-export class DashboardAction implements Action {
-  readonly type = DASHBOARD_ACTION;
+export class DashboardSetFilesFilter implements Action {
+  readonly type = DASHBOARD_SET_FILES_FILTER;
 
-  constructor(public payload?: any) {
+  constructor(public payload: EFilesFilter) {
   }
 }
 
 export type Actions =
-  | DashboardAction;
+  | DashboardSetFilesFilter;
 
 

@@ -1,21 +1,22 @@
 import * as layoutActions from './dashboard.actions';
+import { EFilesFilter } from '../../../../models/file-filter';
 
 export interface IDashboard {
-  data: string;
+  filesFilter: EFilesFilter;
 }
 
 const initialState: IDashboard = {
-  data: null,
+  filesFilter: EFilesFilter.files,
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: layoutActions.Actions): IDashboard {
 
   switch (action.type) {
 
-    case layoutActions.DASHBOARD_ACTION:
+    case layoutActions.DASHBOARD_SET_FILES_FILTER:
 
       return {
-        ...initialState,
+        filesFilter: action.payload,
       };
 
     default:

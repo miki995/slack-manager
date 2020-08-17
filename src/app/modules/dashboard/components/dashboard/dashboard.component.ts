@@ -12,6 +12,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.router.url !== '/dashboard') {
+      return;
+    }
+
     this.router.navigateByUrl('/dashboard/home');
   }
 }
