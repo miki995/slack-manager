@@ -20,7 +20,7 @@ export class HomeGuard implements CanActivate {
     const tokenPresent = !!token && token !== 'undefined';
 
     if (tokenPresent) {
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/dashboard/home');
       return false;
     }
 

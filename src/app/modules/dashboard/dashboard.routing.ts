@@ -9,8 +9,12 @@ const routes: Route[] = [
     canActivate: [ AuthGuard ],
     children: [
       {
-        path: '',
+        path: 'home',
         loadChildren: () => import('../dashboard-home/dashboard-home.module').then(m => m.DashboardHomeModule)
+      },
+      {
+        path: 'files',
+        loadChildren: () => import('../dashboard-files/dashboard-files.module').then(m => m.DashboardFilesModule)
       }
     ]
   },

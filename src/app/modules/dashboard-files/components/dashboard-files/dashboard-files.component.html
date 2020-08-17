@@ -1,0 +1,996 @@
+<div class="page-header d-flex justify-content-between">
+  <h2>Files</h2>
+  <a href="#" class="files-toggler">
+    <i class="ti-menu"></i>
+  </a>
+</div>
+
+<div class="row">
+  <div class="col-xl-3 files-sidebar">
+    <div class="card border-0">
+      <h6 class="card-title">My Folders</h6>
+      <div id="files" class="jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false"><ul class="jstree-container-ul jstree-children jstree-no-dots" role="group"><li role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="j1_1_anchor" aria-expanded="false" id="j1_1" class="jstree-node  jstree-closed"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="j1_1_anchor"><i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom" role="presentation"></i>Backups</a></li><li role="treeitem" aria-selected="true" aria-level="1" aria-labelledby="j1_5_anchor" aria-expanded="true" id="j1_5" class="jstree-node  jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="#" tabindex="-1" id="j1_5_anchor"><i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom" role="presentation"></i>Documents</a><ul role="group" class="jstree-children"><li role="treeitem" aria-selected="false" aria-level="2" aria-labelledby="j1_6_anchor" id="j1_6" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom" role="presentation"></i>Design Thinking Project</a></li><li role="treeitem" aria-selected="false" aria-level="2" aria-labelledby="j1_7_anchor" id="j1_7" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="j1_7_anchor"><i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom" role="presentation"></i>User Research</a></li><li role="treeitem" aria-selected="false" aria-level="2" aria-labelledby="j1_8_anchor" id="j1_8" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="j1_8_anchor"><i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom" role="presentation"></i>Important Documents</a></li></ul></li><li role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="j1_9_anchor" aria-expanded="false" id="j1_9" class="jstree-node  jstree-closed"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="j1_9_anchor"><i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom" role="presentation"></i>Music</a></li><li role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="j1_13_anchor" aria-expanded="false" id="j1_13" class="jstree-node  jstree-closed"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="j1_13_anchor"><i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom" role="presentation"></i>Pictures</a></li><li role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="j1_16_anchor" aria-expanded="false" id="j1_16" class="jstree-node  jstree-closed jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="j1_16_anchor"><i class="jstree-icon jstree-themeicon ti-folder text-warning jstree-themeicon-custom" role="presentation"></i>Downloads</a></li></ul></div>
+    </div>
+  </div>
+  <div class="col-xl-9">
+    <div class="content-title mt-0">
+      <h4>Documents</h4>
+    </div>
+    <div class="d-md-flex justify-content-between mb-4">
+      <ul class="list-inline mb-3">
+        <li class="list-inline-item mb-0">
+          <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
+            Add
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">New Folder</a>
+            <a class="dropdown-item" href="#">New File</a>
+          </div>
+        </li>
+        <li class="list-inline-item mb-0">
+          <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
+            Tags
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Public</a>
+            <a class="dropdown-item" href="#">Project</a>
+            <a class="dropdown-item" href="#">Software</a>
+            <a class="dropdown-item" href="#">Social Media</a>
+            <a class="dropdown-item" href="#">Design</a>
+          </div>
+        </li>
+        <li class="list-inline-item mb-0">
+          <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
+            Sort
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Ascending</a>
+            <a class="dropdown-item" href="#">Descending</a>
+          </div>
+        </li>
+      </ul>
+      <div id="file-actions" class="d-none">
+        <ul class="list-inline">
+          <li class="list-inline-item mb-0">
+            <a href="#" class="btn btn-outline-light" data-toggle="tooltip" title="Move">
+              <i class="ti-arrow-top-right"></i>
+            </a>
+          </li>
+          <li class="list-inline-item mb-0">
+            <a href="#" class="btn btn-outline-light" data-toggle="tooltip" title="Download">
+              <i class="ti-download"></i>
+            </a>
+          </li>
+          <li class="list-inline-item mb-0">
+            <a href="#" class="btn btn-outline-danger" data-toggle="tooltip" title="Delete">
+              <i class="ti-trash"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table id="table-files" class="table table-borderless table-hover">
+        <thead>
+        <tr>
+          <th>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="files-select-all">
+              <label class="custom-control-label" for="files-select-all"></label>
+            </div>
+          </th>
+          <th>Name</th>
+          <th>Modified</th>
+          <th>Label</th>
+          <th>Members</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                    <span class="avatar-title bg-warning text-black-50 rounded-pill">
+                                        <i class="ti-folder"></i>
+                                    </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                    <span class="text-primary">Design Thinking Project</span>
+                                    <span class="small font-italic">550 KB</span>
+                                </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+            <div class="badge bg-info-bright text-info">Design</div>
+          </td>
+          <td>
+            <div class="avatar-group">
+              <figure class="avatar avatar-sm" title="Lisle Essam"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar2.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Baxie Roseblade"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Jo Hugill"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar1.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Cullie Philcott"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                    <span class="avatar-title bg-warning text-black-50 rounded-pill">
+                                        <i class="ti-folder"></i>
+                                    </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                    <span class="text-primary">User Research</span>
+                                    <span class="small font-italic">250 KB</span>
+                                </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+          </td>
+          <td>
+            <div class="avatar-group">
+              <figure class="avatar avatar-sm" title="Lisle Essam"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar2.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Baxie Roseblade"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                    <span class="avatar-title bg-warning text-black-50 rounded-pill">
+                                        <i class="ti-folder"></i>
+                                    </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                    <span class="text-primary">Important Documents</span>
+                                    <span class="small font-italic">590 KB</span>
+                                </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+          </td>
+          <td>
+            <div class="avatar-group">
+              <figure class="avatar avatar-sm" title="Lisle Essam"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar2.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Baxie Roseblade"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                    <span class="avatar-title rounded-pill">
+                                        <i class="ti-file"></i>
+                                    </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                    <span class="text-primary">Meeting-notes.doc</span>
+                                    <span class="small font-italic">139KB</span>
+                                </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+            <div class="badge bg-primary-bright text-primary">Public</div>
+          </td>
+          <td>
+            <div class="avatar-group">
+              <figure class="avatar avatar-sm" title="Lisle Essam"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar2.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Baxie Roseblade"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Mella Mixter"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar1.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="" data-toggle="tooltip"
+                      data-original-title="Cullie Philcott">
+                <span class="avatar-title bg-primary rounded-circle">+ 5</span>
+              </figure>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                            <span class="avatar-title rounded-pill">
+                                                <i class="ti-file"></i>
+                                            </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                    <span class="text-primary">composer.json</span>
+                                    <span class="small font-italic">55 KB</span>
+                                </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+            <div class="badge bg-primary-bright text-primary">Public</div>
+          </td>
+          <td>
+            <div class="avatar-group">
+              <figure class="avatar avatar-sm" title="Lisle Essam"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar2.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Baxie Roseblade"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Mella Mixter"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar1.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Jo Hugill"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar1.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Cullie Philcott"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="" data-toggle="tooltip"
+                      data-original-title="Cullie Philcott">
+                <span class="avatar-title bg-primary rounded-circle">+ 5</span>
+              </figure>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                            <span class="avatar-title rounded-pill">
+                                                <i class="ti-folder"></i>
+                                            </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                    <span class="text-primary">error_log.txt</span>
+                                    <span class="small font-italic">2MB</span>
+                                </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+            <div class="badge bg-warning-bright text-warning">Project</div>
+          </td>
+          <td>
+            <div class="avatar-group">
+              <figure class="avatar avatar-sm" title="Lisle Essam"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar2.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Baxie Roseblade"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                            <span class="avatar-title rounded-pill">
+                                                <i class="ti-folder"></i>
+                                            </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                    <span class="text-primary">package.json</span>
+                                    <span class="small font-italic">5 KB</span>
+                                </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+            <div class="badge bg-warning-bright text-warning">Project</div>
+          </td>
+          <td>
+            <div class="avatar-group">
+              <figure class="avatar avatar-sm" title="Lisle Essam"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar2.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Baxie Roseblade"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                            <span class="avatar-title rounded-pill">
+                                                <i class="ti-image"></i>
+                                            </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                            <span class="text-primary">Sitemap.png</span>
+                                            <span class="small font-italic">810KB</span>
+                                        </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+            <div class="badge bg-success-bright text-success">Social Media</div>
+          </td>
+          <td>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                            <span class="avatar-title rounded-pill">
+                                                <i class="ti-file"></i>
+                                            </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                            <span class="text-primary">Analytics.pdf</span>
+                                            <span class="small font-italic">10KB</span>
+                                        </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+            <div class="badge bg-info-bright text-info">Design</div>
+          </td>
+          <td>
+            <div class="avatar-group">
+              <figure class="avatar avatar-sm" title="Lisle Essam"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar2.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Baxie Roseblade"
+                      data-toggle="tooltip">
+                <img src="assets/images/man_avatar5.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Mella Mixter"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar1.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+              <figure class="avatar avatar-sm" title="Mella Mixter"
+                      data-toggle="tooltip">
+                <img src="assets/images/women_avatar4.jpg"
+                     class="rounded-circle"
+                     alt="image">
+              </figure>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" class="d-flex align-items-center">
+              <figure class="avatar avatar-sm mr-3">
+                                            <span class="avatar-title rounded-pill">
+                                                <i class="ti-file"></i>
+                                            </span>
+              </figure>
+              <span class="d-flex flex-column">
+                                            <span class="text-primary">Task-list.txt</span>
+                                            <span class="small font-italic">12 KB</span>
+                                        </span>
+            </a>
+          </td>
+          <td>3/9/19, 2:40PM</td>
+          <td>
+            <div class="badge bg-info-bright text-info">Design</div>
+          </td>
+          <td>
+          </td>
+          <td class="text-right">
+            <div class="dropdown">
+              <a href="#" class="btn btn-floating" data-toggle="dropdown">
+                <i class="ti-more-alt"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+                  Details</a>
+                <a href="#" class="dropdown-item">Share</a>
+                <a href="#" class="dropdown-item">Download</a>
+                <a href="#" class="dropdown-item">Copy to</a>
+                <a href="#" class="dropdown-item">Move to</a>
+                <a href="#" class="dropdown-item">Rename</a>
+                <a href="#" class="dropdown-item">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="ti-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form autocomplete="off">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Task title</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Tags</label>
+            <div class="col-sm-9">
+              <select class="js-example-basic-single" multiple>
+                <option value="Theme Support">Theme Support</option>
+                <option value="Freelance">Freelance</option>
+                <option selected value="Social">Social</option>
+                <option selected value="Friends">Friends</option>
+                <option value="Coding">Coding</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row row-sm">
+            <label class="col-sm-3 col-form-label">Deadline</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control create-event-datepicker"
+                     placeholder="Date">
+            </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control create-event-demo"
+                     placeholder="Time">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Participate</label>
+            <div class="col-sm-9">
+              <div class="avatar-group">
+                <figure class="avatar avatar-sm">
+                  <img src="assets/images/women_avatar3.jpg"
+                       class="rounded-circle"
+                       alt="image">
+                </figure>
+                <figure class="avatar avatar-sm">
+                  <span class="avatar-title bg-danger rounded-circle">S</span>
+                </figure>
+                <figure class="avatar avatar-sm">
+                  <img src="assets/images/women_avatar5.jpg"
+                       class="rounded-circle"
+                       alt="image">
+                </figure>
+              </div>
+              <button type="button" class="btn btn-outline-light btn-sm btn-floating" title="Add User"
+                      data-toggle="dropdown">
+                <i class="ti-plus"></i>
+              </button>
+              <div class="dropdown-menu p-0">
+                <div class="p-3">
+                  <h6 class="text-uppercase font-size-11 mb-3">Add User</h6>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Search User"
+                           aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-light" type="button" id="button-addon2">
+                        <i class="ti-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <ul class="list-group list-group-flush mt-2">
+                    <li class="list-group-item d-flex align-items-center pl-0 pr-0">
+                      <div class="mr-2">
+                        <figure class="avatar avatar-sm">
+                          <span class="avatar-title bg-primary rounded-circle">V</span>
+                        </figure>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Valentine Maton</h6>
+                      </div>
+                      <div class="dropdown ml-auto">
+                        <a href="#" data-toggle="dropdown"
+                           class="btn btn-outline-light btn-sm"
+                           aria-haspopup="true" aria-expanded="false">
+                          <i data-feather="plus"></i>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center pl-0 pr-0">
+                      <div class="mr-2">
+                        <figure class="avatar avatar-sm">
+                          <img
+                            src="assets/images/women_avatar3.jpg"
+                            class="rounded-circle" alt="image">
+                        </figure>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Valentine Maton</h6>
+                      </div>
+                      <div class="dropdown ml-auto">
+                        <a href="#" data-toggle="dropdown"
+                           class="btn btn-outline-light btn-sm"
+                           aria-haspopup="true" aria-expanded="false">
+                          <i data-feather="plus"></i>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center pl-0 pr-0">
+                      <div class="mr-2">
+                        <figure class="avatar avatar-sm">
+                          <img
+                            src="assets/images/women_avatar2.jpg"
+                            class="rounded-circle" alt="image">
+                        </figure>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Valentine Maton</h6>
+                      </div>
+                      <div class="dropdown ml-auto">
+                        <a href="#" data-toggle="dropdown"
+                           class="btn btn-outline-light btn-sm ml-3" aria-haspopup="true"
+                           aria-expanded="false">
+                          <i data-feather="plus"></i>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center pl-0 pr-0">
+                      <div class="mr-2">
+                        <figure class="avatar avatar-sm">
+                          <img src="assets/images/man_avatar2.jpg"
+                               class="rounded-circle" alt="image">
+                        </figure>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Valentine Maton</h6>
+                      </div>
+                      <div class="dropdown ml-auto">
+                        <a href="#" data-toggle="dropdown"
+                           class="btn btn-outline-light btn-sm ml-3" aria-haspopup="true"
+                           aria-expanded="false">
+                          <i data-feather="plus"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" rows="6"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3"></label>
+            <div class="col-sm-9">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="ti-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form autocomplete="off">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Task title</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Title"
+                     value="Draw design and presentation for customers.">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Tags</label>
+            <div class="col-sm-9">
+              <select class="js-example-basic-single" multiple>
+                <option selected value="Theme Support">Theme Support</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Social">Social</option>
+                <option value="Friends">Friends</option>
+                <option value="Coding">Coding</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row row-sm">
+            <label class="col-sm-3 col-form-label">Deadline</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control create-event-datepicker"
+                     placeholder="Date" value="10/31/2019">
+            </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control create-event-demo" value="11:57"
+                     placeholder="Time">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Participate</label>
+            <div class="col-sm-9">
+              <div class="avatar-group">
+                <figure class="avatar avatar-sm">
+                  <img src="assets/images/women_avatar3.jpg"
+                       class="rounded-circle"
+                       alt="image">
+                </figure>
+                <figure class="avatar avatar-sm">
+                  <span class="avatar-title bg-danger rounded-circle">S</span>
+                </figure>
+                <figure class="avatar avatar-sm">
+                  <img src="assets/images/women_avatar5.jpg"
+                       class="rounded-circle"
+                       alt="image">
+                </figure>
+              </div>
+              <button type="button" class="btn btn-outline-light btn-sm btn-floating" title="Add User"
+                      data-toggle="dropdown">
+                <i class="ti-plus"></i>
+              </button>
+              <div class="dropdown-menu p-0">
+                <div class="p-3">
+                  <h6 class="text-uppercase font-size-11 mb-3">Add User</h6>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Search User"
+                           aria-describedby="button-addon3">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-light" type="button" id="button-addon3">
+                        <i class="ti-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <ul class="list-group list-group-flush mt-2">
+                    <li class="list-group-item d-flex align-items-center pl-0 pr-0">
+                      <div class="mr-2">
+                        <figure class="avatar avatar-sm">
+                          <span class="avatar-title bg-primary rounded-circle">V</span>
+                        </figure>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Valentine Maton</h6>
+                      </div>
+                      <div class="dropdown ml-auto">
+                        <a href="#" data-toggle="dropdown"
+                           class="btn btn-outline-light btn-sm"
+                           aria-haspopup="true" aria-expanded="false">
+                          <i data-feather="plus"></i>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center pl-0 pr-0">
+                      <div class="mr-2">
+                        <figure class="avatar avatar-sm">
+                          <img
+                            src="assets/images/women_avatar3.jpg"
+                            class="rounded-circle" alt="image">
+                        </figure>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Valentine Maton</h6>
+                      </div>
+                      <div class="dropdown ml-auto">
+                        <a href="#" data-toggle="dropdown"
+                           class="btn btn-outline-light btn-sm"
+                           aria-haspopup="true" aria-expanded="false">
+                          <i data-feather="plus"></i>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center pl-0 pr-0">
+                      <div class="mr-2">
+                        <figure class="avatar avatar-sm">
+                          <img
+                            src="assets/images/women_avatar2.jpg"
+                            class="rounded-circle" alt="image">
+                        </figure>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Valentine Maton</h6>
+                      </div>
+                      <div class="dropdown ml-auto">
+                        <a href="#" data-toggle="dropdown"
+                           class="btn btn-outline-light btn-sm ml-3" aria-haspopup="true"
+                           aria-expanded="false">
+                          <i data-feather="plus"></i>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center pl-0 pr-0">
+                      <div class="mr-2">
+                        <figure class="avatar avatar-sm">
+                          <img src="assets/images/man_avatar2.jpg"
+                               class="rounded-circle" alt="image">
+                        </figure>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Valentine Maton</h6>
+                      </div>
+                      <div class="dropdown ml-auto">
+                        <a href="#" data-toggle="dropdown"
+                           class="btn btn-outline-light btn-sm ml-3" aria-haspopup="true"
+                           aria-expanded="false">
+                          <i data-feather="plus"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" rows="6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis incidunt labore modi numquam omnis pariatur possimus suscipit vitae voluptas?</textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3"></label>
+            <div class="col-sm-9">
+              <button type="submit" class="btn btn-success">
+                <i data-feather="check" class="mr-2"></i>
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
