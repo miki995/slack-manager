@@ -17,7 +17,7 @@ const routes: Route[] = [
     canActivate: [ HomeGuard ],
   },
   {
-    path: '**', component: HomeComponent
+    path: '**', redirectTo: '/'
   }
 ];
 
