@@ -9,11 +9,13 @@ import { SharedModule } from '../shared/shared.module';
 import { FilesService } from '../../services/files.service';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidebarRightComponent
   ],
     imports: [
         CommonModule,
