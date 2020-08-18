@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
 import { DashboardRoutingModule } from './dashboard.routing';
+import { FilesService } from '../../services/files.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { DashboardRoutingModule } from './dashboard.routing';
     ]),
     RouterModule,
   ],
-  providers: []
+  providers: [
+    FilesService
+  ]
 })
 export class DashboardModule {
 }

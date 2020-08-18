@@ -1,0 +1,69 @@
+<table id="table-files" class="table table-borderless table-hover">
+  <thead>
+  <tr>
+    <th>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="files-select-all">
+        <label class="custom-control-label" for="files-select-all"></label>
+      </div>
+    </th>
+    <th class="sorting_asc" tabindex="0" aria-controls="table-files" rowspan="1" colspan="1"
+        aria-sort="ascending">
+      Name
+    </th>
+    <th>Created</th>
+    <th>Type</th>
+    <th>User</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let file of files; let index = index">
+    <td class="dt-body-center"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="customCheck{{ index }}"><label class="custom-control-label" for="customCheck{{ index }}"></label></div></td>
+    <td>
+      <a class="d-flex align-items-center">
+        <figure class="avatar avatar-sm mr-3">
+            <span class="avatar-title {{ (file?.filetype | fileType)?.imageClass }} text-black-50 rounded-pill">
+                <i class="{{ (file?.filetype | fileType)?.icon }}"></i>
+            </span>
+        </figure>
+        <span class="d-flex flex-column">
+              <span class="text-primary">{{file?.name}}</span>
+              <span class="small font-italic">{{ file?.size | formatBytes }}</span>
+          </span>
+      </a>
+    </td>
+    <td>{{ file?.created | timeAgoPipe }}</td>
+    <td>
+      <div class="badge {{ (file?.filetype | fileType)?.badgeClass }}">{{ file?.filetype }}</div>
+    </td>
+    <td>
+      <div class="avatar-group">
+        <figure class="avatar avatar-sm" title="Lisle Essam"
+                data-toggle="tooltip">
+          <img src="assets/images/women_avatar2.jpg"
+               class="rounded-circle"
+               alt="image">
+        </figure>
+      </div>
+    </td>
+    <td class="text-right">
+      <div class="dropdown">
+        <a href="#" class="btn btn-floating" data-toggle="dropdown">
+          <i class="ti-more-alt"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
+            Details</a>
+          <a href="#" class="dropdown-item">Share</a>
+          <a href="#" class="dropdown-item">Download</a>
+          <a href="#" class="dropdown-item">Copy to</a>
+          <a href="#" class="dropdown-item">Move to</a>
+          <a href="#" class="dropdown-item">Rename</a>
+          <a href="#" class="dropdown-item">Delete</a>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
