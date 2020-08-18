@@ -63,4 +63,5 @@ export enum EFilesCount {
 
 export interface IFilesQueryParams {
   count?: EFilesCount;
+  page?: number;
 }

@@ -68,4 +68,12 @@ export class DashboardFilesComponent implements OnInit {
       payload: searchTerm
     });
   }
+
+  onPageChange(page: number): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS,
+      payload: { page }
+    });
+  }
 }

@@ -1,0 +1,21 @@
+<div class="dataTables_paginate paging_simple_numbers" id="table-files_paginate">
+  <ul class="pagination">
+    <li class="paginate_button page-item previous" [ngClass]="{ 'disabled': ((count * (page - 1)) + 1) === 1 }" id="table-files_previous">
+      <a
+         (click)="pageChange.emit(page - 1)"
+         aria-controls="table-files"
+         data-dt-idx="0"
+         tabindex="0"
+         class="page-link">Previous</a>
+    </li>
+    <li class="paginate_button page-item active">
+      <a href="#" aria-controls="table-files" data-dt-idx="1"
+         tabindex="0" class="page-link">{{ page }}</a></li>
+    <li class="paginate_button page-item next" [ngClass]="{ 'disabled': ((count * page) <= total ? (count * page) : total) >= total }" id="table-files_next">
+      <a
+         (click)="pageChange.emit(page + 1)"
+         aria-controls="table-files"
+         data-dt-idx="2" tabindex="0"
+         class="page-link">Next</a></li>
+  </ul>
+</div>

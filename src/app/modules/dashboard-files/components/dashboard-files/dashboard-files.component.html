@@ -101,22 +101,12 @@
             </app-dashboard-files-list-info>
           </div>
           <div class="col-sm-12 col-md-7">
-            <div class="dataTables_paginate paging_simple_numbers" id="table-files_paginate">
-              <ul class="pagination">
-                <li class="paginate_button page-item previous disabled" id="table-files_previous"><a href="#"
-                                                                                                     aria-controls="table-files"
-                                                                                                     data-dt-idx="0"
-                                                                                                     tabindex="0"
-                                                                                                     class="page-link">Previous</a>
-                </li>
-                <li class="paginate_button page-item active"><a href="#" aria-controls="table-files" data-dt-idx="1"
-                                                                tabindex="0" class="page-link">1</a></li>
-                <li class="paginate_button page-item next disabled" id="table-files_next"><a href="#"
-                                                                                             aria-controls="table-files"
-                                                                                             data-dt-idx="2" tabindex="0"
-                                                                                             class="page-link">Next</a></li>
-              </ul>
-            </div>
+            <app-dashboard-files-pagination
+              [count]="(filesResponse$ | async)?.paging?.count"
+              [total]="(filesResponse$ | async)?.paging?.total"
+              [page]="(filesResponse$ | async)?.paging?.page"
+              (pageChange)="onPageChange($event)">
+            </app-dashboard-files-pagination>
           </div>
     </div>
       </div>
