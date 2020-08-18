@@ -7,7 +7,10 @@
 
 <div class="row">
   <div class="col-xl-3 files-sidebar">
-    <app-dashboard-folders [filesFilter]="filesFilter$ | async" (filesFilterChange)="filesFilterChange($event)"></app-dashboard-folders>
+    <app-dashboard-folders
+      [filesFilter]="filesFilter$ | async"
+      (filesFilterChange)="filesFilterChange($event)">
+    </app-dashboard-folders>
   </div>
   <div class="col-xl-9">
     <div class="content-title mt-0">
@@ -72,21 +75,20 @@
           <div class="col-sm-12 col-md-6">
             <app-dashboard-files-count
             [selectedCount]="(filesQueryParams$ | async)?.count"
-            (changedCount)="countChanged($event)">
+            (changedCount)="onCountChanged($event)">
             </app-dashboard-files-count>
           </div>
           <div class="col-sm-12 col-md-6">
-            <div id="table-files_filter" class="dataTables_filter"><label>Search:<input type="search"
-                                                                                        class="form-control form-control-sm"
-                                                                                        placeholder=""
-                                                                                        aria-controls="table-files"></label>
-            </div>
+            <app-dashboard-files-search
+            [searchTerm]="filesSearchTerm$ | async"
+            (searchTermChange)="onSearchTermChange($event)">
+            </app-dashboard-files-search>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
             <app-dashboard-files-list
-              [files]="(filesResponse$ | async)?.files">
+              [files]="(filesResponse$ | async)?.files | arraySearch : 'name' : (filesSearchTerm$ | async)">
             </app-dashboard-files-list>
           </div>
         </div>
