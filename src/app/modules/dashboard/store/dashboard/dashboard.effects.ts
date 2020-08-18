@@ -1,27 +1,49 @@
 import { Injectable } from '@angular/core';
-import { Actions } from '@ngrx/effects';
-import { config } from '../../../../config/config';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { catchError, distinctUntilChanged, map, pluck, switchMap, withLatestFrom } from 'rxjs/operators';
+import { of } from 'rxjs';
+import * as dashboardActions from './dashboard.actions';
+import { FilesService } from '../../../../services/files.service';
+import { select, Store } from '@ngrx/store';
+import { getDashboardState, IDashboardState } from '../index';
+import { IFilesQueryParams } from '../../../../models/file-filter';
+
+const getFilesTriggers = [
+  dashboardActions.DASHBOARD_SET_FILES_FILTER,
+  dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS,
+];
 
 @Injectable()
 export class DashboardEffects {
 
-  private i18nAPI = config.apiEndpoint + '/api/i18n';  // URL to i18nUrl api
-
-
-  /*@Effect()
-  languageLoad$ = this.actions$
+  @Effect()
+  triggerGetFiles$ = this.actions$
     .pipe(
-      ofType(layoutActions.LAYOUT_LANGUAGE_LOAD),
-      switchMap((action: layoutActions.LayoutLanguageLoad) => {
+      ofType(...getFilesTriggers),
+      switchMap((action: dashboardActions.DashboardSetFilesFilter) => {
+        return of(new dashboardActions.DashboardGetFiles());
+      })
+    );
 
-        return this.httpService.get(`${this.i18nAPI}/${action.payload}`)
+  @Effect()
+  getFiles$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_GET_FILES),
+      withLatestFrom(this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>())),
+      switchMap(([action, filesQueryParams]: [dashboardActions.DashboardGetFiles, IFilesQueryParams]) => {
+
+        return this.filesService.getFiles(filesQueryParams)
           .pipe(
-            catchError((error) => of(new layoutActions.LayoutLanguageLoadFail(error))),
-            map((response) => new layoutActions.LayoutLanguageLoadSuccess(response))
+            catchError((error) => of(new dashboardActions.DashboardGetFilesFail(error))),
+            map((response) => new dashboardActions.DashboardGetFilesSuccess(response))
           );
       })
-    );*/
+    );
 
-  constructor(private readonly actions$: Actions) {
+  constructor(
+    private readonly actions$: Actions,
+    private readonly filesService: FilesService,
+    private readonly store: Store<IDashboardState>
+  ) {
   }
 }

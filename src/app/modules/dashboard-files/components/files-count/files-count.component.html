@@ -1,0 +1,8 @@
+<div class="dataTables_length" id="table-files_length">
+  <label>Show
+    <select #select name="table-files_length" aria-controls="table-files" class="custom-select custom-select-sm form-control form-control-sm" (change)="changedCount.emit(filesCount['count' + select.value])">
+      <ng-container *ngFor="let fileCount of filesCounts">
+        <option [value]="fileCount">{{ fileCount }}</option>
+      </ng-container>
+    </select> entries</label>
+</div>
