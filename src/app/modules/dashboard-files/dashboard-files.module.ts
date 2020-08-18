@@ -7,9 +7,10 @@ import { FilesListComponent } from './components/files-list/files-list.component
 import { SharedModule } from '../shared/shared.module';
 import { FilesCountComponent } from './components/files-count/files-count.component';
 import { FilesSearchComponent } from './components/files-search/files-search.component';
+import { FilesListInfoComponent } from './components/files-list-info/files-list-info.component';
 
 @NgModule({
-  declarations: [ DashboardFilesComponent, FoldersComponent, FilesListComponent, FilesCountComponent, FilesSearchComponent ],
+  declarations: [ DashboardFilesComponent, FoldersComponent, FilesListComponent, FilesCountComponent, FilesSearchComponent, FilesListInfoComponent ],
     imports: [
         CommonModule,
         DashboardFilesRoutingModule,
