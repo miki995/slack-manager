@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormatBytesPipe } from './pipes/format-bytes.pipe';
 import { TimeAgoPipePipe } from './pipes/time-ago-pipe.pipe';
 import { FileTypePipe } from './pipes/file-type.pipe';
+import { ArraySearchPipe } from './pipes/array-search.pipe';
 
 @NgModule({
   declarations: [
     FormatBytesPipe,
     TimeAgoPipePipe,
-    FileTypePipe
+    FileTypePipe,
+    ArraySearchPipe
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { FileTypePipe } from './pipes/file-type.pipe';
   exports: [
     FormatBytesPipe,
     TimeAgoPipePipe,
-    FileTypePipe
+    FileTypePipe,
+    ArraySearchPipe
   ],
   providers: [
     HttpService,

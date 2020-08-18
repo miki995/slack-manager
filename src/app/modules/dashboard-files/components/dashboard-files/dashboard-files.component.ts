@@ -16,6 +16,7 @@ export class DashboardFilesComponent implements OnInit {
   filesFilter$: Observable<EFilesFilter>;
   filesResponse$: Observable<IFilesResponse>;
   filesQueryParams$: Observable<IFilesQueryParams>;
+  filesSearchTerm$: Observable<string>;
 
   constructor(private readonly store: Store<IDashboardState>) {
   }
@@ -36,6 +37,7 @@ export class DashboardFilesComponent implements OnInit {
     this.filesFilter$ = this.store.pipe(select(getDashboardState), pluck('filesFilter'), distinctUntilChanged<EFilesFilter>());
     this.filesResponse$ = this.store.pipe(select(getDashboardState), pluck('filesResponse'), distinctUntilChanged<IFilesResponse>());
     this.filesQueryParams$ = this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>());
+    this.filesSearchTerm$ = this.store.pipe(select(getDashboardState), pluck('filesSearchTerm'), distinctUntilChanged<string>());
   }
 
   getFiles(): void {
@@ -51,11 +53,19 @@ export class DashboardFilesComponent implements OnInit {
     });
   }
 
-  countChanged(count: EFilesCount): void {
+  onCountChanged(count: EFilesCount): void {
 
     this.store.dispatch({
       type: dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS,
       payload: { count }
+    });
+  }
+
+  onSearchTermChange(searchTerm: string): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_FILES_SEARCH,
+      payload: searchTerm
     });
   }
 }
