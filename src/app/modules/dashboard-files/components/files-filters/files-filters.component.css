@@ -1,11 +1,7 @@
-.dropdown-menu .dropdown-item:hover {
-  background-color: #0062ff;
-  text-decoration: none;
-  color: white;
+.btn.btn-outline-warning {
+  color: #ffbd29 !important;
 }
 
-.dropdown-menu .dropdown-item.active {
-  background-color: #0062ff;
-  text-decoration: none;
-  color: white;
+.btn.btn-outline-warning:hover {
+  color: inherit !important;
 }

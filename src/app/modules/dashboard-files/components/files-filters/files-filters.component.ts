@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input,
 import { EFileTypeValue, fileTypes } from '../../../../helpers/file.helper';
 import * as moment from 'moment';
 import { EFilesSortBySize, IFilesQueryParams } from '../../../../models/file-filter';
+import { IChannel } from '../../../../models/conversation';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,6 +21,7 @@ export class FilesFiltersComponent implements AfterViewInit {
 
   @Input() set dates(data: IFilesQueryParams) {
     if (!data.ts_from && !data.ts_to) {
+      jQuery('input[name ="daterangepicker-file-filter"]').val('Date range');
       return;
     }
 
@@ -39,6 +41,7 @@ export class FilesFiltersComponent implements AfterViewInit {
     jQuery('input[name="daterangepicker-file-filter"]').daterangepicker({
       opens: 'left',
       autoUpdateInput: false,
+      maxDate: new Date()
     }, (start, end, label) => {
       // tslint:disable-next-line:variable-name
       const ts_from = moment(start).unix();
@@ -63,8 +66,8 @@ export class FilesFiltersComponent implements AfterViewInit {
 
     const isAll = fileType === EFileTypeValue.all;
     const shouldClearType = isAll ? false : oldTypes?.includes(fileType);
-    const allSelected = [EFileTypeValue.all];
-    const othersSelected =  Array.from(new Set([ ...oldTypes, fileType ].filter(item => item !== EFileTypeValue.all)));
+    const allSelected = [ EFileTypeValue.all ];
+    const othersSelected = Array.from(new Set([ ...oldTypes, fileType ].filter(item => item !== EFileTypeValue.all)));
     const finalSelected = shouldClearType ? othersSelected.filter(item => item !== fileType) : othersSelected;
     const finalSelectedNonEmpty = finalSelected?.length ? finalSelected : allSelected;
     const types = isAll ? allSelected : finalSelectedNonEmpty;

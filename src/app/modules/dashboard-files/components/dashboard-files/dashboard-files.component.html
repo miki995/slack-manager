@@ -20,6 +20,7 @@
       <app-dashboard-files-filters
         [filesQueryParams]="filesQueryParams$ | async"
         [dates]="filesQueryParams$ | async"
+        [channels]="(conversationsResponse$ | async)?.channels"
         (filesQueryParamsOverride)="onFilesQueryParamsOverride($event)"
         (filesQueryParamsChange)="onFilesQueryParamsChange($event)"
       >

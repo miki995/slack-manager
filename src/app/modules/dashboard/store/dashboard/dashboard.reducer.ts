@@ -1,11 +1,13 @@
 import * as dashboardActions from './dashboard.actions';
 import { EFilesCount, EFilesFilter, EFilesSortBySize, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
 import { EFileTypeValue, sortFiles } from '../../../../helpers/file.helper';
+import { IConversationsResponse } from '../../../../models/conversation';
 
 export interface IDashboard {
   filesFilter: EFilesFilter;
   filesResponse?: IFilesResponse;
   filesQueryParams?: IFilesQueryParams;
+  conversationsResponse?: IConversationsResponse;
 }
 
 const initialState: IDashboard = {
@@ -70,6 +72,13 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
           ...state.filesResponse,
           files: sortFiles(state.filesResponse.files, action.payload)
         }
+      };
+
+    case dashboardActions.DASHBOARD_GET_CONVERSATIONS_SUCCESS:
+
+      return {
+        ...state,
+        conversationsResponse: action.payload
       };
 
     default:

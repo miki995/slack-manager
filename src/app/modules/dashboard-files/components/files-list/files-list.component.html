@@ -7,7 +7,7 @@
         <label class="custom-control-label" for="files-select-all"></label>
       </div>
     </th>
-    <th class="sorting" tabindex="0" aria-controls="table-files" rowspan="1" colspan="1" aria-sort="ascending">Name</th>
+    <th>Name</th>
     <th class="sorting"
         (click)="onDateChange(filesQueryParams?.date === filesSortByDateEnum.newest)"
         [ngClass]="!!filesQueryParams?.date ? (filesQueryParams?.date === filesSortByDateEnum.newest ? 'sorting_desc' : 'sorting_asc') : ''"
@@ -53,14 +53,10 @@
           <i class="ti-more-alt"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
-            Details</a>
-          <a href="#" class="dropdown-item">Share</a>
-          <a href="#" class="dropdown-item">Download</a>
-          <a href="#" class="dropdown-item">Copy to</a>
-          <a href="#" class="dropdown-item">Move to</a>
-          <a href="#" class="dropdown-item">Rename</a>
-          <a href="#" class="dropdown-item">Delete</a>
+          <a class="dropdown-item" data-sidebar-target="#view-detail">View Details</a>
+          <a class="dropdown-item">Share</a>
+          <a class="dropdown-item">Download</a>
+          <a class="dropdown-item">Delete</a>
         </div>
       </div>
     </td>

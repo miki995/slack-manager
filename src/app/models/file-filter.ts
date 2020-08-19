@@ -80,6 +80,7 @@ export interface IFilesQueryParams {
   types?: EFileTypeValue[];
   ts_from?: number;
   ts_to?: number;
+  channel?: string;
   /*Custom UI params*/
   searchTerm?: string;
   date?: EFilesSortByDate;

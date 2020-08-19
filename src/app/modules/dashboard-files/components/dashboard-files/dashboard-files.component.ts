@@ -5,6 +5,7 @@ import { EFilesCount, EFilesFilter, IFilesQueryParams, IFilesResponse } from '..
 import * as dashboardActions from '../../../dashboard/store/dashboard/dashboard.actions';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
+import { IConversationsResponse } from '../../../../models/conversation';
 
 @Component({
   selector: 'app-dashboard-files',
@@ -16,6 +17,7 @@ export class DashboardFilesComponent implements OnInit {
   filesFilter$: Observable<EFilesFilter>;
   filesResponse$: Observable<IFilesResponse>;
   filesQueryParams$: Observable<IFilesQueryParams>;
+  conversationsResponse$: Observable<IConversationsResponse>;
 
   constructor(private readonly store: Store<IDashboardState>) {
   }
@@ -32,15 +34,23 @@ export class DashboardFilesComponent implements OnInit {
 
     this.setInitialState();
     this.getFiles();
+    this.getConversations();
 
     this.filesFilter$ = this.store.pipe(select(getDashboardState), pluck('filesFilter'), distinctUntilChanged<EFilesFilter>());
     this.filesResponse$ = this.store.pipe(select(getDashboardState), pluck('filesResponse'), distinctUntilChanged<IFilesResponse>());
     this.filesQueryParams$ = this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>());
+    this.conversationsResponse$ = this.store.pipe(select(getDashboardState), pluck('conversationsResponse'), distinctUntilChanged<IConversationsResponse>());
   }
 
   getFiles(): void {
     this.store.dispatch({
       type: dashboardActions.DASHBOARD_GET_FILES
+    });
+  }
+
+  getConversations(): void {
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_GET_CONVERSATIONS
     });
   }
 
