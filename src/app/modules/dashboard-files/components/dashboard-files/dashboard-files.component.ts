@@ -74,4 +74,12 @@ export class DashboardFilesComponent implements OnInit {
       payload: { page }
     });
   }
+
+  onFilesQueryParamsChange(queryParams: IFilesQueryParams): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS,
+      payload: queryParams
+    });
+  }
 }

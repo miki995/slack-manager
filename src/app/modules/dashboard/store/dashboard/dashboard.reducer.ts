@@ -1,5 +1,6 @@
 import * as dashboardActions from './dashboard.actions';
-import { EFilesCount, EFilesFilter, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import { EFilesCount, EFilesFilter, EFilesSortByDate, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import { sortFiles } from '../../../../helpers/file.helper';
 
 export interface IDashboard {
   filesFilter: EFilesFilter;
@@ -11,7 +12,8 @@ const initialState: IDashboard = {
   filesFilter: EFilesFilter.files,
   filesQueryParams: {
     count: EFilesCount.count10,
-    searchTerm: ''
+    searchTerm: '',
+    sortByDate: EFilesSortByDate.newest
   },
 };
 
@@ -34,9 +36,14 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
 
     case dashboardActions.DASHBOARD_GET_FILES_SUCCESS:
 
+      const files = sortFiles(action.payload.files, state.filesQueryParams);
+
       return {
         ...state,
-        filesResponse: action.payload,
+        filesResponse: {
+          ...action.payload,
+          files
+        },
       };
 
     case dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS:

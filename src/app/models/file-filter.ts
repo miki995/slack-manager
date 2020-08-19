@@ -61,10 +61,16 @@ export enum EFilesCount {
   count100 = '100'
 }
 
+export enum EFilesSortByDate {
+  newest = 'newest',
+  oldest = 'oldest'
+}
+
 export interface IFilesQueryParams {
   /*api params for slack*/
   count?: EFilesCount;
   page?: number;
   /*Custom UI params*/
   searchTerm?: string;
+  sortByDate?: EFilesSortByDate;
 }

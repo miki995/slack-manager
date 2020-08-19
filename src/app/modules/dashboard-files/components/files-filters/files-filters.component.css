@@ -1,3 +1,11 @@
 .dropdown-menu .dropdown-item:hover {
-  color: white !important;
+  background-color: #0062ff;
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown-menu .dropdown-item.active {
+  background-color: #0062ff;
+  text-decoration: none;
+  color: white;
 }

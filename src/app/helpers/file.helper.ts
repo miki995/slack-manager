@@ -1,3 +1,5 @@
+import { EFilesSortByDate, IFile, IFilesQueryParams } from '../models/file-filter';
+
 export interface IFileType {
   icon?: string;
   badgeClass?: string;
@@ -93,3 +95,14 @@ export const fileTypes: IFileTypeFilter[] = [
     value: 'pdfs'
   }
 ];
+
+export function sortFiles(files: IFile[], filesQueryParams: IFilesQueryParams): IFile[] {
+
+  console.error(files);
+  const sortByDateNewest = filesQueryParams.sortByDate === EFilesSortByDate.newest;
+
+  let sortedFiles = files.slice().sort((a, b) => (sortByDateNewest ? a.created < b.created : a.created > b.created) ? 1 : -1);
+
+  console.error(sortedFiles);
+  return sortedFiles;
+}

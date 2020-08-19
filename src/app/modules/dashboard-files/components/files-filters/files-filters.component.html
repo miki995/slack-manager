@@ -4,8 +4,14 @@
       Sort
     </a>
     <div class="dropdown-menu">
-      <a class="dropdown-item">Newest</a>
-      <a class="dropdown-item">Oldest</a>
+      <a
+        class="dropdown-item"
+        (click)="filesQueryParamsChange.emit({ sortByDate: filesSortByDateEnum?.newest })"
+        [ngClass]="{ 'active': filesQueryParams?.sortByDate === filesSortByDateEnum.newest }">Newest</a>
+      <a
+        class="dropdown-item"
+        (click)="filesQueryParamsChange.emit({ sortByDate: filesSortByDateEnum?.oldest })"
+        [ngClass]="{ 'active': filesQueryParams?.sortByDate === filesSortByDateEnum.oldest }">Oldest</a>
     </div>
   </li>
   <li class="list-inline-item mb-0">
