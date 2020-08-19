@@ -36,6 +36,31 @@ export class DashboardGetFilesFail implements Action {
   }
 }
 
+export const DASHBOARD_GET_ALL_FILES = '[Dashboard]: get all files';
+export const DASHBOARD_GET_ALL_FILES_SUCCESS = '[Dashboard]: get all files success';
+export const DASHBOARD_GET_ALL_FILES_FAIL = '[Dashboard]: get all files fail';
+
+export class DashboardGetAllFiles implements Action {
+  readonly type = DASHBOARD_GET_ALL_FILES;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class DashboardGetAllFilesSuccess implements Action {
+  readonly type = DASHBOARD_GET_ALL_FILES_SUCCESS;
+
+  constructor(public payload: IFilesResponse) {
+  }
+}
+
+export class DashboardGetAllFilesFail implements Action {
+  readonly type = DASHBOARD_GET_ALL_FILES_FAIL;
+
+  constructor(public payload: any) {
+  }
+}
+
 export const DASHBOARD_SET_INITIAL_STATE = '[Dashboard]: set initialState';
 
 export class DashboardSetInitialState implements Action {
@@ -93,6 +118,9 @@ export type Actions =
   | DashboardGetFiles
   | DashboardGetFilesSuccess
   | DashboardGetFilesFail
+  | DashboardGetAllFiles
+  | DashboardGetAllFilesSuccess
+  | DashboardGetAllFilesFail
   | DashboardSetQueryParams
   | DashboardOverrideQueryParams
   | DashboardGetConversations

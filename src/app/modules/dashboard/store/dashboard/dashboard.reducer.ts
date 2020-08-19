@@ -1,13 +1,15 @@
 import * as dashboardActions from './dashboard.actions';
 import { EFilesCount, EFilesFilter, EFilesSortBySize, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
-import { EFileTypeValue, sortFiles } from '../../../../helpers/file.helper';
+import { detectFileTypePercentage, EFileTypeValue, IFilePercentages, sortFiles } from '../../../../helpers/file.helper';
 import { IConversationsResponse } from '../../../../models/conversation';
 
 export interface IDashboard {
   filesFilter: EFilesFilter;
   filesResponse?: IFilesResponse;
+  allFilesResponse?: IFilesResponse;
   filesQueryParams?: IFilesQueryParams;
   conversationsResponse?: IConversationsResponse;
+  filePercentages?: IFilePercentages;
 }
 
 const initialState: IDashboard = {
@@ -49,6 +51,16 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
           ...action.payload,
           files
         },
+      };
+
+    case dashboardActions.DASHBOARD_GET_ALL_FILES_SUCCESS:
+
+      const filePercentages: IFilePercentages = detectFileTypePercentage(action.payload.files);
+
+      return {
+        ...state,
+        allFilesResponse: action.payload,
+        filePercentages
       };
 
     case dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS:

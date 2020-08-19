@@ -25,22 +25,10 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <h4>Stats</h4>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body text-center">
-        <div class="row mb-4">
-          <div class="col-md-8 offset-md-2">
-            <img src="assets/images/report.svg" class="img-fluid" alt="report">
-          </div>
-        </div>
-        <h4 class="my-3">Create Report</h4>
-        <p class="text-muted">Create reports to grow their business and serve their customers better. Use this tool to generate reports.</p>
-        <button class="btn btn-outline-primary btn-lg2">Start Now</button>
-      </div>
-    </div>
+    <app-dashboard-home-chart [filePercentages]="filePercentages$ | async"></app-dashboard-home-chart>
+    <div class="mb-3" id="apex_chart_stats" style="height: 300px"></div>
   </div>
 </div>
 

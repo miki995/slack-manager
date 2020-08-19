@@ -60,6 +60,95 @@ export function detectFileType(fileType: string): IFileType {
   }
 }
 
+export interface IFilePercentage {
+  data: IFile[];
+  size: number;
+}
+
+export interface IFilePercentages {
+  all: IFilePercentage;
+  excels: IFilePercentage;
+  files: IFilePercentage;
+  images: IFilePercentage;
+  notes: IFilePercentage;
+  presentations: IFilePercentage;
+  videos: IFilePercentage;
+}
+
+export function detectFileTypePercentage(files: IFile[]): IFilePercentages {
+
+  const notes = [ 'c', 'csharp', 'css', 'dart', 'haskell', 'fortran', 'go', 'groovy', 'latex', 'kotlin', 'java', 'markdown', 'odt', 'php', 'python', 'sass', 'smalltalk', 'shell', 'swift', 'tsv', 'vb', 'vbscript', 'xml', 'yaml', 'text', 'javascript', 'html', 'mhtml', 'doc', 'docx', 'powershell', 'applescript', 'dockerfile', 'dotx', 'email', 'eps', 'epub', 'erlang' ];
+  const filess = [ 'zip', 'tar', 'pdf', 'gzip', 'apk', 'binary', 'bmp' ];
+  const excels = [ 'csv', 'xltx', 'xlsm', 'xlsb', 'xlsx', 'xls', 'odd', 'gsheet', 'gdraw', 'gdoc' ];
+  const videos = [ 'm4a', 'wmv', 'webm', 'wav', 'verilog', 'velocity', 'vcard', 'ogv', 'mp3', 'mp4', 'mpg', 'mov', 'mkv', 'flv' ];
+  const images = [ 'ai', 'gif', 'tiff', 'odg', 'svg', 'sketch', 'psd', 'png', 'jpg', 'odi' ];
+  const presentations = [ 'ppt', 'pptx', 'odp', 'gpres' ];
+
+  const notesData: IFile[] = [];
+  const filesData: IFile[] = [];
+  const excelsData: IFile[] = [];
+  const videosData: IFile[] = [];
+  const imagesData: IFile[] = [];
+  const presentationsData: IFile[] = [];
+
+  files.forEach(file => {
+    if (notes.includes(file.filetype)) {
+      notesData.push(file);
+    } else if (filess.includes(file.filetype)) {
+      filesData.push(file);
+    } else if (excels.includes(file.filetype)) {
+      excelsData.push(file);
+    } else if (videos.includes(file.filetype)) {
+      videosData.push(file);
+    } else if (images.includes(file.filetype)) {
+      imagesData.push(file);
+    } else if (presentations.includes(file.filetype)) {
+      presentationsData.push(file);
+    } else {
+      filesData.push(file);
+    }
+  });
+
+  const allSize = getSize(files);
+
+  return {
+    all: {
+      data: files,
+      size: allSize
+    },
+    notes: {
+      data: notesData,
+      size: (getSize(notesData) * 100) / allSize
+    },
+    files: {
+      data: filesData,
+      size: (getSize(filesData) * 100) / allSize
+    },
+    excels: {
+      data: excelsData,
+      size: (getSize(excelsData) * 100) / allSize
+    },
+    videos: {
+      data: videosData,
+      size: (getSize(videosData) * 100) / allSize
+    },
+    images: {
+      data: imagesData,
+      size: (getSize(imagesData) * 100) / allSize
+    },
+    presentations: {
+      data: presentationsData,
+      size: (getSize(presentationsData) * 100) / allSize
+    },
+  };
+}
+
+export function getSize(files: IFile[]): number {
+  return files.reduce((count, file) => {
+    return count + file.size;
+  }, 0);
+}
+
 export enum EFileTypeValue {
   all = 'all',
   spaces = 'spaces',

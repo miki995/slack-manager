@@ -4,7 +4,7 @@ import { DashboardFilesComponent } from './components/dashboard-files/dashboard-
 const routes: Route[] = [
   {
     path: '',
-    component: DashboardFilesComponent,
+    component: DashboardFilesComponent
   },
 ];
 

@@ -1,5 +1,6 @@
 declare let Jquery: any;
 declare let swal: any;
+declare let ApexCharts: any;
 
 interface JQuery {
   modal(behavior?: any): JQuery;
