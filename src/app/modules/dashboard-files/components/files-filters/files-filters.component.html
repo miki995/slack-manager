@@ -1,0 +1,33 @@
+<ul class="list-inline mb-3">
+  <li class="list-inline-item mb-0">
+    <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
+      Sort
+    </a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item">Newest</a>
+      <a class="dropdown-item">Oldest</a>
+    </div>
+  </li>
+  <li class="list-inline-item mb-0">
+    <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">Size</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item">Largest</a>
+      <a class="dropdown-item">Smallest</a>
+    </div>
+  </li>
+  <li *ngIf="channels?.length" class="list-inline-item mb-0">
+    <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">Channels</a>
+    <div class="dropdown-menu">
+      <a *ngFor="let channel of channels" class="dropdown-item">{{channel}}</a>
+    </div>
+  </li>
+  <li class="list-inline-item mb-0">
+    <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">Type</a>
+    <div class="dropdown-menu">
+      <a *ngFor="let fileType of fileTypes" class="dropdown-item">{{ fileType?.title }}</a>
+    </div>
+  </li>
+  <li class="list-inline-item mb-0">
+    <input type="text" name="daterangepicker-file-filter" class="form-control btn btn-outline-light" value="Date range">
+  </li>
+</ul>

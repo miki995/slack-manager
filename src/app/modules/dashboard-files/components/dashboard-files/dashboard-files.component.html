@@ -17,38 +17,9 @@
       <h4>Documents</h4>
     </div>
     <div class="d-md-flex justify-content-between mb-4">
-      <ul class="list-inline mb-3">
-        <li class="list-inline-item mb-0">
-          <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
-            Add
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">New Folder</a>
-            <a class="dropdown-item" href="#">New File</a>
-          </div>
-        </li>
-        <li class="list-inline-item mb-0">
-          <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
-            Tags
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Public</a>
-            <a class="dropdown-item" href="#">Project</a>
-            <a class="dropdown-item" href="#">Software</a>
-            <a class="dropdown-item" href="#">Social Media</a>
-            <a class="dropdown-item" href="#">Design</a>
-          </div>
-        </li>
-        <li class="list-inline-item mb-0">
-          <a href="#" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
-            Sort
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Ascending</a>
-            <a class="dropdown-item" href="#">Descending</a>
-          </div>
-        </li>
-      </ul>
+      <app-dashboard-files-filters
+      >
+      </app-dashboard-files-filters>
       <div id="file-actions" class="d-none">
         <ul class="list-inline">
           <li class="list-inline-item mb-0">
@@ -80,7 +51,7 @@
           </div>
           <div class="col-sm-12 col-md-6">
             <app-dashboard-files-search
-            [searchTerm]="filesSearchTerm$ | async"
+            [searchTerm]="(filesQueryParams$ | async)?.searchTerm"
             (searchTermChange)="onSearchTermChange($event)">
             </app-dashboard-files-search>
           </div>
@@ -88,11 +59,11 @@
         <div class="row">
           <div class="col-sm-12">
             <app-dashboard-files-list
-              [files]="(filesResponse$ | async)?.files | arraySearch : 'name' : (filesSearchTerm$ | async)">
+              [files]="(filesResponse$ | async)?.files | arraySearch : 'name' : (filesQueryParams$ | async)?.searchTerm">
             </app-dashboard-files-list>
           </div>
         </div>
-        <div *ngIf="!(filesSearchTerm$ | async)" class="row">
+        <div *ngIf="!(filesQueryParams$ | async)?.searchTerm" class="row">
           <div class="col-sm-12 col-md-5">
             <app-dashboard-files-list-info
             [count]="(filesResponse$ | async)?.paging?.count"

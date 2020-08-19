@@ -20,7 +20,7 @@ export class DashboardEffects {
   triggerGetFiles$ = this.actions$
     .pipe(
       ofType(...getFilesTriggers),
-      switchMap((action: dashboardActions.DashboardSetFilesFilter) => {
+      switchMap((action: any) => {
         return of(new dashboardActions.DashboardGetFiles());
       })
     );

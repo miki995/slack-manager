@@ -62,6 +62,9 @@ export enum EFilesCount {
 }
 
 export interface IFilesQueryParams {
+  /*api params for slack*/
   count?: EFilesCount;
   page?: number;
+  /*Custom UI params*/
+  searchTerm?: string;
 }

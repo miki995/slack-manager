@@ -20,30 +20,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.handleCode();
-
-    /* const { code, state } = parseQuery(this.location.path());
-
-     if (!!localStorage.getItem('slack-cleaner-token') && localStorage.getItem('slack-cleaner-token') !== undefined) {
-       this.filesService.getFiles().subscribe(res2 => {
-       });
-     }
-
-     if (code) {
-
-       this.authService.exchangeCodeForToken(code).subscribe(i => {
-         if (!i.ok) {
-           this.router.navigateByUrl('/').then(res => {
-           });
-           return;
-         }
-
-         localStorage.setItem('slack-cleaner-token', i.access_token);
-         this.httpService.setToken(i.authed_user.access_token);
-         this.filesService.getFiles().subscribe(res2 => {
-           this.files = res2.files;
-         });
-       });
-     }*/
   }
 
   handleCode(): void {

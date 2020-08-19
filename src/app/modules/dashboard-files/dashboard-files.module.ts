@@ -9,9 +9,10 @@ import { FilesCountComponent } from './components/files-count/files-count.compon
 import { FilesSearchComponent } from './components/files-search/files-search.component';
 import { FilesListInfoComponent } from './components/files-list-info/files-list-info.component';
 import { FilesPaginationComponent } from './components/files-pagination/files-pagination.component';
+import { FilesFiltersComponent } from './components/files-filters/files-filters.component';
 
 @NgModule({
-  declarations: [ DashboardFilesComponent, FoldersComponent, FilesListComponent, FilesCountComponent, FilesSearchComponent, FilesListInfoComponent, FilesPaginationComponent ],
+  declarations: [ DashboardFilesComponent, FoldersComponent, FilesListComponent, FilesCountComponent, FilesSearchComponent, FilesListInfoComponent, FilesPaginationComponent, FilesFiltersComponent ],
     imports: [
         CommonModule,
         DashboardFilesRoutingModule,

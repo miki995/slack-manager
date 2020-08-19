@@ -33,7 +33,7 @@ export function detectFileType(fileType: string): IFileType {
     };
   } else if (videos.includes(fileType)) {
     return {
-      icon: 'ti-video-clapper',
+      icon: 'ti-control-play',
       badgeClass: 'bg-secondary-bright text-secondary',
       imageClass: 'bg-secondary'
     };
@@ -57,3 +57,39 @@ export function detectFileType(fileType: string): IFileType {
     };
   }
 }
+
+export interface IFileTypeFilter {
+  title: string;
+  value: string;
+}
+
+export const fileTypes: IFileTypeFilter[] = [
+  {
+    title: 'All files',
+    value: 'all'
+  },
+  {
+    title: 'Posts',
+    value: 'spaces '
+  },
+  {
+    title: 'Snippets',
+    value: 'snippets'
+  },
+  {
+    title: 'Images',
+    value: 'images'
+  },
+  {
+    title: 'Google docs',
+    value: 'gdocs '
+  },
+  {
+    title: 'Zip files',
+    value: 'zips'
+  },
+  {
+    title: 'PDF files',
+    value: 'pdfs'
+  }
+];

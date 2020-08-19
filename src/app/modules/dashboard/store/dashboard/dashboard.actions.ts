@@ -53,22 +53,12 @@ export class DashboardSetQueryParams implements Action {
   }
 }
 
-export const DASHBOARD_SET_FILES_SEARCH = '[Dashboard]: set files search term';
-
-export class DashboardSetFilesSearch implements Action {
-  readonly type = DASHBOARD_SET_FILES_SEARCH;
-
-  constructor(public payload: string) {
-  }
-}
-
 export type Actions =
   DashboardSetInitialState
   | DashboardSetFilesFilter
   | DashboardGetFiles
   | DashboardGetFilesSuccess
   | DashboardGetFilesFail
-  | DashboardSetQueryParams
-  | DashboardSetFilesSearch;
+  | DashboardSetQueryParams;
 
 
