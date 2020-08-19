@@ -82,4 +82,12 @@ export class DashboardFilesComponent implements OnInit {
       payload: queryParams
     });
   }
+
+  onFilesQueryParamsOverride(queryParams: IFilesQueryParams): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_OVERRIDE_FILES_QUERY_PARAMS,
+      payload: queryParams
+    });
+  }
 }

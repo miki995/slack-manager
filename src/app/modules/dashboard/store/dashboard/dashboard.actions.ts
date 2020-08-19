@@ -45,9 +45,17 @@ export class DashboardSetInitialState implements Action {
 }
 
 export const DASHBOARD_SET_FILES_QUERY_PARAMS = '[Dashboard]: set files query params';
+export const DASHBOARD_OVERRIDE_FILES_QUERY_PARAMS = '[Dashboard]: override files query params';
 
 export class DashboardSetQueryParams implements Action {
   readonly type = DASHBOARD_SET_FILES_QUERY_PARAMS;
+
+  constructor(public payload: IFilesQueryParams) {
+  }
+}
+
+export class DashboardOverrideQueryParams implements Action {
+  readonly type = DASHBOARD_OVERRIDE_FILES_QUERY_PARAMS;
 
   constructor(public payload: IFilesQueryParams) {
   }
@@ -59,6 +67,7 @@ export type Actions =
   | DashboardGetFiles
   | DashboardGetFilesSuccess
   | DashboardGetFilesFail
-  | DashboardSetQueryParams;
+  | DashboardSetQueryParams
+  | DashboardOverrideQueryParams;
 
 

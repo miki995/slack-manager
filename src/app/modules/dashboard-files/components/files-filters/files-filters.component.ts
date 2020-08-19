@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { fileTypes } from '../../../../helpers/file.helper';
 import * as moment from 'moment';
-import { EFilesSortByDate, IFilesQueryParams } from '../../../../models/file-filter';
+import { EFilesSortBySize, IFilesQueryParams } from '../../../../models/file-filter';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -12,7 +12,7 @@ import { EFilesSortByDate, IFilesQueryParams } from '../../../../models/file-fil
 export class FilesFiltersComponent implements AfterViewInit {
 
   fileTypes = fileTypes;
-  filesSortByDateEnum = EFilesSortByDate;
+  filesSortBySizeEnum = EFilesSortBySize;
 
   @Input() filesQueryParams: IFilesQueryParams;
   @Input() channels: any[];
@@ -33,5 +33,16 @@ export class FilesFiltersComponent implements AfterViewInit {
 
       jQuery('input[name ="daterangepicker-file-filter"]').val(start.format('MM/DD/YYYY') + '-' + end.format('MM/DD/YYYY'));
     });
+  }
+
+  onSizeChange(isLargest: boolean): void {
+
+    const size = isLargest ? EFilesSortBySize.smallest : EFilesSortBySize.largest;
+    const queryParams: IFilesQueryParams = {
+      size,
+      date: null
+    };
+
+    this.filesQueryParamsChange.emit(queryParams);
   }
 }

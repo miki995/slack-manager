@@ -1,5 +1,5 @@
 import * as dashboardActions from './dashboard.actions';
-import { EFilesCount, EFilesFilter, EFilesSortByDate, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import { EFilesCount, EFilesFilter, EFilesSortBySize, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
 import { sortFiles } from '../../../../helpers/file.helper';
 
 export interface IDashboard {
@@ -13,7 +13,7 @@ const initialState: IDashboard = {
   filesQueryParams: {
     count: EFilesCount.count10,
     searchTerm: '',
-    sortByDate: EFilesSortByDate.newest
+    size: EFilesSortBySize.largest
   },
 };
 
@@ -53,6 +53,19 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         filesQueryParams: {
           ...state.filesQueryParams,
           ...action.payload
+        }
+      };
+
+    case dashboardActions.DASHBOARD_OVERRIDE_FILES_QUERY_PARAMS:
+      return {
+        ...state,
+        filesQueryParams: {
+          ...state.filesQueryParams,
+          ...action.payload
+        },
+        filesResponse: {
+          ...state.filesResponse,
+          files: sortFiles(state.filesResponse.files, action.payload)
         }
       };
 

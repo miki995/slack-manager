@@ -1,4 +1,4 @@
-<table *ngIf="files?.length" id="table-files" class="table table-borderless table-hover">
+<table *ngIf="files?.length" id="table-files" class="table table-borderless table-hover dataTable no-footer">
   <thead>
   <tr>
     <th>
@@ -7,8 +7,11 @@
         <label class="custom-control-label" for="files-select-all"></label>
       </div>
     </th>
-    <th class="sorting_asc" tabindex="0" aria-controls="table-files" rowspan="1" colspan="1" aria-sort="ascending">Name</th>
-    <th>Created</th>
+    <th class="sorting" tabindex="0" aria-controls="table-files" rowspan="1" colspan="1" aria-sort="ascending">Name</th>
+    <th class="sorting"
+        (click)="onDateChange(filesQueryParams?.date === filesSortByDateEnum.newest)"
+        [ngClass]="!!filesQueryParams?.date ? (filesQueryParams?.date === filesSortByDateEnum.newest ? 'sorting_desc' : 'sorting_asc') : ''"
+        tabindex="0" aria-controls="table-files" rowspan="1" colspan="1">Created</th>
     <th>Type</th>
     <th>User</th>
     <th></th>

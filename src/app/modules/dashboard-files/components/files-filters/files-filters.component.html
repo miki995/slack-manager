@@ -1,24 +1,17 @@
 <ul class="list-inline mb-3">
   <li class="list-inline-item mb-0">
     <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
-      Sort
+      Size
     </a>
     <div class="dropdown-menu">
       <a
         class="dropdown-item"
-        (click)="filesQueryParamsChange.emit({ sortByDate: filesSortByDateEnum?.newest })"
-        [ngClass]="{ 'active': filesQueryParams?.sortByDate === filesSortByDateEnum.newest }">Newest</a>
+        (click)="onSizeChange(filesQueryParams?.size === filesSortBySizeEnum.largest)"
+        [ngClass]="{ 'active': filesQueryParams?.size === filesSortBySizeEnum.largest }">Largest</a>
       <a
         class="dropdown-item"
-        (click)="filesQueryParamsChange.emit({ sortByDate: filesSortByDateEnum?.oldest })"
-        [ngClass]="{ 'active': filesQueryParams?.sortByDate === filesSortByDateEnum.oldest }">Oldest</a>
-    </div>
-  </li>
-  <li class="list-inline-item mb-0">
-    <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">Size</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item">Largest</a>
-      <a class="dropdown-item">Smallest</a>
+        (click)="onSizeChange(filesQueryParams?.size === filesSortBySizeEnum.largest)"
+        [ngClass]="{ 'active': filesQueryParams?.size === filesSortBySizeEnum.smallest }">Smallest</a>
     </div>
   </li>
   <li *ngIf="channels?.length" class="list-inline-item mb-0">

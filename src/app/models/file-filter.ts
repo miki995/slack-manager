@@ -66,11 +66,17 @@ export enum EFilesSortByDate {
   oldest = 'oldest'
 }
 
+export enum EFilesSortBySize {
+  largest = 'largest',
+  smallest = 'smallest'
+}
+
 export interface IFilesQueryParams {
   /*api params for slack*/
   count?: EFilesCount;
   page?: number;
   /*Custom UI params*/
   searchTerm?: string;
-  sortByDate?: EFilesSortByDate;
+  date?: EFilesSortByDate;
+  size?: EFilesSortBySize;
 }

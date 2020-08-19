@@ -1,4 +1,4 @@
-import { EFilesSortByDate, IFile, IFilesQueryParams } from '../models/file-filter';
+import { EFilesSortByDate, EFilesSortBySize, IFile, IFilesQueryParams } from '../models/file-filter';
 
 export interface IFileType {
   icon?: string;
@@ -98,11 +98,22 @@ export const fileTypes: IFileTypeFilter[] = [
 
 export function sortFiles(files: IFile[], filesQueryParams: IFilesQueryParams): IFile[] {
 
-  console.error(files);
-  const sortByDateNewest = filesQueryParams.sortByDate === EFilesSortByDate.newest;
+  let sortedFiles: IFile[] = [];
 
-  let sortedFiles = files.slice().sort((a, b) => (sortByDateNewest ? a.created < b.created : a.created > b.created) ? 1 : -1);
+  if (!!filesQueryParams.date) {
+    const sortByDateNewest = filesQueryParams.date === EFilesSortByDate.newest;
+    sortedFiles = sortBy(files, 'created', sortByDateNewest);
+  } else if (!!filesQueryParams.size) {
+    const sortBySizeLargest = filesQueryParams.size === EFilesSortBySize.largest;
+    sortedFiles = sortBy(files, 'size', sortBySizeLargest);
+  }
 
-  console.error(sortedFiles);
   return sortedFiles;
+}
+
+function sortBy(files: IFile[], column: string, asc: boolean): IFile[] {
+
+  const firstNum = asc ? 1 : -1;
+  const secNum = asc ? -1 : 1;
+  return files.slice().sort((a, b) => (a[column] < b[column]) ? firstNum : secNum);
 }
