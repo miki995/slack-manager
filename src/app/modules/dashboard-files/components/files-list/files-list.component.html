@@ -1,4 +1,4 @@
-<table *ngIf="files?.length" id="table-files" class="table table-borderless table-hover">
+<table *ngIf="files?.length" id="table-files" class="table table-borderless table-hover dataTable no-footer">
   <thead>
   <tr>
     <th>
@@ -7,8 +7,11 @@
         <label class="custom-control-label" for="files-select-all"></label>
       </div>
     </th>
-    <th class="sorting_asc" tabindex="0" aria-controls="table-files" rowspan="1" colspan="1" aria-sort="ascending">Name</th>
-    <th>Created</th>
+    <th>Name</th>
+    <th class="sorting"
+        (click)="onDateChange(filesQueryParams?.date === filesSortByDateEnum.newest)"
+        [ngClass]="!!filesQueryParams?.date ? (filesQueryParams?.date === filesSortByDateEnum.newest ? 'sorting_desc' : 'sorting_asc') : ''"
+        tabindex="0" aria-controls="table-files" rowspan="1" colspan="1">Created</th>
     <th>Type</th>
     <th>User</th>
     <th></th>
@@ -50,17 +53,17 @@
           <i class="ti-more-alt"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View
-            Details</a>
-          <a href="#" class="dropdown-item">Share</a>
-          <a href="#" class="dropdown-item">Download</a>
-          <a href="#" class="dropdown-item">Copy to</a>
-          <a href="#" class="dropdown-item">Move to</a>
-          <a href="#" class="dropdown-item">Rename</a>
-          <a href="#" class="dropdown-item">Delete</a>
+          <a class="dropdown-item" data-sidebar-target="#view-detail">View Details</a>
+          <a class="dropdown-item">Share</a>
+          <a class="dropdown-item">Download</a>
+          <a class="dropdown-item">Delete</a>
         </div>
       </div>
     </td>
   </tr>
   </tbody>
 </table>
+<div *ngIf="!files?.length" class="no-files">
+  <div class="title mt-0"><h4>No files found</h4></div>
+  <img class="no-files" width="500" height="500" src="assets/images/mean_at_work.svg" alt="no files found"/>
+</div>

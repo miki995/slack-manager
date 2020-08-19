@@ -21,6 +21,11 @@ export class FilesService {
     params = params.append('show_files_hidden_by_limit', 'true');
 
     Object.keys(queryParams).forEach(key => {
+
+      if (!queryParams[key]) {
+        return;
+      }
+
       params = params.append(key, queryParams[key]);
     });
 

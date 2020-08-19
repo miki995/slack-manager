@@ -1,19 +1,25 @@
 import * as dashboardActions from './dashboard.actions';
-import { EFilesCount, EFilesFilter, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import { EFilesCount, EFilesFilter, EFilesSortBySize, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import { EFileTypeValue, sortFiles } from '../../../../helpers/file.helper';
+import { IConversationsResponse } from '../../../../models/conversation';
 
 export interface IDashboard {
   filesFilter: EFilesFilter;
   filesResponse?: IFilesResponse;
   filesQueryParams?: IFilesQueryParams;
-  filesSearchTerm: string;
+  conversationsResponse?: IConversationsResponse;
 }
 
 const initialState: IDashboard = {
   filesFilter: EFilesFilter.files,
   filesQueryParams: {
-    count: EFilesCount.count10
+    count: EFilesCount.count10,
+    searchTerm: '',
+    size: EFilesSortBySize.largest,
+    types: [EFileTypeValue.all],
+    ts_from: null,
+    ts_to: null
   },
-  filesSearchTerm: ''
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -35,9 +41,14 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
 
     case dashboardActions.DASHBOARD_GET_FILES_SUCCESS:
 
+      const files = sortFiles(action.payload.files, state.filesQueryParams);
+
       return {
         ...state,
-        filesResponse: action.payload,
+        filesResponse: {
+          ...action.payload,
+          files
+        },
       };
 
     case dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS:
@@ -50,11 +61,24 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         }
       };
 
-    case dashboardActions.DASHBOARD_SET_FILES_SEARCH:
+    case dashboardActions.DASHBOARD_OVERRIDE_FILES_QUERY_PARAMS:
+      return {
+        ...state,
+        filesQueryParams: {
+          ...state.filesQueryParams,
+          ...action.payload
+        },
+        filesResponse: {
+          ...state.filesResponse,
+          files: sortFiles(state.filesResponse.files, action.payload)
+        }
+      };
+
+    case dashboardActions.DASHBOARD_GET_CONVERSATIONS_SUCCESS:
 
       return {
         ...state,
-        filesSearchTerm: action.payload
+        conversationsResponse: action.payload
       };
 
     default:

@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { EFilesFilter, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import { IConversationsResponse } from '../../../../models/conversation';
 
 export const DASHBOARD_SET_FILES_FILTER = '[Dashboard]: set files filter';
 
@@ -45,6 +46,7 @@ export class DashboardSetInitialState implements Action {
 }
 
 export const DASHBOARD_SET_FILES_QUERY_PARAMS = '[Dashboard]: set files query params';
+export const DASHBOARD_OVERRIDE_FILES_QUERY_PARAMS = '[Dashboard]: override files query params';
 
 export class DashboardSetQueryParams implements Action {
   readonly type = DASHBOARD_SET_FILES_QUERY_PARAMS;
@@ -53,12 +55,35 @@ export class DashboardSetQueryParams implements Action {
   }
 }
 
-export const DASHBOARD_SET_FILES_SEARCH = '[Dashboard]: set files search term';
+export class DashboardOverrideQueryParams implements Action {
+  readonly type = DASHBOARD_OVERRIDE_FILES_QUERY_PARAMS;
 
-export class DashboardSetFilesSearch implements Action {
-  readonly type = DASHBOARD_SET_FILES_SEARCH;
+  constructor(public payload: IFilesQueryParams) {
+  }
+}
 
-  constructor(public payload: string) {
+export const DASHBOARD_GET_CONVERSATIONS = '[Dashboard]: get conversations';
+export const DASHBOARD_GET_CONVERSATIONS_SUCCESS = '[Dashboard]: get conversations success';
+export const DASHBOARD_GET_CONVERSATIONS_FAIL = '[Dashboard]: get conversations fail';
+
+export class DashboardGetConversations implements Action {
+  readonly type = DASHBOARD_GET_CONVERSATIONS;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class DashboardGetConversationsSuccess implements Action {
+  readonly type = DASHBOARD_GET_CONVERSATIONS_SUCCESS;
+
+  constructor(public payload: IConversationsResponse) {
+  }
+}
+
+export class DashboardGetConversationsFail implements Action {
+  readonly type = DASHBOARD_GET_CONVERSATIONS_FAIL;
+
+  constructor(public payload: any) {
   }
 }
 
@@ -69,6 +94,9 @@ export type Actions =
   | DashboardGetFilesSuccess
   | DashboardGetFilesFail
   | DashboardSetQueryParams
-  | DashboardSetFilesSearch;
+  | DashboardOverrideQueryParams
+  | DashboardGetConversations
+  | DashboardGetConversationsSuccess
+  | DashboardGetConversationsFail;
 
 

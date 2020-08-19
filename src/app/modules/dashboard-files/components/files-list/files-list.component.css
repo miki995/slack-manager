@@ -4,3 +4,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.no-files {
+  width: 50%;
+  height: 57%;
+  margin: 60px auto;
+  display: block;
+}
+
+.title.mt-0 {
+  text-align: center;
+}

@@ -10,6 +10,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { FilesService } from '../../services/files.service';
+import { ConversationsService } from '../../services/conversations.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FilesService } from '../../services/files.service';
     RouterModule,
   ],
   providers: [
-    FilesService
+    FilesService,
+    ConversationsService
   ]
 })
 export class DashboardModule {

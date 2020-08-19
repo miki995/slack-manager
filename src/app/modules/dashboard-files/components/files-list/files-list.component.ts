@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IFile } from '../../../../models/file-filter';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { EFilesSortByDate, IFile, IFilesQueryParams } from '../../../../models/file-filter';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,5 +9,22 @@ import { IFile } from '../../../../models/file-filter';
 })
 export class FilesListComponent {
 
+  filesSortByDateEnum = EFilesSortByDate;
+
   @Input() files: IFile[];
+  @Input() filesQueryParams: IFilesQueryParams;
+
+  @Output() filesQueryParamsChange = new EventEmitter<IFilesQueryParams>();
+
+
+  onDateChange(isNewest: boolean): void {
+
+    const date = isNewest ? EFilesSortByDate.oldest : EFilesSortByDate.newest;
+    const queryParams: IFilesQueryParams = {
+      size: null,
+      date
+    };
+
+    this.filesQueryParamsChange.emit(queryParams);
+  }
 }

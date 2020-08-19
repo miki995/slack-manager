@@ -3,13 +3,20 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [
+      "jquery"
+    ]
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "custom_typings/sc/index.d.ts"
   ],
   "include": [
     "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
   ]
 }

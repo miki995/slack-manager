@@ -5,4 +5,17 @@
 @import "./assets/global/theme/vendors/datepicker/daterangepicker";
 @import "./assets/global/theme/vendors/dataTable/datatables.min";
 @import "./assets/global/theme/vendors/select2/css/select2.min";
+@import "./assets/global/theme/vendors/prism/prism";
 @import "./assets/global/theme/assets/css/app.min";
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #0062ff !important;
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.dropdown-menu .dropdown-item.active {
+  background-color: #0062ff !important;
+  text-decoration: none !important;
+  color: white !important;
+}

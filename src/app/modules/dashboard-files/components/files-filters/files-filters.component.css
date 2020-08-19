@@ -1,0 +1,7 @@
+.btn.btn-outline-warning {
+  color: #ffbd29 !important;
+}
+
+.btn.btn-outline-warning:hover {
+  color: inherit !important;
+}

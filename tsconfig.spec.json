@@ -4,9 +4,14 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
+      "jquery",
       "jasmine"
     ]
   },
+  "typeRoots": [
+    "node_modules/@types",
+    "custom_typings"
+  ],
   "files": [
     "src/test.ts",
     "src/polyfills.ts"

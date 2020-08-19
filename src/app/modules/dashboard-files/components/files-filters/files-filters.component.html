@@ -1,0 +1,49 @@
+<ul class="list-inline mb-3">
+  <li class="list-inline-item mb-0">
+    <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
+      Size
+    </a>
+    <div class="dropdown-menu">
+      <a
+        class="dropdown-item"
+        (click)="onSizeChange(filesQueryParams?.size === filesSortBySizeEnum.largest)"
+        [ngClass]="{ 'active': filesQueryParams?.size === filesSortBySizeEnum.largest }">Largest</a>
+      <a
+        class="dropdown-item"
+        (click)="onSizeChange(filesQueryParams?.size === filesSortBySizeEnum.largest)"
+        [ngClass]="{ 'active': filesQueryParams?.size === filesSortBySizeEnum.smallest }">Smallest</a>
+    </div>
+  </li>
+  <li *ngIf="channels?.length" class="list-inline-item mb-0">
+    <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">Channels</a>
+    <div class="dropdown-menu">
+      <a
+        *ngFor="let channel of channels"
+        class="dropdown-item"
+        (click)="filesQueryParamsChange.emit({ channel: channel?.id === filesQueryParams?.channel ? '' : channel?.id })"
+        [ngClass]="{ 'active': filesQueryParams?.channel === channel?.id }"
+      >
+        {{channel?.name}}
+      </a>
+    </div>
+  </li>
+  <li class="list-inline-item mb-0">
+    <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">Type</a>
+    <div class="dropdown-menu">
+      <a
+        *ngFor="let fileType of fileTypes"
+        (click)="onFileTypeChange(fileType?.value, filesQueryParams?.types)"
+        [ngClass]="{ 'active': filesQueryParams?.types?.includes(fileType?.value) }"
+        class="dropdown-item"
+      >{{ fileType?.title }}</a>
+    </div>
+  </li>
+  <li class="list-inline-item mb-0">
+    <input type="text" name="daterangepicker-file-filter" class="form-control btn btn-outline-light" value="Date range">
+  </li>
+  <li *ngIf="!!filesQueryParams?.channel || !!filesQueryParams?.ts_to || !!filesQueryParams?.ts_from || !filesQueryParams?.types?.includes(fileTypeEnum.all)" class="list-inline-item mb-0">
+    <a (click)="filesQueryParamsChange.emit( { channel: null, types: [fileTypeEnum.all], ts_from: null, ts_to: null })" class="btn btn-outline-warning">
+      <i class="ti-close"></i>
+    </a>
+  </li>
+</ul>

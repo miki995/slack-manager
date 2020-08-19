@@ -1,3 +1,5 @@
+import { EFileTypeValue } from '../helpers/file.helper';
+
 export enum EFilesFilter {
   files = 'files',
   remoteFiles = 'remote-files'
@@ -61,7 +63,26 @@ export enum EFilesCount {
   count100 = '100'
 }
 
+export enum EFilesSortByDate {
+  newest = 'newest',
+  oldest = 'oldest'
+}
+
+export enum EFilesSortBySize {
+  largest = 'largest',
+  smallest = 'smallest'
+}
+
 export interface IFilesQueryParams {
+  /*api params for slack*/
   count?: EFilesCount;
   page?: number;
+  types?: EFileTypeValue[];
+  ts_from?: number;
+  ts_to?: number;
+  channel?: string;
+  /*Custom UI params*/
+  searchTerm?: string;
+  date?: EFilesSortByDate;
+  size?: EFilesSortBySize;
 }

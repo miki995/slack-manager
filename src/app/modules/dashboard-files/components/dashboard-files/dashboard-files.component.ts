@@ -5,6 +5,7 @@ import { EFilesCount, EFilesFilter, IFilesQueryParams, IFilesResponse } from '..
 import * as dashboardActions from '../../../dashboard/store/dashboard/dashboard.actions';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
+import { IConversationsResponse } from '../../../../models/conversation';
 
 @Component({
   selector: 'app-dashboard-files',
@@ -16,7 +17,7 @@ export class DashboardFilesComponent implements OnInit {
   filesFilter$: Observable<EFilesFilter>;
   filesResponse$: Observable<IFilesResponse>;
   filesQueryParams$: Observable<IFilesQueryParams>;
-  filesSearchTerm$: Observable<string>;
+  conversationsResponse$: Observable<IConversationsResponse>;
 
   constructor(private readonly store: Store<IDashboardState>) {
   }
@@ -33,16 +34,23 @@ export class DashboardFilesComponent implements OnInit {
 
     this.setInitialState();
     this.getFiles();
+    this.getConversations();
 
     this.filesFilter$ = this.store.pipe(select(getDashboardState), pluck('filesFilter'), distinctUntilChanged<EFilesFilter>());
     this.filesResponse$ = this.store.pipe(select(getDashboardState), pluck('filesResponse'), distinctUntilChanged<IFilesResponse>());
     this.filesQueryParams$ = this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>());
-    this.filesSearchTerm$ = this.store.pipe(select(getDashboardState), pluck('filesSearchTerm'), distinctUntilChanged<string>());
+    this.conversationsResponse$ = this.store.pipe(select(getDashboardState), pluck('conversationsResponse'), distinctUntilChanged<IConversationsResponse>());
   }
 
   getFiles(): void {
     this.store.dispatch({
       type: dashboardActions.DASHBOARD_GET_FILES
+    });
+  }
+
+  getConversations(): void {
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_GET_CONVERSATIONS
     });
   }
 
@@ -64,8 +72,8 @@ export class DashboardFilesComponent implements OnInit {
   onSearchTermChange(searchTerm: string): void {
 
     this.store.dispatch({
-      type: dashboardActions.DASHBOARD_SET_FILES_SEARCH,
-      payload: searchTerm
+      type: dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS,
+      payload: { searchTerm }
     });
   }
 
@@ -74,6 +82,22 @@ export class DashboardFilesComponent implements OnInit {
     this.store.dispatch({
       type: dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS,
       payload: { page }
+    });
+  }
+
+  onFilesQueryParamsChange(queryParams: IFilesQueryParams): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS,
+      payload: queryParams
+    });
+  }
+
+  onFilesQueryParamsOverride(queryParams: IFilesQueryParams): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_OVERRIDE_FILES_QUERY_PARAMS,
+      payload: queryParams
     });
   }
 }

@@ -7,6 +7,7 @@ import { FilesService } from '../../../../services/files.service';
 import { select, Store } from '@ngrx/store';
 import { getDashboardState, IDashboardState } from '../index';
 import { IFilesQueryParams } from '../../../../models/file-filter';
+import { ConversationsService } from '../../../../services/conversations.service';
 
 const getFilesTriggers = [
   dashboardActions.DASHBOARD_SET_FILES_FILTER,
@@ -20,7 +21,7 @@ export class DashboardEffects {
   triggerGetFiles$ = this.actions$
     .pipe(
       ofType(...getFilesTriggers),
-      switchMap((action: dashboardActions.DashboardSetFilesFilter) => {
+      switchMap((action: any) => {
         return of(new dashboardActions.DashboardGetFiles());
       })
     );
@@ -40,9 +41,24 @@ export class DashboardEffects {
       })
     );
 
+  @Effect()
+  getConversations$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_GET_CONVERSATIONS),
+      switchMap((action: dashboardActions.DashboardGetFiles) => {
+
+        return this.conversationsService.getConversations()
+          .pipe(
+            catchError((error) => of(new dashboardActions.DashboardGetConversationsFail(error))),
+            map((response) => new dashboardActions.DashboardGetConversationsSuccess(response))
+          );
+      })
+    );
+
   constructor(
     private readonly actions$: Actions,
     private readonly filesService: FilesService,
+    private readonly conversationsService: ConversationsService,
     private readonly store: Store<IDashboardState>
   ) {
   }
