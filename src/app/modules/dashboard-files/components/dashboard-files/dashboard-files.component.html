@@ -19,6 +19,7 @@
     <div class="d-md-flex justify-content-between mb-4">
       <app-dashboard-files-filters
         [filesQueryParams]="filesQueryParams$ | async"
+        [dates]="filesQueryParams$ | async"
         (filesQueryParamsOverride)="onFilesQueryParamsOverride($event)"
         (filesQueryParamsChange)="onFilesQueryParamsChange($event)"
       >

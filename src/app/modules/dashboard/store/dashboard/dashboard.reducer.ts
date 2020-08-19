@@ -14,7 +14,9 @@ const initialState: IDashboard = {
     count: EFilesCount.count10,
     searchTerm: '',
     size: EFilesSortBySize.largest,
-    types: [EFileTypeValue.all]
+    types: [EFileTypeValue.all],
+    ts_from: null,
+    ts_to: null
   },
 };
 

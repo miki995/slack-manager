@@ -78,6 +78,8 @@ export interface IFilesQueryParams {
   count?: EFilesCount;
   page?: number;
   types?: EFileTypeValue[];
+  ts_from?: number;
+  ts_to?: number;
   /*Custom UI params*/
   searchTerm?: string;
   date?: EFilesSortByDate;

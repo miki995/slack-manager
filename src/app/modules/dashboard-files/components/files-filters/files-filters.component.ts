@@ -18,6 +18,16 @@ export class FilesFiltersComponent implements AfterViewInit {
   @Input() filesQueryParams: IFilesQueryParams;
   @Input() channels: any[];
 
+  @Input() set dates(data: IFilesQueryParams) {
+    if (!data.ts_from && !data.ts_to) {
+      return;
+    }
+
+    const start = moment(new Date(data.ts_from * 1000));
+    const end = moment(new Date(data.ts_to * 1000));
+    jQuery('input[name ="daterangepicker-file-filter"]').val(start.format('MM/DD/YYYY') + '-' + end.format('MM/DD/YYYY'));
+  }
+
   @Output() filesQueryParamsChange = new EventEmitter<IFilesQueryParams>();
   @Output() filesQueryParamsOverride = new EventEmitter<IFilesQueryParams>();
 
@@ -30,10 +40,11 @@ export class FilesFiltersComponent implements AfterViewInit {
       opens: 'left',
       autoUpdateInput: false,
     }, (start, end, label) => {
-      const startUnix = moment(start).unix();
-      const endUnix = moment(end).unix();
-
-      jQuery('input[name ="daterangepicker-file-filter"]').val(start.format('MM/DD/YYYY') + '-' + end.format('MM/DD/YYYY'));
+      // tslint:disable-next-line:variable-name
+      const ts_from = moment(start).unix();
+      // tslint:disable-next-line:variable-name
+      const ts_to = moment(end).unix();
+      this.filesQueryParamsChange.emit({ ts_from, ts_to });
     });
   }
 
