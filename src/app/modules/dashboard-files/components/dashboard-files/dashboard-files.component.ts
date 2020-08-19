@@ -33,8 +33,8 @@ export class DashboardFilesComponent implements OnInit {
   ngOnInit(): void {
 
     this.setInitialState();
-    this.getFiles();
     this.getConversations();
+    this.getFiles();
 
     this.filesFilter$ = this.store.pipe(select(getDashboardState), pluck('filesFilter'), distinctUntilChanged<EFilesFilter>());
     this.filesResponse$ = this.store.pipe(select(getDashboardState), pluck('filesResponse'), distinctUntilChanged<IFilesResponse>());

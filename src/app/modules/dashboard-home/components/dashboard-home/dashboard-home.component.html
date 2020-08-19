@@ -10,12 +10,13 @@
         <div class="d-md-flex align-items-center justify-content-between text-center text-md-left p-4 p-md-0">
           <div class="mr-3">
             <h4 class="mb-3">Get an Upgrade</h4>
-            <p class="text-muted">Get additional 500 GB space for your documents and files. Expand
-              your storage and enjoy your business. Change plan for more space.</p>
-            <a href="#" class="small">Close</a>
+            <p class="text-muted">Get additional space for your documents and files. Expand
+              your storage and enjoy your business. Change plan in slack for more space.</p>
+            <p class="text-muted">Free plan: 5GB total, Standard plan: 10 GB per team member</p>
+            <p class="text-muted">Plus plan: 20 GB per team member, Enterprise Grid	 plan: 1 TB per team member</p>
           </div>
           <div class="flex-shrink-0 ml-3">
-            <button class="btn btn-outline-primary btn-lg2">Upgrade Now</button>
+            <button (click)="openSlackPricing()" class="btn btn-outline-primary btn-lg2">Upgrade Now</button>
           </div>
         </div>
       </div>
@@ -25,8 +26,7 @@
 
 <div class="row">
   <div class="col-md-8">
-    <h4>Daily Usage</h4>
-    <div id="daily-usage"></div>
+    <h4>Stats</h4>
   </div>
   <div class="col-md-4">
     <div class="card">
