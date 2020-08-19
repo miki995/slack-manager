@@ -23,7 +23,12 @@
   <li class="list-inline-item mb-0">
     <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">Type</a>
     <div class="dropdown-menu">
-      <a *ngFor="let fileType of fileTypes" class="dropdown-item">{{ fileType?.title }}</a>
+      <a
+        *ngFor="let fileType of fileTypes"
+        (click)="onFileTypeChange(fileType?.value, filesQueryParams?.types)"
+        [ngClass]="{ 'active': filesQueryParams?.types?.includes(fileType?.value) }"
+        class="dropdown-item"
+      >{{ fileType?.title }}</a>
     </div>
   </li>
   <li class="list-inline-item mb-0">

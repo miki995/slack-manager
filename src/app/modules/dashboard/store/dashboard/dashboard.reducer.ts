@@ -1,6 +1,6 @@
 import * as dashboardActions from './dashboard.actions';
 import { EFilesCount, EFilesFilter, EFilesSortBySize, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
-import { sortFiles } from '../../../../helpers/file.helper';
+import { EFileTypeValue, sortFiles } from '../../../../helpers/file.helper';
 
 export interface IDashboard {
   filesFilter: EFilesFilter;
@@ -13,7 +13,8 @@ const initialState: IDashboard = {
   filesQueryParams: {
     count: EFilesCount.count10,
     searchTerm: '',
-    size: EFilesSortBySize.largest
+    size: EFilesSortBySize.largest,
+    types: [EFileTypeValue.all]
   },
 };
 

@@ -19,7 +19,8 @@
     <div class="d-md-flex justify-content-between mb-4">
       <app-dashboard-files-filters
         [filesQueryParams]="filesQueryParams$ | async"
-        (filesQueryParamsChange)="onFilesQueryParamsOverride($event)"
+        (filesQueryParamsOverride)="onFilesQueryParamsOverride($event)"
+        (filesQueryParamsChange)="onFilesQueryParamsChange($event)"
       >
       </app-dashboard-files-filters>
       <div id="file-actions" class="d-none">
