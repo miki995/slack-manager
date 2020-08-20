@@ -8,6 +8,7 @@ import { select, Store } from '@ngrx/store';
 import { getDashboardState, IDashboardState } from '../index';
 import { IFilesQueryParams } from '../../../../models/file-filter';
 import { ConversationsService } from '../../../../services/conversations.service';
+import { UsersService } from '../../../../services/users.service';
 
 const getFilesTriggers = [
   dashboardActions.DASHBOARD_SET_FILES_FILTER,
@@ -46,7 +47,7 @@ export class DashboardEffects {
     .pipe(
       ofType(dashboardActions.DASHBOARD_GET_ALL_FILES),
       withLatestFrom(this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>())),
-      switchMap(([action, filesQueryParams]: [dashboardActions.DashboardGetFiles, IFilesQueryParams]) => {
+      switchMap(([action, filesQueryParams]: [dashboardActions.DashboardGetAllFiles, IFilesQueryParams]) => {
 
         return this.filesService.getFiles({ ...filesQueryParams, count: 999, ts_from: null, types: null, channel: null, ts_to: null, size: null, page: null })
           .pipe(
@@ -60,7 +61,7 @@ export class DashboardEffects {
   getConversations$ = this.actions$
     .pipe(
       ofType(dashboardActions.DASHBOARD_GET_CONVERSATIONS),
-      switchMap((action: dashboardActions.DashboardGetFiles) => {
+      switchMap((action: dashboardActions.DashboardGetConversations) => {
 
         return this.conversationsService.getConversations()
           .pipe(
@@ -70,10 +71,25 @@ export class DashboardEffects {
       })
     );
 
+  @Effect()
+  getUsers$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_GET_USERS),
+      switchMap((action: dashboardActions.DashboardGetUsers) => {
+
+        return this.usersService.getUsers()
+          .pipe(
+            catchError((error) => of(new dashboardActions.DashboardGetUsersFail(error))),
+            map((response) => new dashboardActions.DashboardGetUsersSuccess(response))
+          );
+      })
+    );
+
   constructor(
     private readonly actions$: Actions,
     private readonly filesService: FilesService,
     private readonly conversationsService: ConversationsService,
+    private readonly usersService: UsersService,
     private readonly store: Store<IDashboardState>
   ) {
   }

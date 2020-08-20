@@ -9,8 +9,6 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
 import { DashboardRoutingModule } from './dashboard.routing';
-import { FilesService } from '../../services/files.service';
-import { ConversationsService } from '../../services/conversations.service';
 
 @NgModule({
   declarations: [
@@ -28,8 +26,6 @@ import { ConversationsService } from '../../services/conversations.service';
     RouterModule,
   ],
   providers: [
-    FilesService,
-    ConversationsService
   ]
 })
 export class DashboardModule {

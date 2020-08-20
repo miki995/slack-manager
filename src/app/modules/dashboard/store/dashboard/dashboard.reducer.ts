@@ -9,6 +9,7 @@ import {
 } from '../../../../models/file-filter';
 import { detectFileTypePercentage, EFileTypeValue, IFilePercentage, sortFiles } from '../../../../helpers/file.helper';
 import { IConversationsResponse } from '../../../../models/conversation';
+import { IUsersResponse } from '../../../../models/user';
 
 export interface IDashboard {
   filesFilter: EFilesFilter;
@@ -18,6 +19,7 @@ export interface IDashboard {
   conversationsResponse?: IConversationsResponse;
   filePercentages?: IFilePercentage[];
   recentFiles?: IFile[];
+  usersResponse?: IUsersResponse;
 }
 
 const initialState: IDashboard = {
@@ -100,6 +102,17 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       return {
         ...state,
         conversationsResponse: action.payload
+      };
+
+    case dashboardActions.DASHBOARD_GET_USERS_SUCCESS:
+
+      return {
+        ...state,
+        usersResponse: {
+          ...action.payload,
+          members: action.payload.members.filter(item => !item.is_bot),
+          bots: action.payload.members.filter(item => item.is_bot)
+        }
       };
 
     default:

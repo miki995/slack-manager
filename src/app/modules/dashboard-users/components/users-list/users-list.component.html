@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header d-flex justify-content-between">
+      <h2>{{title}}</h2>
+    </div>
+
+    <div class="card border-0">
+      <div class="table-responsive">
+        <table id="user-list" class="table table-borderless table-hover">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Skype</th>
+            <th>Role</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <td>
+              <a class="cursor-pointer">
+                <figure class="avatar avatar-sm mr-2">
+                  <img [src]="user?.profile?.image_192"
+                       class="rounded-circle" alt="avatar">
+                </figure>
+                {{ user?.profile?.real_name }}
+              </a>
+            </td>
+            <td>
+              <a *ngIf="user?.profile?.phone" href="tel:{{ user?.profile?.phone }}">{{ user?.profile?.phone }}</a>
+              {{!user?.profile?.phone ?  '-' : ''}}
+            </td>
+            <td>
+              <a *ngIf="user?.profile?.skype" href="skype:{{user?.profile?.skype}}">{{user?.profile?.skype}}</a>
+              {{!user?.profile?.skype ?  '-' : ''}}
+            </td>
+            <td>{{user?.profile?.title ? user?.profile?.title : '-'}}</td>
+            <td>
+              <span *ngIf="!user?.is_admin && !user?.is_owner" class="badge bg-danger-bright text-danger">Member</span>
+              <span *ngIf="user?.is_admin" class="badge bg-warning-bright text-warning">Admin</span>
+              <br/>
+              <span *ngIf="user?.is_owner" class="badge bg-success-bright text-success">Owner</span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ import { config } from '../config/config';
 @Injectable()
 export class ConversationsService {
 
-  private filesUrl = config.apiEndpoint + '/api/conversations/list?';  // URL to productCategories web api
+  private conversationsUrl = config.apiEndpoint + '/api/conversations/list?';  // URL to productCategories web api
 
   constructor(private httpService: HttpService) {
   }
@@ -20,6 +20,6 @@ export class ConversationsService {
     params = params.append('types', 'public_channel,private_channel');
     params = params.append('limit', '20');
 
-    return this.httpService.get(`${ (this.filesUrl) }${ params.toString() }`);
+    return this.httpService.get(`${ (this.conversationsUrl) }${ params.toString() }`);
   }
 }

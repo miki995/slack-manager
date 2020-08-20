@@ -1,32 +1,32 @@
 <!-- begin::navigation -->
 <div class="navigation">
   <div class="logo">
-    <a routerLink="/dashboard/home">
+    <a routerLink="/dashboard/home" class="cursor-pointer">
       <img width="64" height="64" src="assets/images/slackCleaner.png" alt="logo">
     </a>
   </div>
   <ul>
     <li>
-      <a [routerLink]="['/dashboard/home']" routerLinkActive="active" class="cursor-mouse">
+      <a [routerLink]="['/dashboard/home']" routerLinkActive="active" class="cursor-pointer">
         <i class="nav-link-icon ti-pie-chart"></i>
         <span class="nav-link-label">Dashboard</span>
         <span class="badge badge-danger badge-small">2</span>
       </a>
     </li>
     <li>
-      <a [routerLink]="['/dashboard/files']" routerLinkActive="active">
+      <a [routerLink]="['/dashboard/files']" routerLinkActive="active" class="cursor-pointer">
         <i class="nav-link-icon ti-file"></i>
         <span class="nav-link-label">Files</span>
       </a>
     </li>
     <li class="flex-grow-1">
-      <a>
+      <a [routerLink]="['/dashboard/users']" routerLinkActive="active" class="cursor-pointer">
         <i class="nav-link-icon ti-user"></i>
         <span class="nav-link-label">Users</span>
       </a>
     </li>
     <li>
-      <a>
+      <a class="cursor-pointer">
         <i class="nav-link-icon ti-settings"></i>
         <span class="nav-link-label">Settings</span>
       </a>
