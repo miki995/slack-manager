@@ -1,24 +1,8 @@
-<app-upgrade></app-upgrade>
+<app-dashboard-home-upgrade></app-dashboard-home-upgrade>
 
-<div class="row">
-  <div class="col-md-8">
-    <h4>Stats</h4>
-    <app-dashboard-home-chart [filePercentages]="filePercentages$ | async"></app-dashboard-home-chart>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body text-center">
-        <div class="row mb-4">
-          <div class="col-md-8 offset-md-2">
-            <img src="assets/images/report.svg" class="img-fluid" alt="report">
-          </div>
-        </div>
-        <h4 class="my-3">Files statistics</h4>
-        <p class="text-muted">This statistic is based on 1000 files ( max we can get from Slack in one call).</p>
-      </div>
-    </div>
-  </div>
-</div>
+<app-dashboard-home-stats
+  [filePercentages]="filePercentages$ | async">
+</app-dashboard-home-stats>
 
 <div class="content-title d-flex justify-content-between">
   <h4>Quick Access</h4>
@@ -42,6 +26,6 @@
 </div>
 
 <app-dashboard-recent-files
-[recentFiles]="recentFiles$ | async"
-(seeAllFiles)="setFileType('View All')">
+  [recentFiles]="recentFiles$ | async"
+  (seeAllFiles)="setFileType('View All')">
 </app-dashboard-recent-files>

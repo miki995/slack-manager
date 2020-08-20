@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-upgrade',
+  selector: 'app-dashboard-home-upgrade',
   templateUrl: './upgrade.component.html',
   styleUrls: [ './upgrade.component.css' ]
 })
