@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { fileTypes, IFilePercentages } from '../../../../helpers/file.helper';
+import { IFilePercentage } from '../../../../helpers/file.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,16 +9,32 @@ import { fileTypes, IFilePercentages } from '../../../../helpers/file.helper';
 })
 export class HomeChartComponent {
 
-  @Input() set filePercentages(data: IFilePercentages) {
+  chart;
+
+  @Input() set filePercentages(data: IFilePercentage[]) {
+    if (!data) {
+      return;
+    }
+
+    const newData = data.filter((item, index) => index !== 0);
+
     const options = {
       chart: {
         width: 400,
+        height: 200,
         type: 'pie',
       },
-      labels: fileTypes.map(item => item.title),
-      series: [ 20, 20, 20, 20, 20, 20, 20 ],
+      colors: [ '#0062ff', '#fc5a5a', '#3dd598', '#a461d8', '#d4d5d8', '#FFC542' ],
+      labels: [ ...newData.map(item => item.title) ],
+      series: [ ...newData.map(item => item.percentage) ],
+      dataLabels: {
+        enabled: true,
+        enabledOnSeries: true,
+        formatter: (val, opts) => {
+          return `${ val.toFixed(2) } %`;
+        },
+      },
       responsive: [ {
-        breakpoint: 480,
         options: {
           chart: {
             width: 200
@@ -30,11 +46,16 @@ export class HomeChartComponent {
       } ]
     };
 
-    const chart = new ApexCharts(
-      document.querySelector('#apex_chart_stats'),
-      options
-    );
+    if (!this.chart) {
 
-    chart.render();
+      const chart = new ApexCharts(
+        document.querySelector('#apex_chart_stats'),
+        options
+      );
+
+      chart.render().then(() => this.chart = chart);
+    } else {
+      this.chart.updateOptions(options);
+    }
   }
 }

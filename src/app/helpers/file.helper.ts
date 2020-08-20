@@ -35,7 +35,7 @@ export function detectFileType(fileType: string): IFileType {
     };
   } else if (videos.includes(fileType)) {
     return {
-      icon: 'ti-control-play',
+      icon: 'ti-video-camera',
       badgeClass: 'bg-secondary-bright text-secondary',
       imageClass: 'bg-secondary'
     };
@@ -62,20 +62,12 @@ export function detectFileType(fileType: string): IFileType {
 
 export interface IFilePercentage {
   data: IFile[];
-  size: number;
+  size: string;
+  percentage: number;
+  title: string;
 }
 
-export interface IFilePercentages {
-  all: IFilePercentage;
-  excels: IFilePercentage;
-  files: IFilePercentage;
-  images: IFilePercentage;
-  notes: IFilePercentage;
-  presentations: IFilePercentage;
-  videos: IFilePercentage;
-}
-
-export function detectFileTypePercentage(files: IFile[]): IFilePercentages {
+export function detectFileTypePercentage(files: IFile[]): IFilePercentage[] {
 
   const notes = [ 'c', 'csharp', 'css', 'dart', 'haskell', 'fortran', 'go', 'groovy', 'latex', 'kotlin', 'java', 'markdown', 'odt', 'php', 'python', 'sass', 'smalltalk', 'shell', 'swift', 'tsv', 'vb', 'vbscript', 'xml', 'yaml', 'text', 'javascript', 'html', 'mhtml', 'doc', 'docx', 'powershell', 'applescript', 'dockerfile', 'dotx', 'email', 'eps', 'epub', 'erlang' ];
   const filess = [ 'zip', 'tar', 'pdf', 'gzip', 'apk', 'binary', 'bmp' ];
@@ -111,36 +103,50 @@ export function detectFileTypePercentage(files: IFile[]): IFilePercentages {
 
   const allSize = getSize(files);
 
-  return {
-    all: {
+  return [
+    {
+      title: 'All',
       data: files,
-      size: allSize
+      percentage: 100,
+      size: formatBytes(allSize)
     },
-    notes: {
+    {
+      title: 'Notes',
       data: notesData,
-      size: (getSize(notesData) * 100) / allSize
+      percentage: (getSize(notesData) * 100) / allSize,
+      size: formatBytes(getSize(notesData))
     },
-    files: {
+     {
+      title: 'Files',
       data: filesData,
-      size: (getSize(filesData) * 100) / allSize
+      percentage: (getSize(filesData) * 100) / allSize,
+      size: formatBytes(getSize(filesData))
     },
-    excels: {
+    {
+      title: 'Excels',
       data: excelsData,
-      size: (getSize(excelsData) * 100) / allSize
+      percentage: (getSize(excelsData) * 100) / allSize,
+      size: formatBytes(getSize(excelsData))
     },
-    videos: {
+    {
+      title: 'Videos',
       data: videosData,
-      size: (getSize(videosData) * 100) / allSize
+      percentage: (getSize(videosData) * 100) / allSize,
+      size: formatBytes(getSize(videosData))
     },
-    images: {
+    {
+      title: 'Images',
       data: imagesData,
-      size: (getSize(imagesData) * 100) / allSize
+      percentage: (getSize(imagesData) * 100) / allSize,
+      size: formatBytes(getSize(imagesData))
     },
-    presentations: {
+    {
+      title: 'Presentations',
       data: presentationsData,
-      size: (getSize(presentationsData) * 100) / allSize
+      percentage: (getSize(presentationsData) * 100) / allSize,
+      size: formatBytes(getSize(presentationsData))
     },
-  };
+  ];
 }
 
 export function getSize(files: IFile[]): number {
@@ -223,4 +229,17 @@ function sortBy(files: IFile[], column: string, asc: boolean): IFile[] {
   const firstNum = asc ? 1 : -1;
   const secNum = asc ? -1 : 1;
   return files.slice().sort((a, b) => (a[column] < b[column]) ? firstNum : secNum);
+}
+
+export function formatBytes(value: number, fixed?: number): string {
+
+  if (0 === value) {
+    return '0 Bytes';
+  }
+
+  const c = 1024;
+  const d = fixed || 2;
+  const e = [ 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' ];
+  const f = Math.floor(Math.log(value) / Math.log(c));
+  return `${ parseFloat((value / Math.pow(c, f)).toFixed(d)) } ${ e[f] }`;
 }

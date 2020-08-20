@@ -7,24 +7,27 @@ import { FormatBytesPipe } from './pipes/format-bytes.pipe';
 import { TimeAgoPipePipe } from './pipes/time-ago-pipe.pipe';
 import { FileTypePipe } from './pipes/file-type.pipe';
 import { ArraySearchPipe } from './pipes/array-search.pipe';
+import { FolderColorPipe } from './pipes/folder-color.pipe';
 
 @NgModule({
   declarations: [
     FormatBytesPipe,
     TimeAgoPipePipe,
     FileTypePipe,
-    ArraySearchPipe
+    ArraySearchPipe,
+    FolderColorPipe
   ],
   imports: [
     CommonModule,
     HttpClientModule
   ],
-  exports: [
-    FormatBytesPipe,
-    TimeAgoPipePipe,
-    FileTypePipe,
-    ArraySearchPipe
-  ],
+    exports: [
+        FormatBytesPipe,
+        TimeAgoPipePipe,
+        FileTypePipe,
+        ArraySearchPipe,
+        FolderColorPipe
+    ],
   providers: [
     HttpService,
     AuthService

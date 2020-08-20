@@ -32,7 +32,6 @@ export class DashboardFilesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.setInitialState();
     this.getConversations();
     this.getFiles();
 
@@ -51,13 +50,6 @@ export class DashboardFilesComponent implements OnInit {
   getConversations(): void {
     this.store.dispatch({
       type: dashboardActions.DASHBOARD_GET_CONVERSATIONS
-    });
-  }
-
-  setInitialState(): void {
-
-    this.store.dispatch({
-      type: dashboardActions.DASHBOARD_SET_INITIAL_STATE
     });
   }
 

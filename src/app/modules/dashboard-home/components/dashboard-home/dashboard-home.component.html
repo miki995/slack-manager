@@ -25,201 +25,20 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8">
     <h4>Stats</h4>
     <app-dashboard-home-chart [filePercentages]="filePercentages$ | async"></app-dashboard-home-chart>
-    <div class="mb-3" id="apex_chart_stats" style="height: 300px"></div>
   </div>
-</div>
-
-<div class="content-title d-flex justify-content-between">
-  <h4>Favorite Folders</h4>
-  <a href="files.html">View All</a>
-</div>
-
-<div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-between mb-4">
-          <div>
-            <i class="font-size-22 ti-folder"></i>
-          </div>
-          <div>
-            <div class="avatar-group">
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Baxie Roseblade">
-                <img src="assets/images/man_avatar5.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Mella Mixter">
-                <img src="assets/images/women_avatar1.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Jo Hugill">
-                <img src="assets/images/man_avatar1.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Cullie Philcott">
-                <span class="avatar-title bg-primary rounded-circle">+ 5</span>
-              </figure>
-            </div>
+      <div class="card-body text-center">
+        <div class="row mb-4">
+          <div class="col-md-8 offset-md-2">
+            <img src="assets/images/report.svg" class="img-fluid" alt="report">
           </div>
         </div>
-        <div class="d-flex justify-content-between">
-          <h5>Facebook Videos</h5>
-          <div class="dropdown">
-            <a href="#" class="btn btn-floating" data-toggle="dropdown">
-              <i class="ti-more-alt"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View Details</a>
-              <a href="#" class="dropdown-item">Share</a>
-              <a href="#" class="dropdown-item">Download</a>
-              <a href="#" class="dropdown-item">Copy to</a>
-              <a href="#" class="dropdown-item">Move to</a>
-              <a href="#" class="dropdown-item">Rename</a>
-              <a href="#" class="dropdown-item">Delete</a>
-            </div>
-          </div>
-        </div>
-        <p class="small text-muted mb-0">1.754 Files</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-between mb-4">
-          <div>
-            <i class="font-size-22 ti-folder"></i>
-          </div>
-          <div>
-            <div class="avatar-group">
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Baxie Roseblade">
-                <img src="assets/images/man_avatar5.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Mella Mixter">
-                <img src="assets/images/women_avatar1.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Jo Hugill">
-                <img src="assets/images/man_avatar1.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Cullie Philcott">
-                <span class="avatar-title bg-primary rounded-circle">+ 5</span>
-              </figure>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex justify-content-between">
-          <h5>YouTube Videos</h5>
-          <div class="dropdown">
-            <a href="#" class="btn btn-floating" data-toggle="dropdown">
-              <i class="ti-more-alt"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View Details</a>
-              <a href="#" class="dropdown-item">Share</a>
-              <a href="#" class="dropdown-item">Download</a>
-              <a href="#" class="dropdown-item">Copy to</a>
-              <a href="#" class="dropdown-item">Move to</a>
-              <a href="#" class="dropdown-item">Rename</a>
-              <a href="#" class="dropdown-item">Delete</a>
-            </div>
-          </div>
-        </div>
-        <p class="small text-muted mb-0">3.512 Files</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-between mb-4">
-          <div>
-            <i class="font-size-22 ti-folder"></i>
-          </div>
-          <div>
-            <div class="avatar-group">
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Baxie Roseblade">
-                <img src="assets/images/man_avatar5.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Mella Mixter">
-                <img src="assets/images/women_avatar1.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Jo Hugill">
-                <img src="assets/images/man_avatar1.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Cullie Philcott">
-                <span class="avatar-title bg-primary rounded-circle">+ 5</span>
-              </figure>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex justify-content-between">
-          <h5>Instagram Videos</h5>
-          <div class="dropdown">
-            <a href="#" class="btn btn-floating" data-toggle="dropdown">
-              <i class="ti-more-alt"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View Details</a>
-              <a href="#" class="dropdown-item">Share</a>
-              <a href="#" class="dropdown-item">Download</a>
-              <a href="#" class="dropdown-item">Copy to</a>
-              <a href="#" class="dropdown-item">Move to</a>
-              <a href="#" class="dropdown-item">Rename</a>
-              <a href="#" class="dropdown-item">Delete</a>
-            </div>
-          </div>
-        </div>
-        <p class="small text-muted mb-0">1.908 Files</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-between mb-4">
-          <div>
-            <i class="font-size-22 ti-folder"></i>
-          </div>
-          <div>
-            <div class="avatar-group">
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Baxie Roseblade">
-                <img src="assets/images/man_avatar5.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-              <figure class="avatar avatar-sm" data-toggle="tooltip" title="Mella Mixter">
-                <img src="assets/images/women_avatar1.jpg" class="rounded-circle"
-                     alt="image">
-              </figure>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex justify-content-between">
-          <h5>My Downloads</h5>
-          <div class="dropdown">
-            <a href="#" class="btn btn-floating" data-toggle="dropdown">
-              <i class="ti-more-alt"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-item" data-sidebar-target="#view-detail">View Details</a>
-              <a href="#" class="dropdown-item">Share</a>
-              <a href="#" class="dropdown-item">Download</a>
-              <a href="#" class="dropdown-item">Copy to</a>
-              <a href="#" class="dropdown-item">Move to</a>
-              <a href="#" class="dropdown-item">Rename</a>
-              <a href="#" class="dropdown-item">Delete</a>
-            </div>
-          </div>
-        </div>
-        <p class="small text-muted mb-0">218 Files</p>
+        <h4 class="my-3">Files statistics</h4>
+        <p class="text-muted">This statistic is based on 1000 files ( max we can get from Slack in one call).</p>
       </div>
     </div>
   </div>
@@ -227,81 +46,22 @@
 
 <div class="content-title d-flex justify-content-between">
   <h4>Quick Access</h4>
-  <a href="#">View All</a>
+  <a (click)="setFileType('View All')" class="cursor-pointer">View All</a>
 </div>
 
 <div class="row mb-4">
-  <div class="col-md-2 text-center">
-    <div class="card mb-3">
+  <div *ngFor="let filePercentage of (filePercentages$ | async) | slice: 1: (filePercentages$ | async)?.length" class="col-md-2 text-center">
+    <div (click)="setFileType(filePercentage?.title)" class="card mb-3 cursor-pointer">
       <div class="card-body">
-        <a href="#" class="avatar avatar-lg">
-                        <span class="avatar-title bg-primary rounded-pill">
-                            <i class="ti-image"></i>
-                        </span>
+        <a class="avatar avatar-lg">
+          <span class="avatar-title rounded-pill {{ (filePercentage?.title | folderColor)?.iconClass }}">
+              <i class="{{ (filePercentage?.title | folderColor)?.icon }}"></i>
+          </span>
         </a>
       </div>
     </div>
-    <h6>Images</h6>
-  </div>
-  <div class="col-md-2 text-center">
-    <div class="card mb-3">
-      <div class="card-body">
-        <a href="#" class="avatar avatar-lg">
-                        <span class="avatar-title bg-secondary rounded-pill">
-                            <i class="ti-video-camera"></i>
-                        </span>
-        </a>
-      </div>
-    </div>
-    <h6>Videos</h6>
-  </div>
-  <div class="col-md-2 text-center">
-    <div class="card mb-3">
-      <div class="card-body">
-        <a href="#" class="avatar avatar-lg">
-                        <span class="avatar-title bg-success rounded-pill">
-                            <i class="ti-music"></i>
-                        </span>
-        </a>
-      </div>
-    </div>
-    <h6>Music</h6>
-  </div>
-  <div class="col-md-2 text-center">
-    <div class="card mb-3">
-      <div class="card-body">
-        <a href="#" class="avatar avatar-lg">
-                        <span class="avatar-title bg-warning rounded-pill">
-                            <i class="ti-files"></i>
-                        </span>
-        </a>
-      </div>
-    </div>
-    <h6>Documents</h6>
-  </div>
-  <div class="col-md-2 text-center">
-    <div class="card mb-3">
-      <div class="card-body">
-        <a href="#" class="avatar avatar-lg">
-                        <span class="avatar-title bg-info rounded-pill">
-                            <i class="ti-download"></i>
-                        </span>
-        </a>
-      </div>
-    </div>
-    <h6>Downloads</h6>
-  </div>
-  <div class="col-md-2 text-center">
-    <div class="card mb-3">
-      <div class="card-body">
-        <a href="#" class="avatar avatar-lg">
-                        <span class="avatar-title rounded-pill">
-                            <i class="ti-plus"></i>
-                        </span>
-        </a>
-      </div>
-    </div>
-    <h6>Add</h6>
+    <h6>{{filePercentage?.title}}</h6>
+    <span class="small font-italic">{{ filePercentage?.size }}</span>
   </div>
 </div>
 
