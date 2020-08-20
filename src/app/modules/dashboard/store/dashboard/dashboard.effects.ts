@@ -42,6 +42,21 @@ export class DashboardEffects {
     );
 
   @Effect()
+  getAllFiles$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_GET_ALL_FILES),
+      withLatestFrom(this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>())),
+      switchMap(([action, filesQueryParams]: [dashboardActions.DashboardGetFiles, IFilesQueryParams]) => {
+
+        return this.filesService.getFiles({ ...filesQueryParams, count: 999, ts_from: null, types: null, channel: null, ts_to: null, size: null, page: null })
+          .pipe(
+            catchError((error) => of(new dashboardActions.DashboardGetAllFilesFail(error))),
+            map((response) => new dashboardActions.DashboardGetAllFilesSuccess(response))
+          );
+      })
+    );
+
+  @Effect()
   getConversations$ = this.actions$
     .pipe(
       ofType(dashboardActions.DASHBOARD_GET_CONVERSATIONS),

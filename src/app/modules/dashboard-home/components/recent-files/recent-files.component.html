@@ -1,0 +1,63 @@
+<div class="content-title d-flex justify-content-between">
+  <h4>Recent Files</h4>
+  <a class="cursor-pointer" (click)="seeAllFiles.emit()">View All</a>
+</div>
+
+<div class="mb-4">
+  <div class="table-responsive">
+    <table class="table table-borderless table-hover mb-0">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Modified</th>
+        <th>Type</th>
+        <th>User</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let recentFile of recentFiles">
+        <td>
+          <a class="cursor-pointer">
+            <figure class="avatar avatar-sm mr-2">
+            <span class="avatar-title {{ (recentFile?.filetype | fileType)?.imageClass }} text-black-50 rounded-pill">
+                <i class="{{ (recentFile?.filetype | fileType)?.icon }}"></i>
+            </span>
+            </figure>
+            {{ recentFile?.name }}
+          </a>
+        </td>
+        <td>{{recentFile?.size | formatBytes}}</td>
+        <td>{{recentFile?.created | timeAgoPipe}}</td>
+        <td>
+          <div class="badge {{ (recentFile?.filetype | fileType)?.badgeClass }}">{{ recentFile?.filetype }}</div>
+        </td>
+        <td>
+          <div class="avatar-group">
+            <figure class="avatar avatar-sm" title="Lisle Essam"
+                    data-toggle="tooltip">
+              <img src="assets/images/women_avatar2.jpg"
+                   class="rounded-circle"
+                   alt="image">
+            </figure>
+          </div>
+        </td>
+        <td class="text-right">
+          <div class="dropdown">
+            <a class="btn btn-floating cursor-pointer" data-toggle="dropdown">
+              <i class="ti-more-alt"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" data-sidebar-target="#view-detail">View Details</a>
+              <a class="dropdown-item">Share</a>
+              <a class="dropdown-item">Download</a>
+              <a class="dropdown-item">Delete</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

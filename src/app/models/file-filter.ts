@@ -75,7 +75,7 @@ export enum EFilesSortBySize {
 
 export interface IFilesQueryParams {
   /*api params for slack*/
-  count?: EFilesCount;
+  count?: EFilesCount | number;
   page?: number;
   types?: EFileTypeValue[];
   ts_from?: number;
