@@ -8,14 +8,6 @@
 @import "./assets/global/theme/vendors/prism/prism";
 @import "./assets/global/theme/assets/css/app.min";
 
-.dropdown-menu .dropdown-item:hover {
-  background-color: #0062ff !important;
-  text-decoration: none !important;
-  color: white !important;
-}
-
-.dropdown-menu .dropdown-item.active {
-  background-color: #0062ff !important;
-  text-decoration: none !important;
-  color: white !important;
+.dropdown-item {
+  cursor: pointer !important;
 }

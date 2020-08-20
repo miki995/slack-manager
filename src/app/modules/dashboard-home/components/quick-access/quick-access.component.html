@@ -1,0 +1,21 @@
+
+<div class="content-title d-flex justify-content-between">
+  <h4>Quick Access</h4>
+  <a (click)="setFileType.emit('View All')" class="cursor-pointer">View All</a>
+</div>
+
+<div class="row mb-4">
+  <div *ngFor="let filePercentage of filePercentages | slice: 1: filePercentages?.length" class="col-md-2 text-center">
+    <div (click)="setFileType.emit(filePercentage?.title)" class="card mb-3 cursor-pointer">
+      <div class="card-body">
+        <a class="avatar avatar-lg">
+          <span class="avatar-title rounded-pill {{ (filePercentage?.title | folderColor)?.iconClass }}">
+              <i class="{{ (filePercentage?.title | folderColor)?.icon }}"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    <h6>{{filePercentage?.title}}</h6>
+    <span class="small font-italic">{{ filePercentage?.size }}</span>
+  </div>
+</div>

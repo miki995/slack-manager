@@ -1,29 +1,14 @@
-<app-dashboard-home-upgrade></app-dashboard-home-upgrade>
+<app-dashboard-home-upgrade>
+</app-dashboard-home-upgrade>
 
 <app-dashboard-home-stats
   [filePercentages]="filePercentages$ | async">
 </app-dashboard-home-stats>
 
-<div class="content-title d-flex justify-content-between">
-  <h4>Quick Access</h4>
-  <a (click)="setFileType('View All')" class="cursor-pointer">View All</a>
-</div>
-
-<div class="row mb-4">
-  <div *ngFor="let filePercentage of (filePercentages$ | async) | slice: 1: (filePercentages$ | async)?.length" class="col-md-2 text-center">
-    <div (click)="setFileType(filePercentage?.title)" class="card mb-3 cursor-pointer">
-      <div class="card-body">
-        <a class="avatar avatar-lg">
-          <span class="avatar-title rounded-pill {{ (filePercentage?.title | folderColor)?.iconClass }}">
-              <i class="{{ (filePercentage?.title | folderColor)?.icon }}"></i>
-          </span>
-        </a>
-      </div>
-    </div>
-    <h6>{{filePercentage?.title}}</h6>
-    <span class="small font-italic">{{ filePercentage?.size }}</span>
-  </div>
-</div>
+<app-dashboard-home-quick-access
+  [filePercentages]="filePercentages$ | async"
+  (setFileType)="setFileType($event)">
+</app-dashboard-home-quick-access>
 
 <app-dashboard-recent-files
   [recentFiles]="recentFiles$ | async"
