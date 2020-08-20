@@ -6,6 +6,7 @@ import * as dashboardActions from '../../../dashboard/store/dashboard/dashboard.
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { IFile } from '../../../../models/file-filter';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -15,18 +16,12 @@ import { Router } from '@angular/router';
 export class DashboardHomeComponent implements OnInit {
 
   filePercentages$: Observable<IFilePercentage[]>;
+  recentFiles$: Observable<IFile[]>;
 
   constructor(
     private readonly store: Store<IDashboardState>,
     private readonly router: Router
   ) {
-  }
-
-  openSlackPricing(): void {
-    window.open(
-      'https://slack.com/pricing',
-      '_blank' // <- This is what makes it open in a new window.
-    );
   }
 
   ngOnInit(): void {
@@ -35,6 +30,7 @@ export class DashboardHomeComponent implements OnInit {
     });
 
     this.filePercentages$ = this.store.pipe(select(getDashboardState), pluck('filePercentages'), distinctUntilChanged<IFilePercentage[]>());
+    this.recentFiles$ = this.store.pipe(select(getDashboardState), pluck('recentFiles'), distinctUntilChanged<IFile[]>());
   }
 
   setFileType(fileType: string): void {

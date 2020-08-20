@@ -1,5 +1,12 @@
 import * as dashboardActions from './dashboard.actions';
-import { EFilesCount, EFilesFilter, EFilesSortBySize, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import {
+  EFilesCount,
+  EFilesFilter,
+  EFilesSortByDate,
+  EFilesSortBySize, IFile,
+  IFilesQueryParams,
+  IFilesResponse
+} from '../../../../models/file-filter';
 import { detectFileTypePercentage, EFileTypeValue, IFilePercentage, sortFiles } from '../../../../helpers/file.helper';
 import { IConversationsResponse } from '../../../../models/conversation';
 
@@ -10,6 +17,7 @@ export interface IDashboard {
   filesQueryParams?: IFilesQueryParams;
   conversationsResponse?: IConversationsResponse;
   filePercentages?: IFilePercentage[];
+  recentFiles?: IFile[];
 }
 
 const initialState: IDashboard = {
@@ -60,7 +68,8 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       return {
         ...state,
         allFilesResponse: action.payload,
-        filePercentages
+        filePercentages,
+        recentFiles: sortFiles(action.payload.files, { date: EFilesSortByDate.newest }).splice(0, 5)
       };
 
     case dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS:
