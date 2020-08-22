@@ -1,0 +1,142 @@
+<div class="header d-print-none">
+  <div class="header-container">
+    <div class="header-body">
+      <div class="header-body-left">
+        <ul class="navbar-nav">
+          <li class="nav-item navigation-toggler">
+            <a class="nav-link">
+              <i class="ti-menu"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="header-body-right">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link mobile-header-search-btn" title="Search">
+              <i class="ti-search"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link nav-link-notify" title="Notifications" data-toggle="dropdown">
+              <i class="ti-bell"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-big">
+              <div class="bg-primary px-3 py-3">
+                <h6 class="mb-0">Notifications</h6>
+              </div>
+              <div class="dropdown-scroll">
+                <ul class="list-group list-group-flush">
+                  <li>
+                    <a href="#"
+                       class="list-group-item d-flex hide-show-toggler">
+                      <div>
+                        <figure class="avatar mr-3">
+                                                        <span
+                                                          class="avatar-title bg-secondary-bright text-secondary rounded-circle">
+                                                            <i class="ti-server"></i>
+                                                        </span>
+                        </figure>
+                      </div>
+                      <div class="flex-grow-1">
+                        <p class="mb-0">
+                          Your storage space is running low!
+                          <i title="Mark as unread" data-toggle="tooltip"
+                             class="hide-show-toggler-item fa fa-check font-size-11 position-absolute right-0 top-0 mr-3 mt-3"></i>
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="text-divider text-center small pb-2 px-3">
+                    <span>Old notifications</span>
+                  </li>
+                  <li>
+                    <a href="#"
+                       class="list-group-item d-flex hide-show-toggler">
+                      <div>
+                        <figure class="avatar mr-3">
+                            <span
+                              class="avatar-title bg-info-bright text-info rounded-circle">
+                                <i class="fa fa-cloud-upload"></i>
+                            </span>
+                        </figure>
+                      </div>
+                      <div class="flex-grow-1">
+                        <p class="mb-0">
+                          Upgrade plan
+                          <i title="Mark as unread" data-toggle="tooltip"
+                             class="hide-show-toggler-item fa fa-check font-size-11 position-absolute right-0 top-0 mr-3 mt-3"></i>
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" title="Settings" data-sidebar-target="#settings">
+              <i class="ti-settings"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link profile-nav-link dropdown-toggle" title="User menu"
+               data-toggle="dropdown">
+              <span class="mr-2 d-sm-inline d-none">{{ profile?.real_name }}</span>
+              <figure class="avatar avatar-sm">
+                <img [src]="profile?.image_72"
+                     class="rounded-circle"
+                     alt="avatar">
+              </figure>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-big">
+              <div class="text-center py-4"
+                   data-background-image="assets/images/image1.jpg">
+                <figure class="avatar avatar-lg mb-3 border-0">
+                  <img [src]="profile?.image_192"
+                       class="rounded-circle" alt="image">
+                </figure>
+                <h5 class="mb-0">{{profile?.real_name}}</h5>
+              </div>
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item" data-sidebar-target="#settings">Settings</a>
+                <a (click)="signOut.emit()" class="list-group-item text-danger cursor-pointer"
+                   data-sidebar-target="#settings">Sign Out!</a>
+              </div>
+              <div class="pb-0 p-4">
+                <div class="mb-4">
+                  <h6 class="d-flex justify-content-between">
+                    Using memory
+                    <span class="float-right">{{ usedStoragePercentage }}%</span>
+                  </h6>
+                  <div class="progress" style="height:5px;">
+                    <div class="progress-bar bg-primary" role="progressbar"
+                         style="width: {{usedStoragePercentage}}%;" aria-valuenow="{{usedStoragePercentage}}" aria-valuemin="0"
+                         aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item header-toggler">
+        <a href="#" class="nav-link">
+          <i class="ti-arrow-down"></i>
+        </a>
+      </li>
+      <li class="nav-item sidebar-toggler">
+        <a href="#" class="nav-link">
+          <i class="ti-cloud"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

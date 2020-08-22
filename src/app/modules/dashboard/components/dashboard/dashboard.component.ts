@@ -7,6 +7,7 @@ import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { IFilePercentage } from '../../../../helpers/file.helper';
 import { Observable } from 'rxjs';
 import { SLACK_CLEANER_TOKEN } from '../../../../helpers/token.helper';
+import { IUserProfile } from '../../../../models/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
   usedStorage$: Observable<number>;
   maxStorage$: Observable<number>;
   usedStoragePercentage$: Observable<number>;
+  profile$: Observable<IUserProfile>;
 
   constructor(
     private readonly router: Router,
@@ -33,6 +35,7 @@ export class DashboardComponent implements OnInit {
     this.usedStorage$ = this.store.pipe(select(getDashboardState), pluck('usedStorage'), distinctUntilChanged<number>());
     this.maxStorage$ = this.store.pipe(select(getDashboardState), pluck('maxStorage'), distinctUntilChanged<number>());
     this.usedStoragePercentage$ = this.store.pipe(select(getDashboardState), pluck('usedStoragePercentage'), distinctUntilChanged<number>());
+    this.profile$ = this.store.pipe(select(getDashboardState), pluck('profile'), distinctUntilChanged<IUserProfile>());
 
     if (this.router.url !== '/dashboard') {
       return;
