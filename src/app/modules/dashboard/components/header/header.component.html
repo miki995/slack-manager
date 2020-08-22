@@ -115,7 +115,7 @@
                   </h6>
                   <div class="progress" style="height:5px;">
                     <div class="progress-bar bg-primary" role="progressbar"
-                         style="width: {{usedStoragePercentage}}%;" aria-valuenow="{{usedStoragePercentage}}" aria-valuemin="0"
+                         style="width: {{usedStoragePercentage}}%;" [attr.aria-valuenow]="usedStoragePercentage" aria-valuemin="0"
                          aria-valuemax="100"></div>
                   </div>
                 </div>
