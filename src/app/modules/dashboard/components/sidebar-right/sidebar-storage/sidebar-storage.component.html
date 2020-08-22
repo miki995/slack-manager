@@ -1,0 +1,45 @@
+<div class="sidebar primary-sidebar show" id="storage">
+  <div class="sidebar-header">
+    <h4>Storage Overview</h4>
+  </div>
+  <div class="sidebar-content">
+    <p class="center">Percentage used</p>
+    <mwl-gauge
+      *ngIf="value"
+      class="two"
+      [max]="100"
+      [dialStartAngle]="180"
+      [dialEndAngle]="0"
+      [value]="value"
+      [animated]="true"
+      [animationDuration]="2">
+    </mwl-gauge>
+    <div>
+      <div *ngIf="filePercentages?.length" class="list-group list-group-flush mb-3">
+        <a *ngFor="let filePercentage of filePercentages | slice: 1 : filePercentages.length" class="list-group-item px-0 d-flex align-items-center">
+          <div class="mr-3">
+            <figure class="avatar">
+              <span class="avatar-title bg-primary-bright text-primary rounded">
+                <i class="{{ (filePercentage?.title | folderColor)?.icon }}"></i>
+              </span>
+            </figure>
+          </div>
+          <div class="flex-grow-1">
+            <p class="mb-0">{{filePercentage?.title}}</p>
+          </div>
+          <div>
+            <h5 class="text-primary">{{filePercentage?.size}}</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="card border shadow-none">
+      <div class="card-body text-center">
+        <img class="img-fluid mb-3" src="assets/images/upgrade.svg" alt="upgrade">
+        <h5>Get an Upgrade</h5>
+        <p class="text-muted">Get space for your documents and files.</p>
+        <button (click)="openSlackPricing()" class="btn btn-primary">Upgrade</button>
+      </div>
+    </div>
+  </div>
+</div>

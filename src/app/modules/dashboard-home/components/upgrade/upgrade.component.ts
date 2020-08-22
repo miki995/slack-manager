@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { openSlackPricing } from '../../../../helpers/slack.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,9 +10,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class UpgradeComponent {
 
   openSlackPricing(): void {
-    window.open(
-      'https://slack.com/pricing',
-      '_blank' // <- This is what makes it open in a new window.
-    );
+   openSlackPricing();
   }
 }

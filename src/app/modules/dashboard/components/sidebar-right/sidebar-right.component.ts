@@ -1,16 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { IFilePercentage } from '../../../../helpers/file.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-sidebar-right',
   templateUrl: './sidebar-right.component.html',
-  styleUrls: ['./sidebar-right.component.css']
+  styleUrls: [ './sidebar-right.component.css' ]
 })
-export class SidebarRightComponent implements OnInit {
+export class SidebarRightComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() usedStoragePercentage: number;
+  @Input() filePercentages: IFilePercentage[];
 }

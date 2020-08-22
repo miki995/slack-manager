@@ -17,7 +17,7 @@ export class HomeGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     const token = localStorage.getItem(SLACK_CLEANER_TOKEN);
-    const tokenPresent = !!token && token !== 'undefined';
+    const tokenPresent = !!token && token !== 'undefined' && token !== 'null';
 
     if (tokenPresent) {
       this.router.navigateByUrl('/dashboard/home');

@@ -1,0 +1,22 @@
+mwl-gauge.two {
+}
+mwl-gauge.two > .gauge > .dial {
+  stroke: #ebebeb;
+  stroke-width: 10;
+}
+mwl-gauge.two > .gauge > .value {
+  stroke: #4c62df;
+  stroke-dasharray: none;
+  stroke-width: 13;
+}
+mwl-gauge.two > .gauge > .value-text {
+  fill: #4c62df;
+}
+
+.center {
+  text-align: center;
+}
+
+.sidebar-content {
+  scrollbar-width: thin;
+}

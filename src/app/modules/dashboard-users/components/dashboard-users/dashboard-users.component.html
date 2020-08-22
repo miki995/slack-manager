@@ -1,0 +1,8 @@
+<app-dashboard-users-list
+  [title]="'Users'"
+  [users]="(usersResponse$ | async)?.members">
+</app-dashboard-users-list>
+<app-dashboard-users-list
+  [title]="'Bots'"
+  [users]="(usersResponse$ | async)?.bots">
+</app-dashboard-users-list>

@@ -13,6 +13,10 @@ const routes: Route[] = [
       {
         path: 'files',
         loadChildren: () => import('../dashboard-files/dashboard-files.module').then(m => m.DashboardFilesModule)
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('../dashboard-users/dashboard-users.module').then(m => m.DashboardUsersModule)
       }
     ]
   },

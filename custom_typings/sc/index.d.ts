@@ -13,6 +13,7 @@ interface JQuery {
   popover(options?: {}): any;
   bootstrapSwitch(options?: {}, arg1?: any, arg2?: any): any;
   collapse(options: any): any;
+  niceScroll(options?: any): any;
 }
 
 interface JQueryStatic {

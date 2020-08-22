@@ -9,14 +9,16 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
 import { DashboardRoutingModule } from './dashboard.routing';
-import { FilesService } from '../../services/files.service';
-import { ConversationsService } from '../../services/conversations.service';
+import { SidebarStorageComponent } from './components/sidebar-right/sidebar-storage/sidebar-storage.component';
+import { GaugeModule } from 'angular-gauge';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     SidebarComponent,
-    SidebarRightComponent
+    SidebarRightComponent,
+    SidebarStorageComponent,
   ],
   imports: [
     CommonModule,
@@ -26,10 +28,10 @@ import { ConversationsService } from '../../services/conversations.service';
       DashboardEffects,
     ]),
     RouterModule,
+    GaugeModule.forRoot(),
+    SharedModule
   ],
   providers: [
-    FilesService,
-    ConversationsService
   ]
 })
 export class DashboardModule {
