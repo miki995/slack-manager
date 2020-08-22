@@ -28,6 +28,15 @@ export class DashboardEffects {
     );
 
   @Effect()
+  triggerGetProfile$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_SET_INITIAL_STATE),
+      switchMap((action: any) => {
+        return of(new dashboardActions.DashboardGetProfile());
+      })
+    );
+
+  @Effect()
   getFiles$ = this.actions$
     .pipe(
       ofType(dashboardActions.DASHBOARD_GET_FILES),
@@ -81,6 +90,20 @@ export class DashboardEffects {
           .pipe(
             catchError((error) => of(new dashboardActions.DashboardGetUsersFail(error))),
             map((response) => new dashboardActions.DashboardGetUsersSuccess(response))
+          );
+      })
+    );
+
+  @Effect()
+  getProfile$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_GET_PROFILE),
+      switchMap((action: dashboardActions.DashboardGetProfile) => {
+
+        return this.usersService.getProfile()
+          .pipe(
+            catchError((error) => of(new dashboardActions.DashboardGetProfileFail(error))),
+            map((response) => new dashboardActions.DashboardGetProfileSuccess(response))
           );
       })
     );

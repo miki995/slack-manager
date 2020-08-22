@@ -9,6 +9,7 @@ import { config } from '../config/config';
 export class UsersService {
 
   private usersUrl = config.apiEndpoint + '/api/users/list?';  // URL to productCategories web api
+  private profileUrl = config.apiEndpoint + '/api/users/profile?';  // URL to productCategories web api
 
   constructor(private httpService: HttpService) {
   }
@@ -20,5 +21,10 @@ export class UsersService {
     params = params.append('limit', '999');
 
     return this.httpService.get(`${ (this.usersUrl) }${ params.toString() }`);
+  }
+
+  getProfile(): Observable<any> {
+
+    return this.httpService.get(`${ (this.profileUrl) }`);
   }
 }

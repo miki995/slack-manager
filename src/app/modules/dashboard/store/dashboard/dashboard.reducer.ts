@@ -9,7 +9,7 @@ import {
 } from '../../../../models/file-filter';
 import { detectFileTypePercentage, EFileTypeValue, getSize, IFilePercentage, sortFiles } from '../../../../helpers/file.helper';
 import { IConversationsResponse } from '../../../../models/conversation';
-import { IUsersResponse } from '../../../../models/user';
+import { IUser, IUserProfile, IUsersResponse } from '../../../../models/user';
 
 export interface IDashboard {
   filesFilter: EFilesFilter;
@@ -23,6 +23,7 @@ export interface IDashboard {
   maxStorage: number;
   usedStorage?: number;
   usedStoragePercentage?: number;
+  profile?: IUserProfile;
 }
 
 const initialState: IDashboard = {
@@ -120,6 +121,13 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
           members: action.payload.members.filter(item => !item.is_bot),
           bots: action.payload.members.filter(item => item.is_bot)
         }
+      };
+
+    case dashboardActions.DASHBOARD_GET_PROFILE_SUCCESS:
+
+      return {
+        ...state,
+        profile: action.payload.profile
       };
 
     default:
