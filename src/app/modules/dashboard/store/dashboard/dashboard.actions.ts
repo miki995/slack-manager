@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { EFilesFilter, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
 import { IConversationsResponse } from '../../../../models/conversation';
-import { IUsersResponse } from '../../../../models/user';
+import { IUser, IUsersResponse } from '../../../../models/user';
 
 export const DASHBOARD_SET_FILES_FILTER = '[Dashboard]: set files filter';
 
@@ -138,6 +138,31 @@ export class DashboardGetUsersFail implements Action {
   }
 }
 
+export const DASHBOARD_GET_PROFILE = '[Dashboard]: get profile';
+export const DASHBOARD_GET_PROFILE_SUCCESS = '[Dashboard]: get profile success';
+export const DASHBOARD_GET_PROFILE_FAIL = '[Dashboard]: get profile fail';
+
+export class DashboardGetProfile implements Action {
+  readonly type = DASHBOARD_GET_PROFILE;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class DashboardGetProfileSuccess implements Action {
+  readonly type = DASHBOARD_GET_PROFILE_SUCCESS;
+
+  constructor(public payload: IUser) {
+  }
+}
+
+export class DashboardGetProfileFail implements Action {
+  readonly type = DASHBOARD_GET_PROFILE_FAIL;
+
+  constructor(public payload: any) {
+  }
+}
+
 export type Actions =
   DashboardSetInitialState
   | DashboardSetFilesFilter
@@ -154,6 +179,9 @@ export type Actions =
   | DashboardGetConversationsFail
   | DashboardGetUsers
   | DashboardGetUsersSuccess
-  | DashboardGetUsersFail;
+  | DashboardGetUsersFail
+  | DashboardGetProfile
+  | DashboardGetProfileSuccess
+  | DashboardGetProfileFail;
 
 

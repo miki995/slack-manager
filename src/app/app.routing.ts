@@ -19,4 +19,7 @@ const routes: Route[] = [
   }
 ];
 
-export const AppRoutingModule = RouterModule.forRoot(routes, { useHash: false });
+export const AppRoutingModule = RouterModule.forRoot(routes, {
+  useHash: false,
+  scrollPositionRestoration: 'enabled'
+});

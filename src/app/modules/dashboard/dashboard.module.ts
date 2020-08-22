@@ -12,6 +12,7 @@ import { DashboardRoutingModule } from './dashboard.routing';
 import { SidebarStorageComponent } from './components/sidebar-right/sidebar-storage/sidebar-storage.component';
 import { GaugeModule } from 'angular-gauge';
 import { SharedModule } from '../shared/shared.module';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     SidebarComponent,
     SidebarRightComponent,
     SidebarStorageComponent,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
