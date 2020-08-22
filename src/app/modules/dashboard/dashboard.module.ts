@@ -10,6 +10,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { SidebarStorageComponent } from './components/sidebar-right/sidebar-storage/sidebar-storage.component';
+import { GaugeModule } from 'angular-gauge';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { SidebarStorageComponent } from './components/sidebar-right/sidebar-stor
       DashboardEffects,
     ]),
     RouterModule,
+    GaugeModule.forRoot(),
+    SharedModule
   ],
   providers: [
   ]

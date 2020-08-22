@@ -3,70 +3,32 @@
     <h4>Storage Overview</h4>
   </div>
   <div class="sidebar-content">
+    <p class="center">Percentage used</p>
+    <mwl-gauge
+      *ngIf="value"
+      class="two"
+      [max]="100"
+      [dialStartAngle]="180"
+      [dialEndAngle]="0"
+      [value]="value"
+      [animated]="true"
+      [animationDuration]="2">
+    </mwl-gauge>
     <div>
-      <div class="list-group list-group-flush mb-3">
-        <a href="#" class="list-group-item px-0 d-flex align-items-center">
+      <div *ngIf="filePercentages?.length" class="list-group list-group-flush mb-3">
+        <a *ngFor="let filePercentage of filePercentages | slice: 1 : filePercentages.length" class="list-group-item px-0 d-flex align-items-center">
           <div class="mr-3">
             <figure class="avatar">
-                                        <span class="avatar-title bg-primary-bright text-primary rounded">
-                                            <i class="ti-image"></i>
-                                        </span>
+              <span class="avatar-title bg-primary-bright text-primary rounded">
+                <i class="{{ (filePercentage?.title | folderColor)?.icon }}"></i>
+              </span>
             </figure>
           </div>
           <div class="flex-grow-1">
-            <p class="mb-0">Images</p>
-            <span class="small text-muted">259 Files</span>
+            <p class="mb-0">{{filePercentage?.title}}</p>
           </div>
           <div>
-            <h5 class="text-primary">15.7 GB</h5>
-          </div>
-        </a>
-        <a href="#" class="list-group-item px-0 d-flex align-items-center">
-          <div class="mr-3">
-            <figure class="avatar">
-                                        <span class="avatar-title bg-primary-bright text-primary rounded">
-                                            <i class="ti-control-play"></i>
-                                        </span>
-            </figure>
-          </div>
-          <div class="flex-grow-1">
-            <p class="mb-0">Videos</p>
-            <span class="small text-muted">8 Files</span>
-          </div>
-          <div>
-            <h5 class="text-primary">20 GB</h5>
-          </div>
-        </a>
-        <a href="#" class="list-group-item px-0 d-flex align-items-center">
-          <div class="mr-3">
-            <figure class="avatar">
-                                        <span class="avatar-title bg-primary-bright text-primary rounded">
-                                            <i class="ti-files"></i>
-                                        </span>
-            </figure>
-          </div>
-          <div class="flex-grow-1">
-            <p class="mb-0">Documents</p>
-            <span class="small text-muted">46 Files</span>
-          </div>
-          <div>
-            <h5 class="text-primary">10.5 GB</h5>
-          </div>
-        </a>
-        <a href="#" class="list-group-item px-0 d-flex align-items-center">
-          <div class="mr-3">
-            <figure class="avatar">
-                                        <span class="avatar-title bg-primary-bright text-primary rounded">
-                                            <i class="ti-file"></i>
-                                        </span>
-            </figure>
-          </div>
-          <div class="flex-grow-1">
-            <p class="mb-0">Other Files</p>
-            <span class="small text-muted">50 Files</span>
-          </div>
-          <div>
-            <h5 class="text-primary">2.8 GB</h5>
+            <h5 class="text-primary">{{filePercentage?.size}}</h5>
           </div>
         </a>
       </div>
@@ -75,15 +37,9 @@
       <div class="card-body text-center">
         <img class="img-fluid mb-3" src="assets/images/upgrade.svg" alt="upgrade">
         <h5>Get an Upgrade</h5>
-        <p class="text-muted">Get additional 500 GB space for your documents and files. Unlock now
-          for more space.</p>
-        <button class="btn btn-primary">Upgrade</button>
+        <p class="text-muted">Get space for your documents and files.</p>
+        <button (click)="openSlackPricing()" class="btn btn-primary">Upgrade</button>
       </div>
     </div>
-  </div>
-  <div class="sidebar-footer">
-    <button class="btn btn-lg btn-block btn-outline-primary">
-      <i class="fa fa-cloud-upload mr-3"></i> Upload
-    </button>
   </div>
 </div>

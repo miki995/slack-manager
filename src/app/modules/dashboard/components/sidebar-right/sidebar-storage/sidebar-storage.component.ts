@@ -1,21 +1,21 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { IFilePercentage } from '../../../../../helpers/file.helper';
+import { openSlackPricing } from '../../../../../helpers/slack.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-sidebar-storage',
   templateUrl: './sidebar-storage.component.html',
-  styleUrls: [ './sidebar-storage.component.css' ]
+  styleUrls: [ './sidebar-storage.component.css' ],
+  encapsulation: ViewEncapsulation.None
 })
 export class SidebarStorageComponent {
 
   @Input() filePercentages: IFilePercentage[];
+  @Input() value: number;
 
-  @Input() set storagePercentageData(data: { value: number, max: number }) {
-
-    if (!data.value || !data.max) {
-      return;
-    }
+  openSlackPricing(): void {
+    openSlackPricing();
   }
 }
 

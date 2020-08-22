@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   filePercentages$: Observable<IFilePercentage[]>;
   usedStorage$: Observable<number>;
   maxStorage$: Observable<number>;
+  usedStoragePercentage$: Observable<number>;
 
   constructor(
     private readonly router: Router,
@@ -30,6 +31,7 @@ export class DashboardComponent implements OnInit {
     this.filePercentages$ = this.store.pipe(select(getDashboardState), pluck('filePercentages'), distinctUntilChanged<IFilePercentage[]>());
     this.usedStorage$ = this.store.pipe(select(getDashboardState), pluck('usedStorage'), distinctUntilChanged<number>());
     this.maxStorage$ = this.store.pipe(select(getDashboardState), pluck('maxStorage'), distinctUntilChanged<number>());
+    this.usedStoragePercentage$ = this.store.pipe(select(getDashboardState), pluck('usedStoragePercentage'), distinctUntilChanged<number>());
 
     if (this.router.url !== '/dashboard') {
       return;

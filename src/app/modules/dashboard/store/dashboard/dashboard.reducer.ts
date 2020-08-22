@@ -22,6 +22,7 @@ export interface IDashboard {
   usersResponse?: IUsersResponse;
   maxStorage: number;
   usedStorage?: number;
+  usedStoragePercentage?: number;
 }
 
 const initialState: IDashboard = {
@@ -76,7 +77,8 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         allFilesResponse: action.payload,
         filePercentages,
         recentFiles: sortFiles(action.payload.files, { date: EFilesSortByDate.newest }).splice(0, 5),
-        usedStorage
+        usedStorage,
+        usedStoragePercentage: Math.ceil(Number(((usedStorage * 100) / state.maxStorage).toFixed(2)))
       };
 
     case dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS:
