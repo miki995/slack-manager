@@ -9,12 +9,14 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
 import { DashboardRoutingModule } from './dashboard.routing';
+import { SidebarStorageComponent } from './components/sidebar-right/sidebar-storage/sidebar-storage.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     SidebarComponent,
-    SidebarRightComponent
+    SidebarRightComponent,
+    SidebarStorageComponent,
   ],
   imports: [
     CommonModule,

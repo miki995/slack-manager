@@ -203,7 +203,12 @@
     <!-- ./ Content body -->
 
     <!-- Sidebar group -->
-    <app-sidebar-right></app-sidebar-right>
+    <app-sidebar-right
+    [filePercentages]="filePercentages$ | async"
+    [usedStorage]="usedStorage$ | async"
+    [maxStorage]="maxStorage$ | async"
+    >
+    </app-sidebar-right>
     <!-- ./ Sidebar group -->
   </div>
   <!-- ./ Content wrapper -->

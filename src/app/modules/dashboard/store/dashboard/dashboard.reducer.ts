@@ -7,7 +7,7 @@ import {
   IFilesQueryParams,
   IFilesResponse
 } from '../../../../models/file-filter';
-import { detectFileTypePercentage, EFileTypeValue, IFilePercentage, sortFiles } from '../../../../helpers/file.helper';
+import { detectFileTypePercentage, EFileTypeValue, getSize, IFilePercentage, sortFiles } from '../../../../helpers/file.helper';
 import { IConversationsResponse } from '../../../../models/conversation';
 import { IUsersResponse } from '../../../../models/user';
 
@@ -20,6 +20,8 @@ export interface IDashboard {
   filePercentages?: IFilePercentage[];
   recentFiles?: IFile[];
   usersResponse?: IUsersResponse;
+  maxStorage: number;
+  usedStorage?: number;
 }
 
 const initialState: IDashboard = {
@@ -32,6 +34,7 @@ const initialState: IDashboard = {
     ts_from: null,
     ts_to: null
   },
+  maxStorage: 5 * 1024 * 1024 * 1024
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -66,12 +69,14 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
     case dashboardActions.DASHBOARD_GET_ALL_FILES_SUCCESS:
 
       const filePercentages: IFilePercentage[] = detectFileTypePercentage(action.payload.files);
+      const usedStorage = getSize(action.payload.files);
 
       return {
         ...state,
         allFilesResponse: action.payload,
         filePercentages,
-        recentFiles: sortFiles(action.payload.files, { date: EFilesSortByDate.newest }).splice(0, 5)
+        recentFiles: sortFiles(action.payload.files, { date: EFilesSortByDate.newest }).splice(0, 5),
+        usedStorage
       };
 
     case dashboardActions.DASHBOARD_SET_FILES_QUERY_PARAMS:
