@@ -6,6 +6,7 @@ import { getDashboardState, IDashboardState } from '../../store';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { IFilePercentage } from '../../../../helpers/file.helper';
 import { Observable } from 'rxjs';
+import { SLACK_CLEANER_TOKEN } from '../../../../helpers/token.helper';
 
 @Component({
   selector: 'app-dashboard',
@@ -44,5 +45,10 @@ export class DashboardComponent implements OnInit {
     this.store.dispatch({
       type: dashboardActions.DASHBOARD_SET_INITIAL_STATE
     });
+  }
+
+  signOut(): void {
+    localStorage.setItem(SLACK_CLEANER_TOKEN, undefined);
+    this.router.navigateByUrl('/');
   }
 }
