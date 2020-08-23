@@ -85,7 +85,10 @@ export class DashboardEffects {
         return this.filesService.getFile(action.payload)
           .pipe(
             catchError((error) => of(new dashboardActions.DashboardGetFileInfoFail(error))),
-            map((response) => new dashboardActions.DashboardGetFileInfoSuccess(response))
+            map((response) => {
+              jQuery('.dropdown-menu.show').removeClass('show');
+              return new dashboardActions.DashboardGetFileInfoSuccess(response);
+            })
           );
       })
     );

@@ -8,6 +8,7 @@ import { IFilePercentage } from '../../../../helpers/file.helper';
 import { Observable } from 'rxjs';
 import { SLACK_CLEANER_TOKEN } from '../../../../helpers/token.helper';
 import { IUserProfile } from '../../../../models/user';
+import { IFile } from '../../../../models/file-filter';
 
 @Component({
   selector: 'sc-dashboard',
@@ -23,6 +24,8 @@ export class DashboardComponent implements OnInit {
   usedStoragePercentage$: Observable<number>;
   profile$: Observable<IUserProfile>;
   profileLoading$: Observable<boolean>;
+  fileDetail$: Observable<IFile>;
+  fileDetailLoading$: Observable<boolean>;
 
   constructor(
     private readonly router: Router,
@@ -40,6 +43,8 @@ export class DashboardComponent implements OnInit {
     this.profile$ = this.store.pipe(select(getDashboardState), pluck('profile'), distinctUntilChanged<IUserProfile>());
     this.profileLoading$ = this.store.pipe(select(getDashboardState), pluck('profileLoading'), distinctUntilChanged<boolean>());
     this.filesLoading$ = this.store.pipe(select(getDashboardState), pluck('filesLoading'), distinctUntilChanged<boolean>());
+    this.fileDetail$ = this.store.pipe(select(getDashboardState), pluck('fileDetail'), distinctUntilChanged<IFile>());
+    this.fileDetailLoading$ = this.store.pipe(select(getDashboardState), pluck('fileDetailLoading'), distinctUntilChanged<boolean>());
 
     if (this.router.url !== '/dashboard') {
       return;

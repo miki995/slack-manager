@@ -14,6 +14,8 @@ import { GaugeModule } from 'angular-gauge';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { SidebarFileInfoComponent } from './components/sidebar-right/sidebar-file-info/sidebar-file-info.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -22,19 +24,21 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     SidebarRightComponent,
     SidebarStorageComponent,
     HeaderComponent,
+    SidebarFileInfoComponent,
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    StoreModule.forFeature('dashboard', reducers, { metaReducers }),
-    EffectsModule.forFeature([
-      DashboardEffects,
-    ]),
-    RouterModule,
-    GaugeModule.forRoot(),
-    SharedModule,
-    ContentLoaderModule
-  ],
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        StoreModule.forFeature('dashboard', reducers, { metaReducers }),
+        EffectsModule.forFeature([
+            DashboardEffects,
+        ]),
+        RouterModule,
+        GaugeModule.forRoot(),
+        SharedModule,
+        ContentLoaderModule,
+        ClipboardModule
+    ],
   providers: [
   ]
 })
