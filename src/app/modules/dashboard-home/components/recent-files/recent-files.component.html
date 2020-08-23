@@ -35,8 +35,7 @@
         </td>
         <td>
           <div class="avatar-group">
-            <figure class="avatar avatar-sm" title="{{(recentFile?.user | getUserProfile : users)?.real_name}}"
-                    data-toggle="tooltip">
+            <figure scTooltip class="avatar avatar-sm" title="{{(recentFile?.user | getUserProfile : users)?.real_name}}" data-toggle="tooltip">
               <img src="{{ (recentFile?.user | getUserProfile : users)?.image_32 }}"
                    class="rounded-circle"
                    alt="image">
@@ -52,7 +51,7 @@
               <a class="dropdown-item" data-sidebar-target="#view-detail" (click)="fileDetailChange.emit(recentFile?.id)">View Details</a>
               <a class="dropdown-item" ngxClipboard [cbContent]="recentFile?.url_private">Share</a>
               <a class="dropdown-item" [href]="recentFile?.url_private_download">Download</a>
-              <a class="dropdown-item">Delete</a>
+              <a class="dropdown-item" (click)="fileDelete.emit(file?.id)">Delete</a>
             </div>
           </div>
         </td>

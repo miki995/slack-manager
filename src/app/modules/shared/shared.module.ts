@@ -13,6 +13,8 @@ import { ConversationsService } from '../../services/conversations.service';
 import { UsersService } from '../../services/users.service';
 import { GetUserProfilePipe } from './pipes/get-user.pipe';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { TooltipDirective } from './directives/tooltip.directive';
+import { SanitizePipe } from './pipes/sanitize.pipe';
 
 @NgModule({
   declarations: [
@@ -21,21 +23,24 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     FileTypePipe,
     ArraySearchPipe,
     FolderColorPipe,
-    GetUserProfilePipe
+    GetUserProfilePipe,
+    TooltipDirective,
+    SanitizePipe
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     ContentLoaderModule
   ],
-  exports: [
-    FormatBytesPipe,
-    TimeAgoPipePipe,
-    FileTypePipe,
-    ArraySearchPipe,
-    FolderColorPipe,
-    GetUserProfilePipe
-  ],
+    exports: [
+        FormatBytesPipe,
+        TimeAgoPipePipe,
+        FileTypePipe,
+        ArraySearchPipe,
+        FolderColorPipe,
+        GetUserProfilePipe,
+        TooltipDirective
+    ],
   providers: [
     HttpService,
     AuthService,

@@ -51,6 +51,14 @@ export class DashboardHomeComponent implements OnInit {
     });
   }
 
+  deleteFile(file: string): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_DELETE_FILE,
+      payload: file
+    });
+  }
+
   getFile(fileType: string): string {
 
     switch (fileType) {

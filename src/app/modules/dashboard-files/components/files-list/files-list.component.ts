@@ -19,6 +19,7 @@ export class FilesListComponent {
 
   @Output() filesQueryParamsChange = new EventEmitter<IFilesQueryParams>();
   @Output() fileDetailChange = new EventEmitter<string>();
+  @Output() fileDelete = new EventEmitter<string>();
 
   onDateChange(isNewest: boolean): void {
 
@@ -29,5 +30,9 @@ export class FilesListComponent {
     };
 
     this.filesQueryParamsChange.emit(queryParams);
+  }
+
+  trackByIndex(index: number): number {
+    return index;
   }
 }

@@ -15,5 +15,6 @@
   [users]="(usersResponse$ | async)?.members"
   (seeAllFiles)="setFileType('View All')"
   (fileDetailChange)="getFileDetail($event)"
+  (fileDelete)="deleteFile($event)"
 >
 </sc-dashboard-recent-files>

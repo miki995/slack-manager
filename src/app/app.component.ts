@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { parseQuery } from './helpers/query.helper';
 import * as layoutActions from './store/layout/layout.actions';
@@ -10,7 +10,7 @@ import { IAppState } from './store';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.scss' ]
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
 
   constructor(
     private readonly store: Store<IAppState>,
@@ -34,12 +34,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.store.dispatch({
       type: layoutActions.LAYOUT_EXCHANGE_CODE_FOR_TOKEN,
       payload: code
-    });
-  }
-
-  ngAfterViewInit(): void {
-    jQuery('[data-toggle="tooltip"]').tooltip({
-      container: 'body'
     });
   }
 }

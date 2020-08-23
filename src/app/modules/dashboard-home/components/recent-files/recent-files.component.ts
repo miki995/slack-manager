@@ -15,4 +15,5 @@ export class RecentFilesComponent {
 
   @Output() seeAllFiles = new EventEmitter<any>();
   @Output() fileDetailChange = new EventEmitter<string>();
+  @Output() fileDelete = new EventEmitter<string>();
 }

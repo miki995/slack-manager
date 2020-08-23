@@ -17,7 +17,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let user of users">
+          <tr *ngFor="let user of users; trackBy: trackByIndex">
             <td>
               <a class="cursor-pointer">
                 <figure class="avatar avatar-sm mr-2">
