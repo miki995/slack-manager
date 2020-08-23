@@ -6,7 +6,7 @@ import { IChannel } from '../../../../models/conversation';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-files-filters',
+  selector: 'sc-dashboard-files-filters',
   templateUrl: './files-filters.component.html',
   styleUrls: [ './files-filters.component.css' ]
 })

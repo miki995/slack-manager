@@ -3,7 +3,7 @@ import { openSlackPricing } from '../../../../helpers/slack.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-home-upgrade',
+  selector: 'sc-dashboard-home-upgrade',
   templateUrl: './upgrade.component.html',
   styleUrls: [ './upgrade.component.css' ]
 })

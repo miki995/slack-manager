@@ -3,7 +3,7 @@ import { IFilePercentage } from '../../../../helpers/file.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-sidebar-right',
+  selector: 'sc-sidebar-right',
   templateUrl: './sidebar-right.component.html',
   styleUrls: [ './sidebar-right.component.css' ]
 })

@@ -10,7 +10,7 @@ import { IFile } from '../../../../models/file-filter';
 import { IUsersResponse } from '../../../../models/user';
 
 @Component({
-  selector: 'app-dashboard-home',
+  selector: 'sc-dashboard-home',
   templateUrl: './dashboard-home.component.html',
   styleUrls: [ './dashboard-home.component.css' ]
 })

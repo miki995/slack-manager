@@ -2,7 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-empty',
+  selector: 'sc-empty',
   template: '',
 })
 export class EmptyComponent implements AfterViewInit {

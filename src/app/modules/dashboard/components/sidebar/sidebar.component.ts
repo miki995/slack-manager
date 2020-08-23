@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-sidebar',
+  selector: 'sc-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: [ './sidebar.component.css' ]
 })

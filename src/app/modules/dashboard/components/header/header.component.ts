@@ -3,7 +3,7 @@ import { IUserProfile } from '../../../../models/user';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-header',
+  selector: 'sc-header',
   templateUrl: './header.component.html',
   styleUrls: [ './header.component.css' ]
 })

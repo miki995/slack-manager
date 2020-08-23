@@ -3,7 +3,7 @@ import { EFilesFilter } from '../../../../models/file-filter';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-folders',
+  selector: 'sc-dashboard-folders',
   templateUrl: './folders.component.html',
   styleUrls: [ './folders.component.css' ]
 })

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-files-search',
+  selector: 'sc-dashboard-files-search',
   templateUrl: './files-search.component.html',
   styleUrls: [ './files-search.component.css' ]
 })

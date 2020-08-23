@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-files-pagination',
+  selector: 'sc-dashboard-files-pagination',
   templateUrl: './files-pagination.component.html',
   styleUrls: [ './files-pagination.component.css' ]
 })

@@ -7,19 +7,19 @@
 <!-- Layout wrapper -->
 <div class="layout-wrapper">
   <!-- Header -->
-    <app-header
+    <sc-header
     [profile]="profile$ | async"
     [usedStoragePercentage]="usedStoragePercentage$ | async"
     [profileLoading]="profileLoading$ | async"
     (signOut)="signOut()"
     >
-    </app-header>
+    </sc-header>
   <!-- ./ Header -->
 
   <!-- Content wrapper -->
   <div class="content-wrapper">
     <!-- begin::navigation -->
-    <app-sidebar></app-sidebar>
+    <sc-sidebar></sc-sidebar>
     <!-- end::navigation -->
 
     <!-- Content body -->
@@ -44,12 +44,12 @@
     <!-- ./ Content body -->
 
     <!-- Sidebar group -->
-    <app-sidebar-right
+    <sc-sidebar-right
       [filePercentages]="filePercentages$ | async"
       [filesLoading]="filesLoading$ | async"
       [usedStoragePercentage]="usedStoragePercentage$ | async"
     >
-    </app-sidebar-right>
+    </sc-sidebar-right>
     <!-- ./ Sidebar group -->
   </div>
   <!-- ./ Content wrapper -->

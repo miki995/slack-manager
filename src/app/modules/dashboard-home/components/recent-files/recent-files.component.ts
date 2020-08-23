@@ -4,7 +4,7 @@ import { IUser } from '../../../../models/user';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-recent-files',
+  selector: 'sc-dashboard-recent-files',
   templateUrl: './recent-files.component.html',
   styleUrls: [ './recent-files.component.css' ]
 })
