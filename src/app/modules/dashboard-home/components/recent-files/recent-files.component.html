@@ -35,9 +35,9 @@
         </td>
         <td>
           <div class="avatar-group">
-            <figure class="avatar avatar-sm" title="Lisle Essam"
+            <figure class="avatar avatar-sm" title="{{(recentFile?.user | getUserProfile : users)?.real_name}}"
                     data-toggle="tooltip">
-              <img src="assets/images/women_avatar2.jpg"
+              <img src="{{ (recentFile?.user | getUserProfile : users)?.image_32 }}"
                    class="rounded-circle"
                    alt="image">
             </figure>

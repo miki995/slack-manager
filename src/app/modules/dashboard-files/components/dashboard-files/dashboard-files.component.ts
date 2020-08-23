@@ -6,6 +6,7 @@ import * as dashboardActions from '../../../dashboard/store/dashboard/dashboard.
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { IConversationsResponse } from '../../../../models/conversation';
+import { IUsersResponse } from '../../../../models/user';
 
 @Component({
   selector: 'app-dashboard-files',
@@ -18,6 +19,7 @@ export class DashboardFilesComponent implements OnInit {
   filesResponse$: Observable<IFilesResponse>;
   filesQueryParams$: Observable<IFilesQueryParams>;
   conversationsResponse$: Observable<IConversationsResponse>;
+  usersResponse$: Observable<IUsersResponse>;
 
   constructor(private readonly store: Store<IDashboardState>) {
   }
@@ -39,6 +41,7 @@ export class DashboardFilesComponent implements OnInit {
     this.filesResponse$ = this.store.pipe(select(getDashboardState), pluck('filesResponse'), distinctUntilChanged<IFilesResponse>());
     this.filesQueryParams$ = this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>());
     this.conversationsResponse$ = this.store.pipe(select(getDashboardState), pluck('conversationsResponse'), distinctUntilChanged<IConversationsResponse>());
+    this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
   }
 
   getFiles(): void {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { catchError, distinctUntilChanged, map, pluck, switchMap, withLatestFrom } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, map, pluck, switchMap, withLatestFrom, flatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as dashboardActions from './dashboard.actions';
 import { FilesService } from '../../../../services/files.service';
@@ -31,8 +31,12 @@ export class DashboardEffects {
   triggerGetProfile$ = this.actions$
     .pipe(
       ofType(dashboardActions.DASHBOARD_SET_INITIAL_STATE),
-      switchMap((action: any) => {
-        return of(new dashboardActions.DashboardGetProfile());
+      flatMap((action: any) => {
+        return [
+          new dashboardActions.DashboardGetProfile(),
+          new dashboardActions.DashboardGetUsers(),
+          new dashboardActions.DashboardGetAllFiles()
+        ];
       })
     );
 

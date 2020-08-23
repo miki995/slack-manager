@@ -24,10 +24,27 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/font-awesome/scss/font-awesome.scss"
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "src/assets/global/theme/vendors/bundle.css",
+              "src/assets/global/theme/vendors/quill/quill.snow.css",
+              "src/assets/global/theme/vendors/jstree/themes/default/style.min.css",
+              "src/assets/global/theme/vendors/clockpicker/bootstrap-clockpicker.min.css",
+              "src/assets/global/theme/vendors/datepicker/daterangepicker.css",
+              "src/assets/global/theme/vendors/dataTable/datatables.min.css",
+              "src/assets/global/theme/vendors/select2/css/select2.min.css",
+              "src/assets/global/theme/vendors/prism/prism.css",
+              "src/assets/global/theme/assets/css/app.min.css",
+              "src/styles.scss"
             ],
             "scripts": [
+              "src/assets/global/theme/vendors/bundle.js",
+              "src/assets/global/theme/vendors/charts/apex/apexcharts.min.js",
+              "src/assets/global/theme/vendors/dataTable/datatables.min.js",
+              "src/assets/global/theme/vendors/jstree/jstree.min.js",
+              "src/assets/global/theme/vendors/prism/prism.js",
+              "src/assets/global/theme/vendors/datepicker/daterangepicker.js",
+              "src/assets/global/theme/vendors/charts/apex/apexcharts.min.js",
+              "src/assets/global/theme/assets/js/app.min.js"
             ]
           },
           "configurations": {
@@ -91,10 +108,27 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/font-awesome/scss/font-awesome.scss"
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "src/assets/global/theme/vendors/bundle.css",
+              "src/assets/global/theme/vendors/quill/quill.snow.css",
+              "src/assets/global/theme/vendors/jstree/themes/default/style.min.css",
+              "src/assets/global/theme/vendors/clockpicker/bootstrap-clockpicker.min.css",
+              "src/assets/global/theme/vendors/datepicker/daterangepicker.css",
+              "src/assets/global/theme/vendors/dataTable/datatables.min.css",
+              "src/assets/global/theme/vendors/select2/css/select2.min.css",
+              "src/assets/global/theme/vendors/prism/prism.css",
+              "src/assets/global/theme/assets/css/app.min.css",
+              "src/styles.scss"
             ],
             "scripts": [
+              "src/assets/global/theme/vendors/bundle.js",
+              "src/assets/global/theme/vendors/charts/apex/apexcharts.min.js",
+              "src/assets/global/theme/vendors/dataTable/datatables.min.js",
+              "src/assets/global/theme/vendors/jstree/jstree.min.js",
+              "src/assets/global/theme/vendors/prism/prism.js",
+              "src/assets/global/theme/vendors/datepicker/daterangepicker.js",
+              "src/assets/global/theme/vendors/charts/apex/apexcharts.min.js",
+              "src/assets/global/theme/assets/js/app.min.js"
             ]
           }
         },

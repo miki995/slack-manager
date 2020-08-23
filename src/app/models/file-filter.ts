@@ -60,7 +60,8 @@ export enum EFilesCount {
   count10 = '10',
   count25 = '25',
   count50 = '50',
-  count100 = '100'
+  count100 = '100',
+  count999 = '999'
 }
 
 export enum EFilesSortByDate {

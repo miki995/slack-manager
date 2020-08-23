@@ -118,8 +118,8 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         ...state,
         usersResponse: {
           ...action.payload,
-          members: action.payload.members.filter(item => !item.is_bot),
-          bots: action.payload.members.filter(item => item.is_bot)
+          members: !!action.payload?.members ? action.payload.members.filter(item => !item.is_bot): [],
+          bots: !!action.payload?.members ? action.payload.members.filter(item => item.is_bot) : []
         }
       };
 

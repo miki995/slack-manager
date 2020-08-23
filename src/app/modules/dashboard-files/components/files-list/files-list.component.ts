@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { EFilesSortByDate, IFile, IFilesQueryParams } from '../../../../models/file-filter';
+import { IUser } from '../../../../models/user';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,6 +14,7 @@ export class FilesListComponent {
 
   @Input() files: IFile[];
   @Input() filesQueryParams: IFilesQueryParams;
+  @Input() users: IUser[];
 
   @Output() filesQueryParamsChange = new EventEmitter<IFilesQueryParams>();
 

@@ -16,6 +16,7 @@ export class FilesCountComponent {
     EFilesCount.count25,
     EFilesCount.count50,
     EFilesCount.count100,
+    EFilesCount.count999
   ];
 
   @Input() selectedCount: EFilesCount;
