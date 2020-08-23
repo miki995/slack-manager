@@ -163,6 +163,31 @@ export class DashboardGetProfileFail implements Action {
   }
 }
 
+export const DASHBOARD_GET_FILE_INFO = '[Dashboard]: get file info';
+export const DASHBOARD_GET_FILE_INFO_SUCCESS = '[Dashboard]: get file info success';
+export const DASHBOARD_GET_FILE_INFO_FAIL = '[Dashboard]: get file info fail';
+
+export class DashboardGetFileInfo implements Action {
+  readonly type = DASHBOARD_GET_FILE_INFO;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class DashboardGetFileInfoSuccess implements Action {
+  readonly type = DASHBOARD_GET_FILE_INFO_SUCCESS;
+
+  constructor(public payload: IFilesResponse) {
+  }
+}
+
+export class DashboardGetFileInfoFail implements Action {
+  readonly type = DASHBOARD_GET_FILE_INFO_FAIL;
+
+  constructor(public payload: any) {
+  }
+}
+
 export type Actions =
   DashboardSetInitialState
   | DashboardSetFilesFilter
@@ -182,6 +207,9 @@ export type Actions =
   | DashboardGetUsersFail
   | DashboardGetProfile
   | DashboardGetProfileSuccess
-  | DashboardGetProfileFail;
+  | DashboardGetProfileFail
+  | DashboardGetFileInfo
+  | DashboardGetFileInfoSuccess
+  | DashboardGetFileInfoFail;
 
 

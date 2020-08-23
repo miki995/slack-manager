@@ -10,50 +10,10 @@
   <!-- ./ Sidebar - Storage -->
 
   <!-- Sidebar - File info -->
-  <div class="sidebar" id="view-detail">
-    <div class="sidebar-header">
-      <h4>View Detail</h4>
-      <a href="#" class="btn btn-light btn-floating sidebar-close-btn">
-        <i class="ti-angle-right"></i>
-      </a>
-    </div>
-    <div class="sidebar-content">
-      <figure class="avatar mb-4">
-                        <span class="avatar-title bg-info-bright text-info rounded-pill">
-                            <i class="ti-file"></i>
-                        </span>
-      </figure>
-      <div class="row mb-3">
-        <div class="col-md-5">File name:</div>
-        <div class="col-md-7"><a href="#" class="link-1">Meeting-notes.doc</a></div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-5">File type:</div>
-        <div class="col-md-7">Word File</div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-5">File size:</div>
-        <div class="col-md-7">22 KB</div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-5">Created:</div>
-        <div class="col-md-7">Monday, July 02, 2020 9:34am</div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-5">Modified:</div>
-        <div class="col-md-7 text-success">Monday, July 02, 2020 9:34am</div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-5">Accessed:</div>
-        <div class="col-md-7">Monday, July 03, 2020 10:22am</div>
-      </div>
-    </div>
-    <div class="sidebar-footer">
-      <button class="btn btn-lg btn-block btn-primary">
-        <i class="ti-share mr-3"></i> Share
-      </button>
-    </div>
-  </div>
+  <sc-sidebar-file-info
+  [fileDetail]="fileDetail"
+  [fileDetailLoading]="fileDetailLoading">
+  </sc-sidebar-file-info>
   <!-- ./ Sidebar - file info -->
 
   <!-- Sidebar - Settings -->

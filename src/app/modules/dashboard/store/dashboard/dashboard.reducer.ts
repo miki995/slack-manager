@@ -29,6 +29,8 @@ export interface IDashboard {
   usedStoragePercentage?: number;
   profile?: IUserProfile;
   profileLoading: boolean;
+  fileDetail?: IFile;
+  fileDetailLoading?: boolean;
 }
 
 const initialState: IDashboard = {
@@ -197,6 +199,28 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       return {
         ...state,
         profileLoading: false
+      };
+
+    case dashboardActions.DASHBOARD_GET_FILE_INFO:
+
+      return {
+        ...state,
+        fileDetailLoading: true
+      };
+
+    case dashboardActions.DASHBOARD_GET_FILE_INFO_SUCCESS:
+
+      return {
+        ...state,
+        fileDetail: action.payload.file,
+        fileDetailLoading: false
+      };
+
+    case dashboardActions.DASHBOARD_GET_FILE_INFO_FAIL:
+
+      return {
+        ...state,
+        fileDetailLoading: false
       };
 
     default:

@@ -9,6 +9,7 @@ export interface IFilesResponse {
   ok?: string;
   paging?: IPaging;
   files?: IFile[];
+  file?: IFile;
 }
 
 export interface IPaging {
@@ -86,4 +87,5 @@ export interface IFilesQueryParams {
   searchTerm?: string;
   date?: EFilesSortByDate;
   size?: EFilesSortBySize;
+  file?: string;
 }

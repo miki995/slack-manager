@@ -1,0 +1,49 @@
+<div class="sidebar" id="view-detail">
+  <div class="sidebar-header">
+    <h4>View Detail</h4>
+    <a href="#" class="btn btn-light btn-floating sidebar-close-btn">
+      <i class="ti-angle-right"></i>
+    </a>
+  </div>
+  <facebook-content-loader class="mg-20" *ngIf="fileDetailLoading"></facebook-content-loader>
+  <div *ngIf="!fileDetailLoading" class="sidebar-content">
+    <figure class="avatar mb-4">
+            <span class="avatar-title {{ (fileDetail?.filetype | fileType)?.imageClass }} text-black-50 rounded-pill">
+        <i class="{{ (fileDetail?.filetype | fileType)?.icon }}"></i>
+      </span>
+    </figure>
+    <div class="row mb-3 break-word">
+      <div class="col-md-5">File name:</div>
+      <div class="col-md-7"><a [href]="fileDetail?.url_private_download" class="link-1">{{fileDetail?.name}}</a></div>
+    </div>
+    <div class="row mb-3 break-word">
+      <div class="col-md-5">File type:</div>
+      <div class="col-md-7">{{fileDetail?.pretty_type}}</div>
+    </div>
+    <div class="row mb-3 break-word">
+      <div class="col-md-5">File size:</div>
+      <div class="col-md-7">{{fileDetail?.size | formatBytes}}</div>
+    </div>
+    <div class="row mb-3 break-word">
+      <div class="col-md-5">Created:</div>
+      <div class="col-md-7">{{fileDetail?.created | timeAgoPipe}}</div>
+    </div>
+    <div class="row mb-3 break-word">
+      <div class="col-md-5">Public:</div>
+      <div class="col-md-7">{{fileDetail?.is_public ? 'Yes' : 'No'}}</div>
+    </div>
+    <div class="row mb-3 break-word">
+      <div class="col-md-5">Mode:</div>
+      <div class="col-md-7">{{fileDetail?.mode | uppercase}}</div>
+    </div>
+    <div class="row mb-3 break-word">
+      <div class="col-md-5">Comments:</div>
+      <div class="col-md-7">{{fileDetail?.comments_count}}</div>
+    </div>
+  </div>
+  <div *ngIf="!fileDetailLoading" class="sidebar-footer">
+    <button class="btn btn-lg btn-block btn-primary" ngxClipboard [cbContent]="fileDetail?.url_private">
+      <i class="ti-share mr-3"></i> Share
+    </button>
+  </div>
+</div>
