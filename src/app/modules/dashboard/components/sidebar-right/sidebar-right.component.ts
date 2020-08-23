@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IFilePercentage } from '../../../../helpers/file.helper';
 
 @Component({
@@ -11,4 +11,6 @@ export class SidebarRightComponent {
 
   @Input() usedStoragePercentage: number;
   @Input() filePercentages: IFilePercentage[];
+  @Input() filesLoading: boolean;
+
 }

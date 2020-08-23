@@ -13,6 +13,7 @@ import { SidebarStorageComponent } from './components/sidebar-right/sidebar-stor
 import { GaugeModule } from 'angular-gauge';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HeaderComponent } from './components/header/header.component';
     ]),
     RouterModule,
     GaugeModule.forRoot(),
-    SharedModule
+    SharedModule,
+    ContentLoaderModule
   ],
   providers: [
   ]

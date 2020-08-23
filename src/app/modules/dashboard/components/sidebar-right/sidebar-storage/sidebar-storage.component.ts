@@ -12,6 +12,7 @@ import { openSlackPricing } from '../../../../../helpers/slack.helper';
 export class SidebarStorageComponent {
 
   @Input() filePercentages: IFilePercentage[];
+  @Input() filesLoading: number;
   @Input() value: number;
 
   openSlackPricing(): void {

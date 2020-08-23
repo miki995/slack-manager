@@ -12,6 +12,7 @@ import { FilesService } from '../../services/files.service';
 import { ConversationsService } from '../../services/conversations.service';
 import { UsersService } from '../../services/users.service';
 import { GetUserProfilePipe } from './pipes/get-user.pipe';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GetUserProfilePipe } from './pipes/get-user.pipe';
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ContentLoaderModule
   ],
   exports: [
     FormatBytesPipe,
