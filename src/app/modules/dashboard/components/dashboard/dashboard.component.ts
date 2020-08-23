@@ -6,7 +6,7 @@ import { getDashboardState, IDashboardState } from '../../store';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { IFilePercentage } from '../../../../helpers/file.helper';
 import { Observable } from 'rxjs';
-import { SLACK_CLEANER_TOKEN } from '../../../../helpers/token.helper';
+import { SLACK_CLEANER_THEME, SLACK_CLEANER_TOKEN } from '../../../../helpers/token.helper';
 import { IUserProfile } from '../../../../models/user';
 import { IFile } from '../../../../models/file-filter';
 
@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.setTheme(false);
     this.setInitialState();
 
     this.filePercentages$ = this.store.pipe(select(getDashboardState), pluck('filePercentages'), distinctUntilChanged<IFilePercentage[]>());
@@ -51,7 +52,7 @@ export class DashboardComponent implements OnInit {
     }
 
     this.router.navigateByUrl('/dashboard/home');
- }
+  }
 
   setInitialState(): void {
     this.store.dispatch({
@@ -62,5 +63,19 @@ export class DashboardComponent implements OnInit {
   signOut(): void {
     localStorage.setItem(SLACK_CLEANER_TOKEN, undefined);
     this.router.navigateByUrl('/');
+  }
+
+  setTheme(change?: boolean): void {
+
+    const value = localStorage.getItem(SLACK_CLEANER_THEME);
+    const shouldTakeNewValue = value === 'light' ? 'dark' : 'light';
+    const newValue = change ? shouldTakeNewValue : value;
+
+    localStorage.setItem(SLACK_CLEANER_THEME, newValue.toString());
+    if (newValue === 'light') {
+      jQuery('body').removeClass('dark');
+    } else {
+      jQuery('body').addClass('dark');
+    }
   }
 }

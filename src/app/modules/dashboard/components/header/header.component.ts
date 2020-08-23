@@ -14,4 +14,5 @@ export class HeaderComponent {
   @Input() profileLoading: boolean;
 
   @Output() signOut = new EventEmitter<any>();
+  @Output() changeTheme = new EventEmitter<boolean>();
 }
