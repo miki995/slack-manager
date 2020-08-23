@@ -23,6 +23,7 @@ export interface IDashboard {
   filePercentages?: IFilePercentage[];
   recentFiles?: IFile[];
   usersResponse?: IUsersResponse;
+  usersLoading: boolean;
   maxStorage: number;
   usedStorage?: number;
   usedStoragePercentage?: number;
@@ -43,7 +44,8 @@ const initialState: IDashboard = {
   maxStorage: 5 * 1024 * 1024 * 1024,
   profileLoading: false,
   filesLoading: false,
-  dashFilesLoading: false
+  dashFilesLoading: false,
+  usersLoading: false
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -149,6 +151,13 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         conversationsResponse: action.payload
       };
 
+    case dashboardActions.DASHBOARD_GET_USERS:
+
+      return {
+        ...state,
+        usersLoading: true
+      };
+
     case dashboardActions.DASHBOARD_GET_USERS_SUCCESS:
 
       return {
@@ -157,7 +166,15 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
           ...action.payload,
           members: !!action.payload?.members ? action.payload.members.filter(item => !item.is_bot) : [],
           bots: !!action.payload?.members ? action.payload.members.filter(item => item.is_bot) : []
-        }
+        },
+        usersLoading: false
+      };
+
+    case dashboardActions.DASHBOARD_GET_USERS_FAIL:
+
+      return {
+        ...state,
+        usersLoading: false
       };
 
     case dashboardActions.DASHBOARD_GET_PROFILE:

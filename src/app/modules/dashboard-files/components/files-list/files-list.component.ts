@@ -4,7 +4,7 @@ import { IUser } from '../../../../models/user';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-files-list',
+  selector: 'sc-dashboard-files-list',
   templateUrl: './files-list.component.html',
   styleUrls: [ './files-list.component.css' ]
 })

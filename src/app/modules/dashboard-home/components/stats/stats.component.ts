@@ -3,7 +3,7 @@ import { IFilePercentage } from '../../../../helpers/file.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-home-stats',
+  selector: 'sc-dashboard-home-stats',
   templateUrl: './stats.component.html',
   styleUrls: [ './stats.component.css' ]
 })

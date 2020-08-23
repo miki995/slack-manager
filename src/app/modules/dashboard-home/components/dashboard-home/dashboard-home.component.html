@@ -1,18 +1,18 @@
-<app-dashboard-home-upgrade>
-</app-dashboard-home-upgrade>
+<sc-dashboard-home-upgrade>
+</sc-dashboard-home-upgrade>
 
-<app-dashboard-home-stats
+<sc-dashboard-home-stats
   [filePercentages]="filePercentages$ | async">
-</app-dashboard-home-stats>
+</sc-dashboard-home-stats>
 
-<app-dashboard-home-quick-access
+<sc-dashboard-home-quick-access
   [filePercentages]="filePercentages$ | async"
   (setFileType)="setFileType($event)">
-</app-dashboard-home-quick-access>
+</sc-dashboard-home-quick-access>
 
-<app-dashboard-recent-files
+<sc-dashboard-recent-files
   [recentFiles]="recentFiles$ | async"
   [users]="(usersResponse$ | async)?.members"
   (seeAllFiles)="setFileType('View All')"
 >
-</app-dashboard-recent-files>
+</sc-dashboard-recent-files>

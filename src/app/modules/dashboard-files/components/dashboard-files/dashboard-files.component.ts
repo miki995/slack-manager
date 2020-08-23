@@ -9,7 +9,7 @@ import { IConversationsResponse } from '../../../../models/conversation';
 import { IUsersResponse } from '../../../../models/user';
 
 @Component({
-  selector: 'app-dashboard-files',
+  selector: 'sc-dashboard-files',
   templateUrl: './dashboard-files.component.html',
   styleUrls: [ './dashboard-files.component.css' ]
 })

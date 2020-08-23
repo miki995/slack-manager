@@ -7,24 +7,24 @@
 
 <div class="row">
   <div class="col-xl-3 files-sidebar">
-    <app-dashboard-folders
+    <sc-dashboard-folders
       [filesFilter]="filesFilter$ | async"
       (filesFilterChange)="filesFilterChange($event)">
-    </app-dashboard-folders>
+    </sc-dashboard-folders>
   </div>
   <div class="col-xl-9">
     <div class="content-title mt-0">
       <h4>Documents</h4>
     </div>
     <div class="d-md-flex justify-content-between mb-4">
-      <app-dashboard-files-filters
+      <sc-dashboard-files-filters
         [filesQueryParams]="filesQueryParams$ | async"
         [dates]="filesQueryParams$ | async"
         [channels]="(conversationsResponse$ | async)?.channels"
         (filesQueryParamsOverride)="onFilesQueryParamsOverride($event)"
         (filesQueryParamsChange)="onFilesQueryParamsChange($event)"
       >
-      </app-dashboard-files-filters>
+      </sc-dashboard-files-filters>
       <div id="file-actions" class="d-none">
         <ul class="list-inline">
           <li class="list-inline-item mb-0">
@@ -49,44 +49,44 @@
       <div id="table-files_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
         <div class="row">
           <div class="col-sm-12 col-md-6">
-            <app-dashboard-files-count
+            <sc-dashboard-files-count
             [selectedCount]="(filesQueryParams$ | async)?.count"
             (changedCount)="onCountChanged($event)">
-            </app-dashboard-files-count>
+            </sc-dashboard-files-count>
           </div>
           <div class="col-sm-12 col-md-6">
-            <app-dashboard-files-search
+            <sc-dashboard-files-search
             [searchTerm]="(filesQueryParams$ | async)?.searchTerm"
             (searchTermChange)="onSearchTermChange($event)">
-            </app-dashboard-files-search>
+            </sc-dashboard-files-search>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <app-dashboard-files-list
+            <sc-dashboard-files-list
               [files]="(filesResponse$ | async)?.files | arraySearch : 'name' : (filesQueryParams$ | async)?.searchTerm"
               [filesQueryParams]="filesQueryParams$ | async"
               [users]="(usersResponse$ | async)?.members"
               [loading]="dashFilesLoading$ | async"
               (filesQueryParamsChange)="onFilesQueryParamsOverride($event)">
-            </app-dashboard-files-list>
+            </sc-dashboard-files-list>
           </div>
         </div>
         <div *ngIf="!(filesQueryParams$ | async)?.searchTerm" class="row">
           <div class="col-sm-12 col-md-5">
-            <app-dashboard-files-list-info
+            <sc-dashboard-files-list-info
             [count]="(filesResponse$ | async)?.paging?.count"
             [total]="(filesResponse$ | async)?.paging?.total"
             [page]="(filesResponse$ | async)?.paging?.page">
-            </app-dashboard-files-list-info>
+            </sc-dashboard-files-list-info>
           </div>
           <div class="col-sm-12 col-md-7">
-            <app-dashboard-files-pagination
+            <sc-dashboard-files-pagination
               [count]="(filesResponse$ | async)?.paging?.count"
               [total]="(filesResponse$ | async)?.paging?.total"
               [page]="(filesResponse$ | async)?.paging?.page"
               (pageChange)="onPageChange($event)">
-            </app-dashboard-files-pagination>
+            </sc-dashboard-files-pagination>
           </div>
     </div>
       </div>

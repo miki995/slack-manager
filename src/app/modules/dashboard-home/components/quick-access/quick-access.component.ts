@@ -3,7 +3,7 @@ import { IFilePercentage } from '../../../../helpers/file.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-home-quick-access',
+  selector: 'sc-dashboard-home-quick-access',
   templateUrl: './quick-access.component.html',
   styleUrls: [ './quick-access.component.css' ]
 })

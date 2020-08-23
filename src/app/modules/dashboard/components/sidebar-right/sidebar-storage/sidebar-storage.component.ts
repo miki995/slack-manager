@@ -4,7 +4,7 @@ import { openSlackPricing } from '../../../../../helpers/slack.helper';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-sidebar-storage',
+  selector: 'sc-sidebar-storage',
   templateUrl: './sidebar-storage.component.html',
   styleUrls: [ './sidebar-storage.component.css' ],
   encapsulation: ViewEncapsulation.None

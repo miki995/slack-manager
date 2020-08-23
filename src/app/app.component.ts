@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { IAppState } from './store';
 
 @Component({
-  selector: 'app-root',
+  selector: 'sc-root',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.scss' ]
 })

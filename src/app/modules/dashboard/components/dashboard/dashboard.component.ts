@@ -10,7 +10,7 @@ import { SLACK_CLEANER_TOKEN } from '../../../../helpers/token.helper';
 import { IUserProfile } from '../../../../models/user';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'sc-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.css' ]
 })

@@ -3,7 +3,7 @@ import { EFilesCount } from '../../../../models/file-filter';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-dashboard-files-count',
+  selector: 'sc-dashboard-files-count',
   templateUrl: './files-count.component.html',
   styleUrls: [ './files-count.component.css' ]
 })

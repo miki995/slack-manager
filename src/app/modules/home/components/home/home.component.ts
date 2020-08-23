@@ -5,7 +5,7 @@ declare const sr: any;
 declare const anime: any;
 
 @Component({
-  selector: 'app-home',
+  selector: 'sc-home',
   templateUrl: './home.component.html',
   styleUrls: [ './home.component.scss' ]
 })
