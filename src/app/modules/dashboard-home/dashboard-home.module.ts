@@ -8,13 +8,15 @@ import { RecentFilesComponent } from './components/recent-files/recent-files.com
 import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { QuickAccessComponent } from './components/quick-access/quick-access.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [ DashboardHomeComponent, HomeChartComponent, RecentFilesComponent, UpgradeComponent, StatsComponent, QuickAccessComponent ],
   imports: [
     CommonModule,
     DashboardHomeRoutingModule,
-    SharedModule
+    SharedModule,
+    ClipboardModule
   ]
 })
 export class DashboardHomeModule {

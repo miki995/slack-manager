@@ -9,6 +9,7 @@ import { getDashboardState, IDashboardState } from '../index';
 import { IFilesQueryParams } from '../../../../models/file-filter';
 import { ConversationsService } from '../../../../services/conversations.service';
 import { UsersService } from '../../../../services/users.service';
+import { ClipboardService, IClipboardResponse } from 'ngx-clipboard';
 
 const getFilesTriggers = [
   dashboardActions.DASHBOARD_SET_FILES_FILTER,
@@ -37,6 +38,26 @@ export class DashboardEffects {
           new dashboardActions.DashboardGetUsers(),
           new dashboardActions.DashboardGetAllFiles()
         ];
+      })
+    );
+
+  @Effect({ dispatch: false })
+  clipboardSubscribe$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_SET_INITIAL_STATE),
+      map((action: any) => {
+        this.clipboardService.copyResponse$.subscribe((res: IClipboardResponse) => {
+          if (res.isSuccess) {
+            swal({
+              title: 'You have just copied the link to the clipboard',
+              text: res.content,
+              icon: 'success',
+              timer: 2000,
+              button: 'Cool'
+            });
+            jQuery('.dropdown-menu.show').removeClass('show');
+          }
+        });
       })
     );
 
@@ -117,7 +138,8 @@ export class DashboardEffects {
     private readonly filesService: FilesService,
     private readonly conversationsService: ConversationsService,
     private readonly usersService: UsersService,
-    private readonly store: Store<IDashboardState>
+    private readonly store: Store<IDashboardState>,
+    private readonly clipboardService: ClipboardService,
   ) {
   }
 }
