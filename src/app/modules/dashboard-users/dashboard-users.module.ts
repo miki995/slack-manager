@@ -4,13 +4,15 @@ import { DashboardUsersComponent } from './components/dashboard-users/dashboard-
 import { DashboardUsersRoutingModule } from './dashboard-users.routing';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [ DashboardUsersComponent, UsersListComponent ],
     imports: [
         CommonModule,
         DashboardUsersRoutingModule,
-        ContentLoaderModule
+        ContentLoaderModule,
+        SharedModule
     ]
 })
 export class DashboardUsersModule {

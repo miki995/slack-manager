@@ -32,15 +32,16 @@ import { SanitizePipe } from './pipes/sanitize.pipe';
     HttpClientModule,
     ContentLoaderModule
   ],
-    exports: [
-        FormatBytesPipe,
-        TimeAgoPipePipe,
-        FileTypePipe,
-        ArraySearchPipe,
-        FolderColorPipe,
-        GetUserProfilePipe,
-        TooltipDirective
-    ],
+  exports: [
+    FormatBytesPipe,
+    TimeAgoPipePipe,
+    FileTypePipe,
+    ArraySearchPipe,
+    FolderColorPipe,
+    GetUserProfilePipe,
+    TooltipDirective,
+    SanitizePipe
+  ],
   providers: [
     HttpService,
     AuthService,

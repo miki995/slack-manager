@@ -28,11 +28,11 @@
               </a>
             </td>
             <td>
-              <a *ngIf="user?.profile?.phone" href="tel:{{ user?.profile?.phone }}">{{ user?.profile?.phone }}</a>
+              <a *ngIf="user?.profile?.phone" [href]="user?.profile?.phone | sanitize : 'tel'">{{ user?.profile?.phone }}</a>
               {{!user?.profile?.phone ?  '-' : ''}}
             </td>
             <td>
-              <a *ngIf="user?.profile?.skype" href="skype:{{user?.profile?.skype}}">{{user?.profile?.skype}}</a>
+              <a *ngIf="user?.profile?.skype" [href]="user?.profile?.skype | sanitize: 'skype'">{{user?.profile?.skype}}</a>
               {{!user?.profile?.skype ?  '-' : ''}}
             </td>
             <td>{{user?.profile?.title ? user?.profile?.title : '-'}}</td>
