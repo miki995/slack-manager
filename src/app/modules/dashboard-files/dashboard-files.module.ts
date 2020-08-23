@@ -11,15 +11,17 @@ import { FilesListInfoComponent } from './components/files-list-info/files-list-
 import { FilesPaginationComponent } from './components/files-pagination/files-pagination.component';
 import { FilesFiltersComponent } from './components/files-filters/files-filters.component';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [ DashboardFilesComponent, FoldersComponent, FilesListComponent, FilesCountComponent, FilesSearchComponent, FilesListInfoComponent, FilesPaginationComponent, FilesFiltersComponent ],
-  imports: [
-    CommonModule,
-    DashboardFilesRoutingModule,
-    SharedModule,
-    ContentLoaderModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardFilesRoutingModule,
+        SharedModule,
+        ContentLoaderModule,
+        ClipboardModule
+    ]
 })
 export class DashboardFilesModule {
 }
