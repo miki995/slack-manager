@@ -28,17 +28,17 @@
       <div id="file-actions" class="d-none">
         <ul class="list-inline">
           <li class="list-inline-item mb-0">
-            <a href="#" class="btn btn-outline-light" data-toggle="tooltip" title="Move">
+            <a href="#" scTooltip class="btn btn-outline-light" data-toggle="tooltip" title="Move">
               <i class="ti-arrow-top-right"></i>
             </a>
           </li>
           <li class="list-inline-item mb-0">
-            <a href="#" class="btn btn-outline-light" data-toggle="tooltip" title="Download">
+            <a href="#" scTooltip class="btn btn-outline-light" data-toggle="tooltip" title="Download">
               <i class="ti-download"></i>
             </a>
           </li>
           <li class="list-inline-item mb-0">
-            <a href="#" class="btn btn-outline-danger" data-toggle="tooltip" title="Delete">
+            <a href="#" scTooltip class="btn btn-outline-danger" data-toggle="tooltip" title="Delete">
               <i class="ti-trash"></i>
             </a>
           </li>
@@ -70,6 +70,7 @@
               [loading]="dashFilesLoading$ | async"
               (filesQueryParamsChange)="onFilesQueryParamsOverride($event)"
               (fileDetailChange)="getFileDetail($event)"
+              (fileDelete)="deleteFile($event)"
             >
             </sc-dashboard-files-list>
           </div>

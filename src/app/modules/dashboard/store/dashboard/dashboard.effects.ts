@@ -150,6 +150,21 @@ export class DashboardEffects {
       })
     );
 
+  @Effect()
+  deleteFile$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_DELETE_FILE),
+      switchMap((action: dashboardActions.DashboardDeleteFile) => {
+        jQuery('.dropdown-menu.show').removeClass('show');
+
+        return this.filesService.deleteFile(action.payload)
+          .pipe(
+            catchError((error) => of(new dashboardActions.DashboardDeleteFileFail(error))),
+            map((response) => new dashboardActions.DashboardDeleteFileSuccess(action.payload))
+          );
+      })
+    );
+
   constructor(
     private readonly actions$: Actions,
     private readonly filesService: FilesService,

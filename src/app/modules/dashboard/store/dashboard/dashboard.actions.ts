@@ -188,6 +188,31 @@ export class DashboardGetFileInfoFail implements Action {
   }
 }
 
+export const DASHBOARD_DELETE_FILE = '[Dashboard]: delete file';
+export const DASHBOARD_DELETE_FILE_SUCCESS = '[Dashboard]: delete file success';
+export const DASHBOARD_DELETE_FILE_FAIL = '[Dashboard]: delete file fail';
+
+export class DashboardDeleteFile implements Action {
+  readonly type = DASHBOARD_DELETE_FILE;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class DashboardDeleteFileSuccess implements Action {
+  readonly type = DASHBOARD_DELETE_FILE_SUCCESS;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class DashboardDeleteFileFail implements Action {
+  readonly type = DASHBOARD_DELETE_FILE_FAIL;
+
+  constructor(public payload: any) {
+  }
+}
+
 export type Actions =
   DashboardSetInitialState
   | DashboardSetFilesFilter
@@ -210,6 +235,9 @@ export type Actions =
   | DashboardGetProfileFail
   | DashboardGetFileInfo
   | DashboardGetFileInfoSuccess
-  | DashboardGetFileInfoFail;
+  | DashboardGetFileInfoFail
+  | DashboardDeleteFile
+  | DashboardDeleteFileSuccess
+  | DashboardDeleteFileFail;
 
 

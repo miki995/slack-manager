@@ -41,8 +41,7 @@
                       <div class="flex-grow-1">
                         <p class="mb-0">
                           Your storage space is running low!
-                          <i title="Mark as unread" data-toggle="tooltip"
-                             class="hide-show-toggler-item fa fa-check font-size-11 position-absolute right-0 top-0 mr-3 mt-3"></i>
+                          <i scTooltip title="Mark as unread" data-toggle="tooltip" class="hide-show-toggler-item fa fa-check font-size-11 position-absolute right-0 top-0 mr-3 mt-3"></i>
                         </p>
                       </div>
                     </a>
@@ -64,8 +63,7 @@
                       <div class="flex-grow-1">
                         <p class="mb-0">
                           Upgrade plan
-                          <i title="Mark as unread" data-toggle="tooltip"
-                             class="hide-show-toggler-item fa fa-check font-size-11 position-absolute right-0 top-0 mr-3 mt-3"></i>
+                          <i scTooltip title="Mark as unread" data-toggle="tooltip" class="hide-show-toggler-item fa fa-check font-size-11 position-absolute right-0 top-0 mr-3 mt-3"></i>
                         </p>
                       </div>
                     </a>
@@ -76,14 +74,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link" title="Settings" data-sidebar-target="#settings">
-              <i class="ti-settings"></i>
-            </a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link profile-nav-link dropdown-toggle" title="User menu"
-               data-toggle="dropdown">
+            <a href="#" class="nav-link profile-nav-link dropdown-toggle" data-toggle="dropdown">
               <span class="mr-2 d-sm-inline d-none">{{ profile?.real_name }}</span>
               <figure class="avatar avatar-sm">
                 <img [src]="profile?.image_72"
@@ -101,7 +92,6 @@
                 <h5 class="mb-0">{{profile?.real_name}}</h5>
               </div>
               <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item" data-sidebar-target="#settings">Settings</a>
                 <a (click)="signOut.emit()" class="list-group-item text-danger cursor-pointer"
                    data-sidebar-target="#settings">Sign Out!</a>
               </div>

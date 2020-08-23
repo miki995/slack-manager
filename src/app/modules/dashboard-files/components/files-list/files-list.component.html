@@ -71,7 +71,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let file of files; let index = index">
+  <tr *ngFor="let file of files  | slice : 0 : 100; let index = index; trackBy: trackByIndex">
     <td class="dt-body-center"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="customCheck{{ index }}"><label class="custom-control-label" for="customCheck{{ index }}"></label></div></td>
     <td>
       <a class="d-flex align-items-center">
@@ -92,8 +92,7 @@
     </td>
     <td>
       <div class="avatar-group">
-        <figure class="avatar avatar-sm" title="{{ (file?.user | getUserProfile : users)?.real_name }}"
-                data-toggle="tooltip">
+        <figure scTooltip class="avatar avatar-sm" title="{{ (file?.user | getUserProfile : users)?.real_name }}" data-toggle="tooltip">
           <img src="{{ (file?.user | getUserProfile : users)?.image_32 }}"
                class="rounded-circle"
                alt="image">
@@ -109,7 +108,7 @@
           <a class="dropdown-item" data-sidebar-target="#view-detail" (click)="fileDetailChange.emit(file?.id)">View Details</a>
           <a class="dropdown-item" ngxClipboard [cbContent]="file?.url_private">Share</a>
           <a class="dropdown-item" [href]="file?.url_private_download">Download</a>
-          <a class="dropdown-item">Delete</a>
+          <a class="dropdown-item" (click)="fileDelete.emit(file?.id)">Delete</a>
         </div>
       </div>
     </td>

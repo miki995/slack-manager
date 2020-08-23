@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,4 +8,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class SidebarComponent {
 
+  closeIfMobile(): void {
+    jQuery.removeOverlay();
+    jQuery('.navigation').removeClass('open');
+    jQuery('.sidebar-group').removeClass('collapse');
+    jQuery('.files-sidebar').removeClass('collapse');
+    jQuery('.components-sidebar').removeClass('collapse');
+  }
 }

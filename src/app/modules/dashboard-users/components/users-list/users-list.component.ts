@@ -12,4 +12,8 @@ export class UsersListComponent {
   @Input() title: string;
   @Input() users: IUser[];
   @Input() loading: boolean;
+
+  trackByIndex(index: number): number {
+    return index;
+  }
 }

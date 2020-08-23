@@ -14,9 +14,11 @@ interface JQuery {
   bootstrapSwitch(options?: {}, arg1?: any, arg2?: any): any;
   collapse(options: any): any;
   niceScroll(options?: any): any;
+  removeOverlay(options?: any): any;
 }
 
 interface JQueryStatic {
   datepicker: any;
+  removeOverlay: any;
   daterangepicker(...options: Array<any>): any;
 }

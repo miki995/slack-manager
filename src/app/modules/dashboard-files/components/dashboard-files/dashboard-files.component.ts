@@ -105,4 +105,12 @@ export class DashboardFilesComponent implements OnInit {
       payload: file
     });
   }
+
+  deleteFile(file: string): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_DELETE_FILE,
+      payload: file
+    });
+  }
 }
