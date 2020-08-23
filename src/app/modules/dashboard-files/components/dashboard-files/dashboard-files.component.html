@@ -67,6 +67,7 @@
               [files]="(filesResponse$ | async)?.files | arraySearch : 'name' : (filesQueryParams$ | async)?.searchTerm"
               [filesQueryParams]="filesQueryParams$ | async"
               [users]="(usersResponse$ | async)?.members"
+              [loading]="dashFilesLoading$ | async"
               (filesQueryParamsChange)="onFilesQueryParamsOverride($event)">
             </app-dashboard-files-list>
           </div>

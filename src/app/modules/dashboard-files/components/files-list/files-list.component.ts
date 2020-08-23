@@ -15,6 +15,7 @@ export class FilesListComponent {
   @Input() files: IFile[];
   @Input() filesQueryParams: IFilesQueryParams;
   @Input() users: IUser[];
+  @Input() loading: boolean;
 
   @Output() filesQueryParamsChange = new EventEmitter<IFilesQueryParams>();
 

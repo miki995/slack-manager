@@ -20,6 +20,7 @@ export class DashboardFilesComponent implements OnInit {
   filesQueryParams$: Observable<IFilesQueryParams>;
   conversationsResponse$: Observable<IConversationsResponse>;
   usersResponse$: Observable<IUsersResponse>;
+  dashFilesLoading$: Observable<boolean>;
 
   constructor(private readonly store: Store<IDashboardState>) {
   }
@@ -42,6 +43,7 @@ export class DashboardFilesComponent implements OnInit {
     this.filesQueryParams$ = this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>());
     this.conversationsResponse$ = this.store.pipe(select(getDashboardState), pluck('conversationsResponse'), distinctUntilChanged<IConversationsResponse>());
     this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
+    this.dashFilesLoading$ = this.store.pipe(select(getDashboardState), pluck('dashFilesLoading'), distinctUntilChanged<boolean>());
   }
 
   getFiles(): void {

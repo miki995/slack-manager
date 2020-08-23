@@ -15,6 +15,7 @@ import { IUserProfile, IUsersResponse } from '../../../../models/user';
 export interface IDashboard {
   filesFilter: EFilesFilter;
   filesResponse?: IFilesResponse;
+  dashFilesLoading: boolean;
   allFilesResponse?: IFilesResponse;
   filesLoading: boolean;
   filesQueryParams?: IFilesQueryParams;
@@ -41,7 +42,8 @@ const initialState: IDashboard = {
   },
   maxStorage: 5 * 1024 * 1024 * 1024,
   profileLoading: false,
-  filesLoading: false
+  filesLoading: false,
+  dashFilesLoading: false
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -61,6 +63,13 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         filesFilter: action.payload,
       };
 
+    case dashboardActions.DASHBOARD_GET_FILES:
+
+      return {
+        ...state,
+        dashFilesLoading: true
+      };
+
     case dashboardActions.DASHBOARD_GET_FILES_SUCCESS:
 
       const files = sortFiles(action.payload.files, state.filesQueryParams);
@@ -71,6 +80,14 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
           ...action.payload,
           files
         },
+        dashFilesLoading: false
+      };
+
+    case dashboardActions.DASHBOARD_GET_FILES_FAIL:
+
+      return {
+        ...state,
+        dashFilesLoading: false
       };
 
     case dashboardActions.DASHBOARD_GET_ALL_FILES:
