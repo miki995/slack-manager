@@ -17,10 +17,12 @@ import { IUserProfile } from '../../../../models/user';
 export class DashboardComponent implements OnInit {
 
   filePercentages$: Observable<IFilePercentage[]>;
+  filesLoading$: Observable<boolean>;
   usedStorage$: Observable<number>;
   maxStorage$: Observable<number>;
   usedStoragePercentage$: Observable<number>;
   profile$: Observable<IUserProfile>;
+  profileLoading$: Observable<boolean>;
 
   constructor(
     private readonly router: Router,
@@ -36,6 +38,8 @@ export class DashboardComponent implements OnInit {
     this.maxStorage$ = this.store.pipe(select(getDashboardState), pluck('maxStorage'), distinctUntilChanged<number>());
     this.usedStoragePercentage$ = this.store.pipe(select(getDashboardState), pluck('usedStoragePercentage'), distinctUntilChanged<number>());
     this.profile$ = this.store.pipe(select(getDashboardState), pluck('profile'), distinctUntilChanged<IUserProfile>());
+    this.profileLoading$ = this.store.pipe(select(getDashboardState), pluck('profileLoading'), distinctUntilChanged<boolean>());
+    this.filesLoading$ = this.store.pipe(select(getDashboardState), pluck('filesLoading'), distinctUntilChanged<boolean>());
 
     if (this.router.url !== '/dashboard') {
       return;

@@ -11,6 +11,8 @@ import { FolderColorPipe } from './pipes/folder-color.pipe';
 import { FilesService } from '../../services/files.service';
 import { ConversationsService } from '../../services/conversations.service';
 import { UsersService } from '../../services/users.service';
+import { GetUserProfilePipe } from './pipes/get-user.pipe';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 @NgModule({
   declarations: [
@@ -18,19 +20,22 @@ import { UsersService } from '../../services/users.service';
     TimeAgoPipePipe,
     FileTypePipe,
     ArraySearchPipe,
-    FolderColorPipe
+    FolderColorPipe,
+    GetUserProfilePipe
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ContentLoaderModule
   ],
-    exports: [
-        FormatBytesPipe,
-        TimeAgoPipePipe,
-        FileTypePipe,
-        ArraySearchPipe,
-        FolderColorPipe
-    ],
+  exports: [
+    FormatBytesPipe,
+    TimeAgoPipePipe,
+    FileTypePipe,
+    ArraySearchPipe,
+    FolderColorPipe,
+    GetUserProfilePipe
+  ],
   providers: [
     HttpService,
     AuthService,

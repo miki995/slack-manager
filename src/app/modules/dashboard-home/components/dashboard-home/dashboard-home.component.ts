@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { IFile } from '../../../../models/file-filter';
+import { IUsersResponse } from '../../../../models/user';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -17,6 +18,7 @@ export class DashboardHomeComponent implements OnInit {
 
   filePercentages$: Observable<IFilePercentage[]>;
   recentFiles$: Observable<IFile[]>;
+  usersResponse$: Observable<IUsersResponse>;
 
   constructor(
     private readonly store: Store<IDashboardState>,
@@ -25,12 +27,9 @@ export class DashboardHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch({
-      type: dashboardActions.DASHBOARD_GET_ALL_FILES
-    });
-
     this.filePercentages$ = this.store.pipe(select(getDashboardState), pluck('filePercentages'), distinctUntilChanged<IFilePercentage[]>());
     this.recentFiles$ = this.store.pipe(select(getDashboardState), pluck('recentFiles'), distinctUntilChanged<IFile[]>());
+    this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
   }
 
   setFileType(fileType: string): void {

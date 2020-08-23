@@ -10,6 +10,7 @@
     <app-header
     [profile]="profile$ | async"
     [usedStoragePercentage]="usedStoragePercentage$ | async"
+    [profileLoading]="profileLoading$ | async"
     (signOut)="signOut()"
     >
     </app-header>
@@ -45,6 +46,7 @@
     <!-- Sidebar group -->
     <app-sidebar-right
       [filePercentages]="filePercentages$ | async"
+      [filesLoading]="filesLoading$ | async"
       [usedStoragePercentage]="usedStoragePercentage$ | async"
     >
     </app-sidebar-right>

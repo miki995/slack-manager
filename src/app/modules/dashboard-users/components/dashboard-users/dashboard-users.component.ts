@@ -21,11 +21,6 @@ export class DashboardUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.store.dispatch({
-      type: dashboardActions.DASHBOARD_GET_USERS
-    });
-
     this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
   }
 }

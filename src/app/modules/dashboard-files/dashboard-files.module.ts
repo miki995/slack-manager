@@ -10,14 +10,16 @@ import { FilesSearchComponent } from './components/files-search/files-search.com
 import { FilesListInfoComponent } from './components/files-list-info/files-list-info.component';
 import { FilesPaginationComponent } from './components/files-pagination/files-pagination.component';
 import { FilesFiltersComponent } from './components/files-filters/files-filters.component';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 @NgModule({
   declarations: [ DashboardFilesComponent, FoldersComponent, FilesListComponent, FilesCountComponent, FilesSearchComponent, FilesListInfoComponent, FilesPaginationComponent, FilesFiltersComponent ],
-    imports: [
-        CommonModule,
-        DashboardFilesRoutingModule,
-        SharedModule
-    ]
+  imports: [
+    CommonModule,
+    DashboardFilesRoutingModule,
+    SharedModule,
+    ContentLoaderModule
+  ]
 })
 export class DashboardFilesModule {
 }

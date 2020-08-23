@@ -11,14 +11,12 @@
         </ul>
       </div>
 
-      <div class="header-body-right">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="#" class="nav-link mobile-header-search-btn" title="Search">
-              <i class="ti-search"></i>
-            </a>
-          </li>
+      <div *ngIf="profileLoading" class="header-body-right" [style.width.px]="200">
+        <list-content-loader height="20" width="200"></list-content-loader>
+      </div>
 
+      <div *ngIf="!profileLoading" class="header-body-right">
+        <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a href="#" class="nav-link nav-link-notify" title="Notifications" data-toggle="dropdown">
               <i class="ti-bell"></i>
@@ -114,9 +112,13 @@
                     <span class="float-right">{{ usedStoragePercentage }}%</span>
                   </h6>
                   <div class="progress" style="height:5px;">
-                    <div class="progress-bar bg-primary" role="progressbar"
-                         style="width: {{usedStoragePercentage}}%;" [attr.aria-valuenow]="usedStoragePercentage" aria-valuemin="0"
-                         aria-valuemax="100"></div>
+                    <div
+                      class="progress-bar bg-primary"
+                      role="progressbar"
+                      [style.width.%]="usedStoragePercentage"
+                      [attr.aria-valuenow]="usedStoragePercentage"
+                      aria-valuemin="0"
+                      aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>

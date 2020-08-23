@@ -11,6 +11,7 @@ export class HeaderComponent {
 
   @Input() profile: IUserProfile;
   @Input() usedStoragePercentage: number;
+  @Input() profileLoading: boolean;
 
   @Output() signOut = new EventEmitter<any>();
 }

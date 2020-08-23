@@ -12,5 +12,7 @@
 
 <app-dashboard-recent-files
   [recentFiles]="recentFiles$ | async"
-  (seeAllFiles)="setFileType('View All')">
+  [users]="(usersResponse$ | async)?.members"
+  (seeAllFiles)="setFileType('View All')"
+>
 </app-dashboard-recent-files>
