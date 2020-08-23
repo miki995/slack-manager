@@ -9,7 +9,8 @@ import { IFilesQueryParams } from '../models/file-filter';
 @Injectable()
 export class FilesService {
 
-  private filesUrl = config.apiEndpoint + '/api/files/list?';  // URL to productCategories web api
+  private filesUrl = config.apiEndpoint + '/api/files/list?';  // URL to files web api
+  private fileUrl = config.apiEndpoint + '/api/files/info?';  // URL to file web api
 
   constructor(private httpService: HttpService) {
   }
@@ -32,4 +33,9 @@ export class FilesService {
     return this.httpService.get(`${ (this.filesUrl) }${ params.toString() }`);
   }
 
+  getFile(file: string): Observable<any> {
+
+    const params = new HttpParams().set('file', file);
+    return this.httpService.get(`${ (this.fileUrl) }${ params.toString() }`);
+  }
 }

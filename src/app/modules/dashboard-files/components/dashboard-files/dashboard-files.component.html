@@ -68,7 +68,9 @@
               [filesQueryParams]="filesQueryParams$ | async"
               [users]="(usersResponse$ | async)?.members"
               [loading]="dashFilesLoading$ | async"
-              (filesQueryParamsChange)="onFilesQueryParamsOverride($event)">
+              (filesQueryParamsChange)="onFilesQueryParamsOverride($event)"
+              (fileDetailChange)="getFileDetail($event)"
+            >
             </sc-dashboard-files-list>
           </div>
         </div>

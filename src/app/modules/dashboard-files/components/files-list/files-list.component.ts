@@ -18,7 +18,7 @@ export class FilesListComponent {
   @Input() loading: boolean;
 
   @Output() filesQueryParamsChange = new EventEmitter<IFilesQueryParams>();
-
+  @Output() fileDetailChange = new EventEmitter<string>();
 
   onDateChange(isNewest: boolean): void {
 

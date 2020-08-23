@@ -14,5 +14,6 @@
   [recentFiles]="recentFiles$ | async"
   [users]="(usersResponse$ | async)?.members"
   (seeAllFiles)="setFileType('View All')"
+  (fileDetailChange)="getFileDetail($event)"
 >
 </sc-dashboard-recent-files>

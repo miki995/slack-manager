@@ -43,6 +43,14 @@ export class DashboardHomeComponent implements OnInit {
     this.router.navigateByUrl('/dashboard/files');
   }
 
+  getFileDetail(file: string): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_GET_FILE_INFO,
+      payload: file
+    });
+  }
+
   getFile(fileType: string): string {
 
     switch (fileType) {

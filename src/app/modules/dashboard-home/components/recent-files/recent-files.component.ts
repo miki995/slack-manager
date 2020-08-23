@@ -14,4 +14,5 @@ export class RecentFilesComponent {
   @Input() users: IUser[];
 
   @Output() seeAllFiles = new EventEmitter<any>();
+  @Output() fileDetailChange = new EventEmitter<string>();
 }

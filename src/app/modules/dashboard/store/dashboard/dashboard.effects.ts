@@ -77,6 +77,20 @@ export class DashboardEffects {
     );
 
   @Effect()
+  getFileInfo$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_GET_FILE_INFO),
+      switchMap((action: dashboardActions.DashboardGetFileInfo) => {
+
+        return this.filesService.getFile(action.payload)
+          .pipe(
+            catchError((error) => of(new dashboardActions.DashboardGetFileInfoFail(error))),
+            map((response) => new dashboardActions.DashboardGetFileInfoSuccess(response))
+          );
+      })
+    );
+
+  @Effect()
   getAllFiles$ = this.actions$
     .pipe(
       ofType(dashboardActions.DASHBOARD_GET_ALL_FILES),

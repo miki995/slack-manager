@@ -97,4 +97,12 @@ export class DashboardFilesComponent implements OnInit {
       payload: queryParams
     });
   }
+
+  getFileDetail(file: string): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_GET_FILE_INFO,
+      payload: file
+    });
+  }
 }
