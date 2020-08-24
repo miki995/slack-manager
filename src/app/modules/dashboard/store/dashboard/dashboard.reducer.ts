@@ -32,6 +32,8 @@ export interface IDashboard {
   fileDetail?: IFile;
   fileDetailLoading?: boolean;
   fileDeleting: boolean;
+  searchedFiles?: IFile[];
+  searchingFiles: boolean;
 }
 
 const initialState: IDashboard = {
@@ -49,7 +51,8 @@ const initialState: IDashboard = {
   filesLoading: false,
   dashFilesLoading: false,
   usersLoading: false,
-  fileDeleting: false
+  fileDeleting: false,
+  searchingFiles: false
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -267,6 +270,28 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       return {
         ...state,
         fileDeleting: false
+      };
+
+    case dashboardActions.DASHBOARD_SEARCH_FILES:
+
+      return {
+        ...state,
+        searchingFiles: true
+      };
+
+    case dashboardActions.DASHBOARD_SEARCH_FILES_SUCCESS:
+
+      return {
+        ...state,
+        searchingFiles: false,
+        searchedFiles: action.payload?.ok ? action.payload.files.matches : []
+      };
+
+    case dashboardActions.DASHBOARD_SEARCH_FILES_FAIL:
+
+      return {
+        ...state,
+        searchingFiles: false
       };
 
     default:

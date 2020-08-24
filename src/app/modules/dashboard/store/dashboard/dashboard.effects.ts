@@ -165,6 +165,20 @@ export class DashboardEffects {
       })
     );
 
+  @Effect()
+  searchFiles$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_SEARCH_FILES),
+      switchMap((action: dashboardActions.DashboardSearchFiles) => {
+
+        return this.filesService.searchFiles(action.payload)
+          .pipe(
+            catchError((error) => of(new dashboardActions.DashboardSearchFilesFail(error))),
+            map((response) => new dashboardActions.DashboardSearchFilesSuccess(response))
+          );
+      })
+    );
+
   constructor(
     private readonly actions$: Actions,
     private readonly filesService: FilesService,

@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit {
   profileLoading$: Observable<boolean>;
   fileDetail$: Observable<IFile>;
   fileDetailLoading$: Observable<boolean>;
+  searchedFiles$: Observable<IFile[]>;
+  searchingFiles$: Observable<boolean>;
 
   constructor(
     private readonly router: Router,
@@ -46,6 +48,8 @@ export class DashboardComponent implements OnInit {
     this.filesLoading$ = this.store.pipe(select(getDashboardState), pluck('filesLoading'), distinctUntilChanged<boolean>());
     this.fileDetail$ = this.store.pipe(select(getDashboardState), pluck('fileDetail'), distinctUntilChanged<IFile>());
     this.fileDetailLoading$ = this.store.pipe(select(getDashboardState), pluck('fileDetailLoading'), distinctUntilChanged<boolean>());
+    this.searchedFiles$ = this.store.pipe(select(getDashboardState), pluck('searchedFiles'), distinctUntilChanged<IFile[]>());
+    this.searchingFiles$ = this.store.pipe(select(getDashboardState), pluck('searchingFiles'), distinctUntilChanged<boolean>());
 
     if (this.router.url !== '/dashboard') {
       return;
@@ -77,5 +81,12 @@ export class DashboardComponent implements OnInit {
     } else {
       jQuery('body').addClass('dark');
     }
+  }
+
+  searchFiles(query: string): void {
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SEARCH_FILES,
+      payload: query
+    });
   }
 }

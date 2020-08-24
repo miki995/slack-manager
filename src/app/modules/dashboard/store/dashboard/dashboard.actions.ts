@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { EFilesFilter, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import { EFilesFilter, IFile, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
 import { IConversationsResponse } from '../../../../models/conversation';
 import { IUser, IUsersResponse } from '../../../../models/user';
 
@@ -213,6 +213,31 @@ export class DashboardDeleteFileFail implements Action {
   }
 }
 
+export const DASHBOARD_SEARCH_FILES = '[Dashboard]: search files';
+export const DASHBOARD_SEARCH_FILES_SUCCESS = '[Dashboard]: search files success';
+export const DASHBOARD_SEARCH_FILES_FAIL = '[Dashboard]: search files fail';
+
+export class DashboardSearchFiles implements Action {
+  readonly type = DASHBOARD_SEARCH_FILES;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class DashboardSearchFilesSuccess implements Action {
+  readonly type = DASHBOARD_SEARCH_FILES_SUCCESS;
+
+  constructor(public payload?: { ok: boolean, files: { matches: IFile[] } }) {
+  }
+}
+
+export class DashboardSearchFilesFail implements Action {
+  readonly type = DASHBOARD_SEARCH_FILES_FAIL;
+
+  constructor(public payload: any) {
+  }
+}
+
 export type Actions =
   DashboardSetInitialState
   | DashboardSetFilesFilter
@@ -238,6 +263,9 @@ export type Actions =
   | DashboardGetFileInfoFail
   | DashboardDeleteFile
   | DashboardDeleteFileSuccess
-  | DashboardDeleteFileFail;
+  | DashboardDeleteFileFail
+  | DashboardSearchFiles
+  | DashboardSearchFilesSuccess
+  | DashboardSearchFilesFail;
 
 
