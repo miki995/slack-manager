@@ -22,6 +22,7 @@ export class DashboardFilesComponent implements OnInit {
   usersResponse$: Observable<IUsersResponse>;
   dashFilesLoading$: Observable<boolean>;
   selectedFilesForDelete$: Observable<string[]>;
+  filesDeleting$: Observable<boolean>;
 
   constructor(private readonly store: Store<IDashboardState>) {
   }
@@ -46,6 +47,7 @@ export class DashboardFilesComponent implements OnInit {
     this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
     this.dashFilesLoading$ = this.store.pipe(select(getDashboardState), pluck('dashFilesLoading'), distinctUntilChanged<boolean>());
     this.selectedFilesForDelete$ = this.store.pipe(select(getDashboardState), pluck('selectedFilesForDelete'), distinctUntilChanged<string[]>());
+    this.filesDeleting$ = this.store.pipe(select(getDashboardState), pluck('filesDeleting'), distinctUntilChanged<boolean>());
   }
 
   getFiles(): void {
@@ -131,10 +133,44 @@ export class DashboardFilesComponent implements OnInit {
     });
   }
 
-  downloadFiles(): void {
+  startBulkDeleteSelected(files: string[]): void {
+
+    jQuery('[data-toggle="tooltip"]').tooltip('hide'); // close all tooltips
 
     this.store.dispatch({
-      type: dashboardActions.DASHBOARD_DOWNLOAD_SELECTED_FILES
+      type: dashboardActions.DASHBOARD_SET_FILES_DELETING,
+      payload: true
+    });
+
+    let interval = 1000;
+
+    files.forEach((file, index, array) => {
+      interval += 3000;
+
+      setTimeout(() => {
+
+        this.store.dispatch({
+          type: dashboardActions.DASHBOARD_BULK_DELETE_FILE,
+          payload: file
+        });
+
+        if (index === array.length - 1) {
+
+          this.store.dispatch({
+            type: dashboardActions.DASHBOARD_SET_FILES_DELETING,
+            payload: false
+          });
+        }
+
+      }, interval);
+    });
+  }
+
+  stopBulkDeleteSelected(): void {
+    jQuery('[data-toggle="tooltip"]').tooltip('hide'); // close all tooltips
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_CAN_BULK_DELETE,
+      payload: false
     });
   }
 }

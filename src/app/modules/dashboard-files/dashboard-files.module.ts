@@ -12,9 +12,10 @@ import { FilesPaginationComponent } from './components/files-pagination/files-pa
 import { FilesFiltersComponent } from './components/files-filters/files-filters.component';
 import { ContentLoaderModule } from '@ngneat/content-loader';
 import { ClipboardModule } from 'ngx-clipboard';
+import { FileActionsComponent } from './components/file-actions/file-actions.component';
 
 @NgModule({
-  declarations: [ DashboardFilesComponent, FoldersComponent, FilesListComponent, FilesCountComponent, FilesSearchComponent, FilesListInfoComponent, FilesPaginationComponent, FilesFiltersComponent ],
+  declarations: [ DashboardFilesComponent, FoldersComponent, FilesListComponent, FilesCountComponent, FilesSearchComponent, FilesListInfoComponent, FilesPaginationComponent, FilesFiltersComponent, FileActionsComponent ],
     imports: [
         CommonModule,
         DashboardFilesRoutingModule,

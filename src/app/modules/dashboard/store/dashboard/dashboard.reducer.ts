@@ -35,6 +35,8 @@ export interface IDashboard {
   searchedFiles: IFile[];
   searchingFiles: boolean;
   selectedFilesForDelete: string[];
+  filesDeleting: boolean;
+  canBulkDelete: boolean;
 }
 
 const initialState: IDashboard = {
@@ -55,7 +57,9 @@ const initialState: IDashboard = {
   fileDeleting: false,
   searchingFiles: false,
   searchedFiles: [],
-  selectedFilesForDelete: []
+  selectedFilesForDelete: [],
+  filesDeleting: false,
+  canBulkDelete: true
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -232,6 +236,7 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       };
 
     case dashboardActions.DASHBOARD_DELETE_FILE:
+    case dashboardActions.DASHBOARD_BULK_DELETE_FILE:
 
       return {
         ...state,
@@ -239,6 +244,7 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       };
 
     case dashboardActions.DASHBOARD_DELETE_FILE_SUCCESS:
+    case dashboardActions.DASHBOARD_BULK_DELETE_FILE_SUCCESS:
 
       const allFilesResponseIndex = state.allFilesResponse.files.findIndex(file => file.id === action.payload);
       const filesResponseIndex = state.filesResponse.files.findIndex(file => file.id === action.payload);
@@ -279,6 +285,7 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       };
 
     case dashboardActions.DASHBOARD_DELETE_FILE_FAIL:
+    case dashboardActions.DASHBOARD_BULK_DELETE_FILE_FAIL:
 
       return {
         ...state,
@@ -331,6 +338,21 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       return {
         ...state,
         selectedFilesForDelete: selectedFiles
+      };
+
+    case dashboardActions.DASHBOARD_SET_FILES_DELETING:
+
+      return {
+        ...state,
+        filesDeleting: action.payload
+      };
+
+    case dashboardActions.DASHBOARD_SET_CAN_BULK_DELETE:
+
+      return {
+        ...state,
+        canBulkDelete: action.payload,
+        filesDeleting: !action.payload
       };
 
     default:
