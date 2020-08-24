@@ -32,6 +32,8 @@ export interface IDashboard {
   fileDetail?: IFile;
   fileDetailLoading?: boolean;
   fileDeleting: boolean;
+  searchedFiles?: IFile[];
+  searchingFiles: boolean;
 }
 
 const initialState: IDashboard = {
@@ -49,7 +51,8 @@ const initialState: IDashboard = {
   filesLoading: false,
   dashFilesLoading: false,
   usersLoading: false,
-  fileDeleting: false
+  fileDeleting: false,
+  searchingFiles: false
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -234,13 +237,22 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
 
     case dashboardActions.DASHBOARD_DELETE_FILE_SUCCESS:
 
-      const filesResponseIndex = state.filesResponse.files.findIndex(file => file.id === action.payload);
       const allFilesResponseIndex = state.allFilesResponse.files.findIndex(file => file.id === action.payload);
+      const filesResponseIndex = state.filesResponse.files.findIndex(file => file.id === action.payload);
+      const searchedFilesResponseIndex = state.searchedFiles.findIndex(file => file.id === action.payload);
 
       const allFiles = [ ...state.allFilesResponse.files];
-      allFiles.splice(allFilesResponseIndex, 1);
+      if (allFilesResponseIndex !== -1) {
+        allFiles.splice(allFilesResponseIndex, 1);
+      }
       const newFiles = [ ...state.filesResponse.files];
-      newFiles.splice(filesResponseIndex, 1);
+      if (filesResponseIndex !== -1) {
+        newFiles.splice(filesResponseIndex, 1);
+      }
+      const newSearchedFiles = [ ...state.searchedFiles];
+      if (searchedFilesResponseIndex !== -1) {
+        newSearchedFiles.splice(searchedFilesResponseIndex, 1);
+      }
 
       const newFilePercentages: IFilePercentage[] = detectFileTypePercentage(allFiles);
       const newUsedStorage = getSize(allFiles);
@@ -256,6 +268,7 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
           ...state.allFilesResponse,
           files: allFiles
         },
+        searchedFiles: newSearchedFiles,
         filePercentages: newFilePercentages,
         usedStorage: newUsedStorage,
         usedStoragePercentage: Math.ceil(Number(((newUsedStorage * 100) / state.maxStorage).toFixed(2))),
@@ -267,6 +280,28 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       return {
         ...state,
         fileDeleting: false
+      };
+
+    case dashboardActions.DASHBOARD_SEARCH_FILES:
+
+      return {
+        ...state,
+        searchingFiles: true
+      };
+
+    case dashboardActions.DASHBOARD_SEARCH_FILES_SUCCESS:
+
+      return {
+        ...state,
+        searchingFiles: false,
+        searchedFiles: action.payload?.ok ? action.payload.files.matches : []
+      };
+
+    case dashboardActions.DASHBOARD_SEARCH_FILES_FAIL:
+
+      return {
+        ...state,
+        searchingFiles: false
       };
 
     default:

@@ -11,7 +11,12 @@
     [profile]="profile$ | async"
     [usedStoragePercentage]="usedStoragePercentage$ | async"
     [profileLoading]="profileLoading$ | async"
+    [searchedFiles]="searchedFiles$ | async"
+    [searchingFiles]="searchingFiles$ | async"
     (signOut)="signOut()"
+    (changeTheme)="setTheme(true)"
+    (searchTermChange)="searchFiles($event)"
+    (deleteFile)="deleteFile($event)"
     >
     </sc-header>
   <!-- ./ Header -->

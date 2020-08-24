@@ -6,7 +6,7 @@ import { getDashboardState, IDashboardState } from '../../store';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { IFilePercentage } from '../../../../helpers/file.helper';
 import { Observable } from 'rxjs';
-import { SLACK_CLEANER_TOKEN } from '../../../../helpers/token.helper';
+import { SLACK_CLEANER_THEME, SLACK_CLEANER_TOKEN } from '../../../../helpers/token.helper';
 import { IUserProfile } from '../../../../models/user';
 import { IFile } from '../../../../models/file-filter';
 
@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit {
   profileLoading$: Observable<boolean>;
   fileDetail$: Observable<IFile>;
   fileDetailLoading$: Observable<boolean>;
+  searchedFiles$: Observable<IFile[]>;
+  searchingFiles$: Observable<boolean>;
 
   constructor(
     private readonly router: Router,
@@ -34,6 +36,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.setTheme(false);
     this.setInitialState();
 
     this.filePercentages$ = this.store.pipe(select(getDashboardState), pluck('filePercentages'), distinctUntilChanged<IFilePercentage[]>());
@@ -45,13 +48,15 @@ export class DashboardComponent implements OnInit {
     this.filesLoading$ = this.store.pipe(select(getDashboardState), pluck('filesLoading'), distinctUntilChanged<boolean>());
     this.fileDetail$ = this.store.pipe(select(getDashboardState), pluck('fileDetail'), distinctUntilChanged<IFile>());
     this.fileDetailLoading$ = this.store.pipe(select(getDashboardState), pluck('fileDetailLoading'), distinctUntilChanged<boolean>());
+    this.searchedFiles$ = this.store.pipe(select(getDashboardState), pluck('searchedFiles'), distinctUntilChanged<IFile[]>());
+    this.searchingFiles$ = this.store.pipe(select(getDashboardState), pluck('searchingFiles'), distinctUntilChanged<boolean>());
 
     if (this.router.url !== '/dashboard') {
       return;
     }
 
     this.router.navigateByUrl('/dashboard/home');
- }
+  }
 
   setInitialState(): void {
     this.store.dispatch({
@@ -62,5 +67,34 @@ export class DashboardComponent implements OnInit {
   signOut(): void {
     localStorage.setItem(SLACK_CLEANER_TOKEN, undefined);
     this.router.navigateByUrl('/');
+  }
+
+  setTheme(change?: boolean): void {
+
+    const value = localStorage.getItem(SLACK_CLEANER_THEME);
+    const shouldTakeNewValue = value === 'light' ? 'dark' : 'light';
+    const newValue = change ? shouldTakeNewValue : value;
+
+    localStorage.setItem(SLACK_CLEANER_THEME, newValue.toString());
+    if (newValue === 'light') {
+      jQuery('body').removeClass('dark');
+    } else {
+      jQuery('body').addClass('dark');
+    }
+  }
+
+  searchFiles(query: string): void {
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SEARCH_FILES,
+      payload: query
+    });
+  }
+
+  deleteFile(file: string): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_DELETE_FILE,
+      payload: file
+    });
   }
 }
