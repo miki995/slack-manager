@@ -56,7 +56,7 @@
   <tr>
     <th>
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="files-select-all">
+        <input (input)="setAllFilesSelectedForDelete.emit()" type="checkbox" class="custom-control-input" id="files-select-all">
         <label class="custom-control-label" for="files-select-all"></label>
       </div>
     </th>
@@ -72,7 +72,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let file of files  | slice : 0 : 100; let index = index; trackBy: trackByIndex">
-    <td class="dt-body-center"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="customCheck{{ index }}"><label class="custom-control-label" for="customCheck{{ index }}"></label></div></td>
+    <td class="dt-body-center"><div class="custom-control custom-checkbox"><input (input)="setFileSelectedForDelete.emit(file?.id)" type="checkbox" [checked]="selectedFilesForDelete?.includes(file?.id)" class="custom-control-input" id="customCheck{{ index }}"><label class="custom-control-label" for="customCheck{{ index }}"></label></div></td>
     <td>
       <a class="d-flex align-items-center">
         <figure class="avatar avatar-sm mr-3">

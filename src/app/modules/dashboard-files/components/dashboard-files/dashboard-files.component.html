@@ -68,9 +68,12 @@
               [filesQueryParams]="filesQueryParams$ | async"
               [users]="(usersResponse$ | async)?.members"
               [loading]="dashFilesLoading$ | async"
+              [selectedFilesForDelete]="selectedFilesForDelete$ | async"
               (filesQueryParamsChange)="onFilesQueryParamsOverride($event)"
               (fileDetailChange)="getFileDetail($event)"
               (fileDelete)="deleteFile($event)"
+              (setAllFilesSelectedForDelete)="setAllFilesSelectedForDelete()"
+              (setFileSelectedForDelete)="setFileSelectedForDelete($event)"
             >
             </sc-dashboard-files-list>
           </div>

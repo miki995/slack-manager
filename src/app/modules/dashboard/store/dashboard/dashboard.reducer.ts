@@ -32,8 +32,9 @@ export interface IDashboard {
   fileDetail?: IFile;
   fileDetailLoading?: boolean;
   fileDeleting: boolean;
-  searchedFiles?: IFile[];
+  searchedFiles: IFile[];
   searchingFiles: boolean;
+  selectedFilesForDelete: string[];
 }
 
 const initialState: IDashboard = {
@@ -52,7 +53,9 @@ const initialState: IDashboard = {
   dashFilesLoading: false,
   usersLoading: false,
   fileDeleting: false,
-  searchingFiles: false
+  searchingFiles: false,
+  searchedFiles: [],
+  selectedFilesForDelete: []
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -241,15 +244,15 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       const filesResponseIndex = state.filesResponse.files.findIndex(file => file.id === action.payload);
       const searchedFilesResponseIndex = state.searchedFiles.findIndex(file => file.id === action.payload);
 
-      const allFiles = [ ...state.allFilesResponse.files];
+      const allFiles = [ ...state.allFilesResponse.files ];
       if (allFilesResponseIndex !== -1) {
         allFiles.splice(allFilesResponseIndex, 1);
       }
-      const newFiles = [ ...state.filesResponse.files];
+      const newFiles = [ ...state.filesResponse.files ];
       if (filesResponseIndex !== -1) {
         newFiles.splice(filesResponseIndex, 1);
       }
-      const newSearchedFiles = [ ...state.searchedFiles];
+      const newSearchedFiles = [ ...state.searchedFiles ];
       if (searchedFilesResponseIndex !== -1) {
         newSearchedFiles.splice(searchedFilesResponseIndex, 1);
       }
@@ -302,6 +305,32 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       return {
         ...state,
         searchingFiles: false
+      };
+
+    case dashboardActions.DASHBOARD_SET_ALL_SELECTED_FILES_FOR_DELETE:
+
+      const shouldClear = state.selectedFilesForDelete.length === state.filesResponse.files.length;
+      const selectedFilesForDelete = shouldClear ? [] : state.filesResponse.files.map(file => file.id);
+
+      return {
+        ...state,
+        selectedFilesForDelete
+      };
+
+    case dashboardActions.DASHBOARD_SET_SELECTED_FILE_FOR_DELETE:
+
+      const selectedFiles = [...state.selectedFilesForDelete];
+      const fileIndex = selectedFiles?.length ? selectedFiles.findIndex(selectedFile => selectedFile === action.payload) : -1;
+
+      if (fileIndex !== -1) {
+        selectedFiles.splice(fileIndex, 1);
+      } else {
+        selectedFiles.push(action.payload);
+      }
+
+      return {
+        ...state,
+        selectedFilesForDelete: selectedFiles
       };
 
     default:

@@ -16,10 +16,13 @@ export class FilesListComponent {
   @Input() filesQueryParams: IFilesQueryParams;
   @Input() users: IUser[];
   @Input() loading: boolean;
+  @Input() selectedFilesForDelete: string[];
 
   @Output() filesQueryParamsChange = new EventEmitter<IFilesQueryParams>();
   @Output() fileDetailChange = new EventEmitter<string>();
   @Output() fileDelete = new EventEmitter<string>();
+  @Output() setAllFilesSelectedForDelete = new EventEmitter<boolean>();
+  @Output() setFileSelectedForDelete = new EventEmitter<string>();
 
   onDateChange(isNewest: boolean): void {
 

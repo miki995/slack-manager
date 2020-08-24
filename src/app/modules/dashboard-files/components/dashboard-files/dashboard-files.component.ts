@@ -21,6 +21,7 @@ export class DashboardFilesComponent implements OnInit {
   conversationsResponse$: Observable<IConversationsResponse>;
   usersResponse$: Observable<IUsersResponse>;
   dashFilesLoading$: Observable<boolean>;
+  selectedFilesForDelete$: Observable<string[]>;
 
   constructor(private readonly store: Store<IDashboardState>) {
   }
@@ -44,6 +45,7 @@ export class DashboardFilesComponent implements OnInit {
     this.conversationsResponse$ = this.store.pipe(select(getDashboardState), pluck('conversationsResponse'), distinctUntilChanged<IConversationsResponse>());
     this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
     this.dashFilesLoading$ = this.store.pipe(select(getDashboardState), pluck('dashFilesLoading'), distinctUntilChanged<boolean>());
+    this.selectedFilesForDelete$ = this.store.pipe(select(getDashboardState), pluck('selectedFilesForDelete'), distinctUntilChanged<string[]>());
   }
 
   getFiles(): void {
@@ -110,6 +112,21 @@ export class DashboardFilesComponent implements OnInit {
 
     this.store.dispatch({
       type: dashboardActions.DASHBOARD_DELETE_FILE,
+      payload: file
+    });
+  }
+
+  setAllFilesSelectedForDelete(): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_ALL_SELECTED_FILES_FOR_DELETE
+    });
+  }
+
+  setFileSelectedForDelete(file: string): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_SELECTED_FILE_FOR_DELETE,
       payload: file
     });
   }

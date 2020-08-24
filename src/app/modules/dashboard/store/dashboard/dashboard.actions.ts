@@ -238,6 +238,23 @@ export class DashboardSearchFilesFail implements Action {
   }
 }
 
+export const DASHBOARD_SET_SELECTED_FILE_FOR_DELETE = '[Dashboard]: set selected file for delete';
+export const DASHBOARD_SET_ALL_SELECTED_FILES_FOR_DELETE = '[Dashboard]: set all selected files for delete';
+
+export class DashboardSetSelectedFileForDelete implements Action {
+  readonly type = DASHBOARD_SET_SELECTED_FILE_FOR_DELETE;
+
+  constructor(public payload: string) {
+  }
+}
+
+export class DashboardSetAllSelectedFilesForDelete implements Action {
+  readonly type = DASHBOARD_SET_ALL_SELECTED_FILES_FOR_DELETE;
+
+  constructor(public payload?: any) {
+  }
+}
+
 export type Actions =
   DashboardSetInitialState
   | DashboardSetFilesFilter
@@ -266,6 +283,8 @@ export type Actions =
   | DashboardDeleteFileFail
   | DashboardSearchFiles
   | DashboardSearchFilesSuccess
-  | DashboardSearchFilesFail;
+  | DashboardSearchFilesFail
+  | DashboardSetSelectedFileForDelete
+  | DashboardSetAllSelectedFilesForDelete;
 
 
