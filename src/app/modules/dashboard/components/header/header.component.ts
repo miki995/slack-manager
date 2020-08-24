@@ -19,4 +19,5 @@ export class HeaderComponent {
   @Output() signOut = new EventEmitter<any>();
   @Output() changeTheme = new EventEmitter<boolean>();
   @Output() searchTermChange = new EventEmitter<string>();
+  @Output() deleteFile = new EventEmitter<string>();
 }

@@ -14,7 +14,8 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <button class="btn">
-                      <i class="ti-search"></i>
+                      <i *ngIf="!searchingFiles" class="ti-search"></i>
+                      <div *ngIf="searchingFiles" class="spinner-border text-dark-bright width-15 height-15" role="status"></div>
                     </button>
                   </div>
                     <input type="text" #input (input)="searchTermChange.emit(input?.value)" class="form-control" placeholder="Search files..." data-toggle="dropdown">
@@ -23,19 +24,27 @@
                         <i data-feather="x"></i>
                       </button>
                     </div>
-                    <div class="dropdown-menu w-100" [ngClass]="{ 'display-none': input?.value === '' }">
-                      <a class="dropdown-item" *ngIf="!searchedFiles?.length && input?.value !== ''">No files found for "{{ input?.value }}"</a>
-                      <a *ngFor="let file of searchedFiles" class="d-flex align-items-center">
-                        <figure class="avatar avatar-sm mr-3">
-                          <span class="avatar-title {{ (file?.filetype | fileType)?.imageClass }} text-black-50 rounded-pill">
+                    <div class="dropdown-menu w-100" [ngClass]="{ 'display-none': input?.value === '' || searchingFiles }">
+                      <a class="dropdown-item" *ngIf="!searchedFiles?.length && input?.value !== '' && !searchingFiles">No files found for "{{ input?.value }}"</a>
+                      <div *ngFor="let file of searchedFiles" class="row d-flex align-items-center mg-10">
+                        <div class="col-2">
+                          <figure class="avatar avatar-sm mr-3">
+                            <span class="avatar-title {{ (file?.filetype | fileType)?.imageClass }} text-black-50 rounded-pill">
                               <i class="{{ (file?.filetype | fileType)?.icon }}"></i>
                           </span>
-                        </figure>
-                            <span class="d-flex flex-column max-width-200 break-word">
+                          </figure>
+                        </div>
+                        <div class="col-8">
+                          <span class="d-flex flex-column max-width-200 break-word">
                             <a [href]="file?.url_private_download" class="text-primary break-word">{{file?.name}}</a>
-                            <span class="small font-italic">{{ file?.size | formatBytes }}</span>
+                          <span class="small font-italic">{{ file?.size | formatBytes }}</span>
                         </span>
-                      </a>
+                        </div>
+                        <div class="col-2">
+                          <a class="badge cursor-pointer {{ (file?.filetype | fileType)?.badgeClass }}" (click)="deleteFile.emit(file?.id)">delete</a>
+                        </div>
+                        <hr/>
+                      </div>
                     </div>
                 </div>
               </form>
