@@ -25,20 +25,15 @@
         (filesQueryParamsChange)="onFilesQueryParamsChange($event)"
       >
       </sc-dashboard-files-filters>
-      <div id="file-actions" class="d-none">
+      <div id="file-actions" *ngIf="(selectedFilesForDelete$ | async)?.length">
         <ul class="list-inline">
           <li class="list-inline-item mb-0">
-            <a href="#" scTooltip class="btn btn-outline-light" data-toggle="tooltip" title="Move">
-              <i class="ti-arrow-top-right"></i>
-            </a>
-          </li>
-          <li class="list-inline-item mb-0">
-            <a href="#" scTooltip class="btn btn-outline-light" data-toggle="tooltip" title="Download">
+            <a scTooltip (click)="downloadFiles()" class="btn btn-outline-light cursor-pointer" data-toggle="tooltip" title="Download">
               <i class="ti-download"></i>
             </a>
           </li>
           <li class="list-inline-item mb-0">
-            <a href="#" scTooltip class="btn btn-outline-danger" data-toggle="tooltip" title="Delete">
+            <a scTooltip class="btn btn-outline-danger cursor-pointer" data-toggle="tooltip" title="Delete">
               <i class="ti-trash"></i>
             </a>
           </li>

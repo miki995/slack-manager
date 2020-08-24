@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { catchError, distinctUntilChanged, map, pluck, switchMap, withLatestFrom, flatMap, debounceTime } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, flatMap, map, pluck, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as dashboardActions from './dashboard.actions';
 import { FilesService } from '../../../../services/files.service';
 import { select, Store } from '@ngrx/store';
 import { getDashboardState, IDashboardState } from '../index';
-import { IFilesQueryParams } from '../../../../models/file-filter';
+import { IFile, IFilesQueryParams } from '../../../../models/file-filter';
 import { ConversationsService } from '../../../../services/conversations.service';
 import { UsersService } from '../../../../services/users.service';
 import { ClipboardService, IClipboardResponse } from 'ngx-clipboard';
@@ -45,7 +45,7 @@ export class DashboardEffects {
   clipboardSubscribe$ = this.actions$
     .pipe(
       ofType(dashboardActions.DASHBOARD_SET_INITIAL_STATE),
-      map((action: any) => {
+      map((action: dashboardActions.DashboardSetInitialState) => {
         this.clipboardService.copyResponse$.subscribe((res: IClipboardResponse) => {
           if (res.isSuccess) {
             swal({
@@ -66,7 +66,7 @@ export class DashboardEffects {
     .pipe(
       ofType(dashboardActions.DASHBOARD_GET_FILES),
       withLatestFrom(this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>())),
-      switchMap(([action, filesQueryParams]: [dashboardActions.DashboardGetFiles, IFilesQueryParams]) => {
+      switchMap(([ action, filesQueryParams ]: [ dashboardActions.DashboardGetFiles, IFilesQueryParams ]) => {
 
         return this.filesService.getFiles(filesQueryParams)
           .pipe(
@@ -98,9 +98,18 @@ export class DashboardEffects {
     .pipe(
       ofType(dashboardActions.DASHBOARD_GET_ALL_FILES),
       withLatestFrom(this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>())),
-      switchMap(([action, filesQueryParams]: [dashboardActions.DashboardGetAllFiles, IFilesQueryParams]) => {
+      switchMap(([ action, filesQueryParams ]: [ dashboardActions.DashboardGetAllFiles, IFilesQueryParams ]) => {
 
-        return this.filesService.getFiles({ ...filesQueryParams, count: 999, ts_from: null, types: null, channel: null, ts_to: null, size: null, page: null })
+        return this.filesService.getFiles({
+          ...filesQueryParams,
+          count: 999,
+          ts_from: null,
+          types: null,
+          channel: null,
+          ts_to: null,
+          size: null,
+          page: null
+        })
           .pipe(
             catchError((error) => of(new dashboardActions.DashboardGetAllFilesFail(error))),
             map((response) => new dashboardActions.DashboardGetAllFilesSuccess(response))
@@ -176,6 +185,21 @@ export class DashboardEffects {
             catchError((error) => of(new dashboardActions.DashboardSearchFilesFail(error))),
             map((response) => new dashboardActions.DashboardSearchFilesSuccess(response))
           );
+      })
+    );
+
+  @Effect({ dispatch: false })
+  downloadAllFilesSelectedForDelete$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_DOWNLOAD_SELECTED_FILES),
+      withLatestFrom(
+        this.store.pipe(select(getDashboardState), pluck('filesResponse', 'files'), distinctUntilChanged<IFile[]>()),
+        this.store.pipe(select(getDashboardState), pluck('selectedFilesForDelete'), distinctUntilChanged<string[]>())
+      ),
+      map(([ action, files, selectedFilesForDelete ]: [ dashboardActions.DashboardDownloadAllSelectedFilesForDelete, IFile[], string[] ]) => {
+
+        const urls: string[] = files.filter(file => selectedFilesForDelete.includes(file.id)).map(file => file.url_private_download);
+
       })
     );
 

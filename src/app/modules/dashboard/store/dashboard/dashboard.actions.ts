@@ -240,6 +240,7 @@ export class DashboardSearchFilesFail implements Action {
 
 export const DASHBOARD_SET_SELECTED_FILE_FOR_DELETE = '[Dashboard]: set selected file for delete';
 export const DASHBOARD_SET_ALL_SELECTED_FILES_FOR_DELETE = '[Dashboard]: set all selected files for delete';
+export const DASHBOARD_DOWNLOAD_SELECTED_FILES = '[Dashboard]: download all selected files for delete';
 
 export class DashboardSetSelectedFileForDelete implements Action {
   readonly type = DASHBOARD_SET_SELECTED_FILE_FOR_DELETE;
@@ -250,6 +251,13 @@ export class DashboardSetSelectedFileForDelete implements Action {
 
 export class DashboardSetAllSelectedFilesForDelete implements Action {
   readonly type = DASHBOARD_SET_ALL_SELECTED_FILES_FOR_DELETE;
+
+  constructor(public payload?: any) {
+  }
+}
+
+export class DashboardDownloadAllSelectedFilesForDelete implements Action {
+  readonly type = DASHBOARD_DOWNLOAD_SELECTED_FILES;
 
   constructor(public payload?: any) {
   }
@@ -285,6 +293,7 @@ export type Actions =
   | DashboardSearchFilesSuccess
   | DashboardSearchFilesFail
   | DashboardSetSelectedFileForDelete
-  | DashboardSetAllSelectedFilesForDelete;
+  | DashboardSetAllSelectedFilesForDelete
+  | DashboardDownloadAllSelectedFilesForDelete;
 
 

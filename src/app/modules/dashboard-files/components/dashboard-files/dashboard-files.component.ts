@@ -130,4 +130,11 @@ export class DashboardFilesComponent implements OnInit {
       payload: file
     });
   }
+
+  downloadFiles(): void {
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_DOWNLOAD_SELECTED_FILES
+    });
+  }
 }
