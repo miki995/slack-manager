@@ -19,13 +19,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "sc",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "sc",
       "kebab-case"
     ],
     "eofline": true,
@@ -42,7 +42,7 @@
     "max-classes-per-file": false,
     "max-line-length": [
       true,
-      140
+      500
     ],
     "member-ordering": [
       true,

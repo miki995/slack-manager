@@ -1,0 +1,71 @@
+<div class="sidebar primary-sidebar show" id="storage" xmlns:svg="svg">
+  <div class="sidebar-header">
+    <h4>Storage Overview</h4>
+  </div>
+  <content-loader *ngIf="filesLoading" width="200" height="400" xmlns:svg="svg">
+    <svg:rect x="18" y="14" rx="0" ry="0" width="45" height="39" />
+    <svg:rect x="87" y="18" rx="0" ry="0" width="310" height="11" />
+    <svg:rect x="87" y="38" rx="0" ry="0" width="310" height="12" />
+    <svg:rect x="7" y="65" rx="0" ry="0" width="389" height="6" />
+    <svg:rect x="90" y="98" rx="0" ry="0" width="310" height="11" />
+    <svg:rect x="90" y="117" rx="0" ry="0" width="310" height="12" />
+    <svg:rect x="10" y="144" rx="0" ry="0" width="389" height="6" />
+    <svg:rect x="91" y="176" rx="0" ry="0" width="310" height="11" />
+    <svg:rect x="91" y="196" rx="0" ry="0" width="310" height="12" />
+    <svg:rect x="11" y="223" rx="0" ry="0" width="389" height="6" />
+    <svg:rect x="94" y="256" rx="0" ry="0" width="310" height="11" />
+    <svg:rect x="94" y="275" rx="0" ry="0" width="310" height="12" />
+    <svg:rect x="14" y="302" rx="0" ry="0" width="389" height="6" />
+    <svg:rect x="96" y="331" rx="0" ry="0" width="310" height="11" />
+    <svg:rect x="96" y="351" rx="0" ry="0" width="310" height="12" />
+    <svg:rect x="16" y="378" rx="0" ry="0" width="389" height="6" />
+    <svg:rect x="21" y="400" rx="0" ry="0" width="64" height="55" />
+    <svg:rect x="99" y="411" rx="0" ry="0" width="310" height="11" />
+    <svg:rect x="99" y="430" rx="0" ry="0" width="310" height="12" />
+    <svg:rect x="19" y="457" rx="0" ry="0" width="389" height="6" />
+    <svg:rect x="20" y="95" rx="0" ry="0" width="45" height="39" />
+    <svg:rect x="23" y="168" rx="0" ry="0" width="45" height="39" />
+    <svg:rect x="25" y="253" rx="0" ry="0" width="45" height="39" />
+    <svg:rect x="24" y="324" rx="0" ry="0" width="45" height="39" />
+  </content-loader>
+  <div *ngIf="!filesLoading" class="sidebar-content">
+    <p class="center">Percentage used</p>
+    <mwl-gauge
+      *ngIf="value >= 0"
+      class="two"
+      [max]="100"
+      [dialStartAngle]="180"
+      [dialEndAngle]="0"
+      [value]="value"
+      [animated]="true"
+      [animationDuration]="2">
+    </mwl-gauge>
+    <div>
+      <div class="list-group list-group-flush mb-3">
+        <a *ngFor="let filePercentage of filePercentages | slice: 1 : filePercentages.length" class="list-group-item px-0 d-flex align-items-center">
+          <div class="mr-3">
+            <figure class="avatar">
+              <span class="avatar-title bg-primary-bright text-primary rounded">
+                <i class="{{ (filePercentage?.title | folderColor)?.icon }}"></i>
+              </span>
+            </figure>
+          </div>
+          <div class="flex-grow-1">
+            <p class="mb-0">{{filePercentage?.title}}</p>
+          </div>
+          <div>
+            <h5 class="text-primary">{{filePercentage?.size}}</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="card border shadow-none">
+      <div class="card-body text-center">
+        <img class="img-fluid mb-3" src="assets/images/upgrade.svg" alt="upgrade">
+        <h5>Get an Upgrade</h5>
+        <p class="text-muted">Get space for your documents and files.</p>
+        <button (click)="openSlackPricing()" class="btn btn-primary">Upgrade</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+<content-loader *ngIf="loading" width="500" height="800" class="mg-left-35" xmlns:svg="svg">
+  <svg:rect x="51" y="45" rx="3" ry="3" width="906" height="17" />
+  <svg:circle cx="879" cy="123" r="11" />
+  <svg:circle cx="914" cy="123" r="11" />
+  <svg:rect x="104" y="115" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="305" y="114" rx="3" ry="3" width="299" height="15" />
+  <svg:rect x="661" y="114" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="55" y="155" rx="3" ry="3" width="897" height="2" />
+  <svg:circle cx="880" cy="184" r="11" />
+  <svg:circle cx="915" cy="184" r="11" />
+  <svg:rect x="105" y="176" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="306" y="175" rx="3" ry="3" width="299" height="15" />
+  <svg:rect x="662" y="175" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="56" y="216" rx="3" ry="3" width="897" height="2" />
+  <svg:circle cx="881" cy="242" r="11" />
+  <svg:circle cx="916" cy="242" r="11" />
+  <svg:rect x="106" y="234" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="307" y="233" rx="3" ry="3" width="299" height="15" />
+  <svg:rect x="663" y="233" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="57" y="274" rx="3" ry="3" width="897" height="2" />
+  <svg:circle cx="882" cy="303" r="11" />
+  <svg:circle cx="917" cy="303" r="11" />
+  <svg:rect x="107" y="295" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="308" y="294" rx="3" ry="3" width="299" height="15" />
+  <svg:rect x="664" y="294" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="58" y="335" rx="3" ry="3" width="897" height="2" />
+  <svg:circle cx="881" cy="363" r="11" />
+  <svg:circle cx="916" cy="363" r="11" />
+  <svg:rect x="106" y="355" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="307" y="354" rx="3" ry="3" width="299" height="15" />
+  <svg:rect x="663" y="354" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="57" y="395" rx="3" ry="3" width="897" height="2" />
+  <svg:circle cx="882" cy="424" r="11" />
+  <svg:circle cx="917" cy="424" r="11" />
+  <svg:rect x="107" y="416" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="308" y="415" rx="3" ry="3" width="299" height="15" />
+  <svg:rect x="664" y="415" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="55" y="453" rx="3" ry="3" width="897" height="2" />
+  <svg:rect x="51" y="49" rx="3" ry="3" width="2" height="465" />
+  <svg:rect x="955" y="49" rx="3" ry="3" width="2" height="465" />
+  <svg:circle cx="882" cy="484" r="11" />
+  <svg:circle cx="917" cy="484" r="11" />
+  <svg:rect x="107" y="476" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="308" y="475" rx="3" ry="3" width="299" height="15" />
+  <svg:rect x="664" y="475" rx="3" ry="3" width="141" height="15" />
+  <svg:rect x="55" y="513" rx="3" ry="3" width="897" height="2" />
+  <svg:rect x="52" y="80" rx="3" ry="3" width="906" height="17" />
+  <svg:rect x="53" y="57" rx="3" ry="3" width="68" height="33" />
+  <svg:rect x="222" y="54" rx="3" ry="3" width="149" height="33" />
+  <svg:rect x="544" y="55" rx="3" ry="3" width="137" height="33" />
+  <svg:rect x="782" y="56" rx="3" ry="3" width="72" height="33" />
+  <svg:rect x="933" y="54" rx="3" ry="3" width="24" height="33" />
+</content-loader>
+<table *ngIf="!loading && files?.length" id="table-files" class="table table-borderless table-hover dataTable no-footer">
+  <thead>
+  <tr>
+    <th>
+      <div class="custom-control custom-checkbox">
+        <input (input)="setAllFilesSelectedForDelete.emit()" [disabled]="filesDeleting" [checked]="selectedFilesForDelete?.length === files?.length" type="checkbox" class="custom-control-input" id="files-select-all">
+        <label class="custom-control-label" for="files-select-all"></label>
+      </div>
+    </th>
+    <th>Name</th>
+    <th class="sorting"
+        (click)="onDateChange(filesQueryParams?.date === filesSortByDateEnum.newest)"
+        [ngClass]="!!filesQueryParams?.date ? (filesQueryParams?.date === filesSortByDateEnum.newest ? 'sorting_desc' : 'sorting_asc') : ''"
+        tabindex="0" aria-controls="table-files" rowspan="1" colspan="1">Created</th>
+    <th>Type</th>
+    <th>User</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let file of files  | slice : 0 : 100; let index = index; trackBy: trackByIndex">
+    <td class="dt-body-center"><div class="custom-control custom-checkbox"><input (input)="setFileSelectedForDelete.emit(file?.id)" [disabled]="filesDeleting" type="checkbox" [checked]="selectedFilesForDelete?.includes(file?.id)" class="custom-control-input" id="customCheck{{ index }}"><label class="custom-control-label" for="customCheck{{ index }}"></label></div></td>
+    <td>
+      <a class="d-flex align-items-center">
+        <figure class="avatar avatar-sm mr-3">
+            <span class="avatar-title {{ (file?.filetype | fileType)?.imageClass }} text-black-50 rounded-pill">
+                <i class="{{ (file?.filetype | fileType)?.icon }}"></i>
+            </span>
+        </figure>
+        <span class="d-flex flex-column max-width-200">
+              <span class="text-primary">{{file?.name}}</span>
+              <span class="small font-italic">{{ file?.size | formatBytes }}</span>
+          </span>
+      </a>
+    </td>
+    <td>{{ file?.created | timeAgoPipe }}</td>
+    <td>
+      <div class="badge {{ (file?.filetype | fileType)?.badgeClass }}">{{ file?.filetype }}</div>
+    </td>
+    <td>
+      <div class="avatar-group">
+        <figure scTooltip class="avatar avatar-sm" title="{{ (file?.user | getUserProfile : users)?.real_name }}" data-toggle="tooltip">
+          <img src="{{ (file?.user | getUserProfile : users)?.image_32 }}"
+               class="rounded-circle"
+               alt="image">
+        </figure>
+      </div>
+    </td>
+    <td class="text-right">
+      <div class="dropdown">
+        <a href="#" class="btn btn-floating" data-toggle="dropdown">
+          <i class="ti-more-alt"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a *ngIf="!filesDeleting" class="dropdown-item" data-sidebar-target="#view-detail" (click)="fileDetailChange.emit(file?.id)">View Details</a>
+          <a class="dropdown-item" ngxClipboard [cbContent]="file?.url_private">Share</a>
+          <a class="dropdown-item" [href]="file?.url_private_download">Download</a>
+          <a *ngIf="!filesDeleting" class="dropdown-item" (click)="fileDelete.emit(file?.id)">Delete</a>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div *ngIf="!files?.length" class="no-files">
+  <div class="title mt-0"><h4>No files found</h4></div>
+  <img class="no-files" width="500" height="500" src="assets/images/mean_at_work.svg" alt="no files found"/>
+</div>

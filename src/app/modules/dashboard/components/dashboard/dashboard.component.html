@@ -1,6 +1,64 @@
-<a href="https://slack.com/oauth/v2/authorize?user_scope=channels:read,channels:history,files:read,remote_files:read,files:write,remote_files:write&client_id=511475946403.1296558517926"><img src="https://api.slack.com/img/sign_in_with_slack.png" /></a>
-
-<div *ngFor="let file of files">
-  <a [href]="file?.thumb_pdf">{{ file?.name }}</a>
-  <img [src]="file?.thumb_pdf"/>
+<!-- Preloader
+<div class="preloader">
+  <div class="preloader-icon"></div>
 </div>
+ ./ Preloader -->
+
+<!-- Layout wrapper -->
+<div class="layout-wrapper">
+  <!-- Header -->
+    <sc-header
+    [profile]="profile$ | async"
+    [usedStoragePercentage]="usedStoragePercentage$ | async"
+    [profileLoading]="profileLoading$ | async"
+    [searchedFiles]="searchedFiles$ | async"
+    [searchingFiles]="searchingFiles$ | async"
+    (signOut)="signOut()"
+    (changeTheme)="setTheme(true)"
+    (searchTermChange)="searchFiles($event)"
+    (deleteFile)="deleteFile($event)"
+    >
+    </sc-header>
+  <!-- ./ Header -->
+
+  <!-- Content wrapper -->
+  <div class="content-wrapper">
+    <!-- begin::navigation -->
+    <sc-sidebar></sc-sidebar>
+    <!-- end::navigation -->
+
+    <!-- Content body -->
+    <div class="content-body">
+      <!-- Content -->
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- ./ Content -->
+
+      <!-- Footer -->
+      <footer class="content-footer d-print-none">
+        <div>© 2020 Slack Cleaner</div>
+        <div>
+          <nav class="nav">
+            <a href="https://twitter.com/NgQuad" target="_blank" class="nav-link">Get Help</a>
+          </nav>
+        </div>
+      </footer>
+      <!-- ./ Footer -->
+    </div>
+    <!-- ./ Content body -->
+
+    <!-- Sidebar group -->
+    <sc-sidebar-right
+      [filePercentages]="filePercentages$ | async"
+      [filesLoading]="filesLoading$ | async"
+      [usedStoragePercentage]="usedStoragePercentage$ | async"
+      [fileDetail]="fileDetail$ | async"
+      [fileDetailLoading]="fileDetailLoading$ | async"
+    >
+    </sc-sidebar-right>
+    <!-- ./ Sidebar group -->
+  </div>
+  <!-- ./ Content wrapper -->
+</div>
+<!-- ./ Layout wrapper -->

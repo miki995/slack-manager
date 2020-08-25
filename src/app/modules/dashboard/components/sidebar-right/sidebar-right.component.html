@@ -1,0 +1,20 @@
+<!-- Sidebar group -->
+<div class="sidebar-group d-print-none">
+  <!-- Sidebar - Storage -->
+  <sc-sidebar-storage
+    [filePercentages]="filePercentages"
+    [filesLoading]="filesLoading"
+    [value]="usedStoragePercentage"
+  >
+  </sc-sidebar-storage>
+  <!-- ./ Sidebar - Storage -->
+
+  <!-- Sidebar - File info -->
+  <sc-sidebar-file-info
+  [fileDetail]="fileDetail"
+  [fileDetailLoading]="fileDetailLoading">
+  </sc-sidebar-file-info>
+  <!-- ./ Sidebar - file info -->
+
+</div>
+<!-- ./ Sidebar group -->

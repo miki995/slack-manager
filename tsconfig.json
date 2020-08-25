@@ -13,5 +13,12 @@
     {
       "path": "./tsconfig.spec.json"
     }
-]
+  ],
+  "types": [
+    "jquery"
+  ],
+  "typeRoots": [
+    "node_modules/@types",
+    "custom_typings"
+  ]
 }

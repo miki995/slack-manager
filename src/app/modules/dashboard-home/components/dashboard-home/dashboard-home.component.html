@@ -1,0 +1,20 @@
+<sc-dashboard-home-upgrade>
+</sc-dashboard-home-upgrade>
+
+<sc-dashboard-home-stats
+  [filePercentages]="filePercentages$ | async">
+</sc-dashboard-home-stats>
+
+<sc-dashboard-home-quick-access
+  [filePercentages]="filePercentages$ | async"
+  (setFileType)="setFileType($event)">
+</sc-dashboard-home-quick-access>
+
+<sc-dashboard-recent-files
+  [recentFiles]="recentFiles$ | async"
+  [users]="(usersResponse$ | async)?.members"
+  (seeAllFiles)="setFileType('View All')"
+  (fileDetailChange)="getFileDetail($event)"
+  (fileDelete)="deleteFile($event)"
+>
+</sc-dashboard-recent-files>
