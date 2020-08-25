@@ -195,12 +195,7 @@ export class DashboardFilesComponent implements OnInit {
           this.store.dispatch({ type: dashboardActions.DASHBOARD_GET_ALL_FILES });
 
           if (bulk) {
-            this.filesService.getFiles({ count: 999 })
-              .subscribe((response: IFilesResponse) => {
-                if (!!response?.files?.length) {
-                  this.deleteMultipleFiles(response.files.map(item => item.id), true);
-                }
-              });
+            this.repeatBulk();
           }
 
           this.store.dispatch({
@@ -211,5 +206,14 @@ export class DashboardFilesComponent implements OnInit {
 
       }, interval);
     });
+  }
+
+  repeatBulk(): void {
+    this.filesService.getFiles({ count: 999 })
+      .subscribe((response: IFilesResponse) => {
+        if (!!response?.files?.length) {
+          this.deleteMultipleFiles(response.files.map(item => item.id), true);
+        }
+      });
   }
 }
