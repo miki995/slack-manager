@@ -1,21 +1,26 @@
-<div id="file-actions" *ngIf="selectedFilesForDelete?.length">
+<div id="file-actions">
   <ul class="list-inline">
     <li *ngIf="!filesDeleting" class="list-inline-item mb-0">
+      <a scTooltip (click)="startBulkDeleteAll.emit(allFiles)" class="btn btn-outline-danger cursor-pointer" data-toggle="tooltip" title="Bulk delete all files">
+        <i class="ti-shopping-cart-full"></i>
+      </a>
+    </li>
+    <li *ngIf="selectedFilesForDelete?.length && !filesDeleting" class="list-inline-item mb-0">
       <a scTooltip (click)="downloadFiles.emit()" class="btn btn-outline-light cursor-pointer" data-toggle="tooltip" title="Download selected files">
         <i class="ti-download"></i>
       </a>
     </li>
-    <li *ngIf="!filesDeleting" class="list-inline-item mb-0">
+    <li *ngIf="selectedFilesForDelete?.length && !filesDeleting" class="list-inline-item mb-0">
       <a (click)="startBulkDeleteSelected.emit(selectedFilesForDelete)" scTooltip class="btn btn-outline-danger cursor-pointer" data-toggle="tooltip" title="Delete selected files">
         <i class="ti-trash"></i>
       </a>
     </li>
-    <li *ngIf="filesDeleting" class="list-inline-item mb-0">
+    <li *ngIf="selectedFilesForDelete?.length && filesDeleting" class="list-inline-item mb-0">
       <a scTooltip class="btn btn-outline-warning cursor-pointer" data-toggle="tooltip" title="Deleting selected files">
         <i class="spinner-border text-dark-bright width-15 height-15" role="status"></i>
       </a>
     </li>
-    <li *ngIf="filesDeleting" class="list-inline-item mb-0">
+    <li *ngIf="selectedFilesForDelete?.length && filesDeleting" class="list-inline-item mb-0">
       <a (click)="stopBulkDeleteSelected.emit()" scTooltip class="btn btn-outline-info cursor-pointer" data-toggle="tooltip" title="Stop deleting selected files">
         <i class="ti-close"></i>
       </a>

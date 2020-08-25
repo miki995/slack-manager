@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { getDashboardState, IDashboardState } from '../../../dashboard/store';
-import { EFilesCount, EFilesFilter, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
+import { EFilesCount, EFilesFilter, IFile, IFilesQueryParams, IFilesResponse } from '../../../../models/file-filter';
 import * as dashboardActions from '../../../dashboard/store/dashboard/dashboard.actions';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { IConversationsResponse } from '../../../../models/conversation';
 import { IUsersResponse } from '../../../../models/user';
+import { FilesService } from '../../../../services/files.service';
 
 @Component({
   selector: 'sc-dashboard-files',
@@ -17,6 +18,7 @@ export class DashboardFilesComponent implements OnInit {
 
   filesFilter$: Observable<EFilesFilter>;
   filesResponse$: Observable<IFilesResponse>;
+  allFilesResponse$: Observable<IFilesResponse>;
   filesQueryParams$: Observable<IFilesQueryParams>;
   conversationsResponse$: Observable<IConversationsResponse>;
   usersResponse$: Observable<IUsersResponse>;
@@ -24,7 +26,10 @@ export class DashboardFilesComponent implements OnInit {
   selectedFilesForDelete$: Observable<string[]>;
   filesDeleting$: Observable<boolean>;
 
-  constructor(private readonly store: Store<IDashboardState>) {
+  constructor(
+    private readonly store: Store<IDashboardState>,
+    private readonly filesService: FilesService,
+  ) {
   }
 
   filesFilterChange(data: EFilesFilter): void {
@@ -42,6 +47,7 @@ export class DashboardFilesComponent implements OnInit {
 
     this.filesFilter$ = this.store.pipe(select(getDashboardState), pluck('filesFilter'), distinctUntilChanged<EFilesFilter>());
     this.filesResponse$ = this.store.pipe(select(getDashboardState), pluck('filesResponse'), distinctUntilChanged<IFilesResponse>());
+    this.allFilesResponse$ = this.store.pipe(select(getDashboardState), pluck('allFilesResponse'), distinctUntilChanged<IFilesResponse>());
     this.filesQueryParams$ = this.store.pipe(select(getDashboardState), pluck('filesQueryParams'), distinctUntilChanged<IFilesQueryParams>());
     this.conversationsResponse$ = this.store.pipe(select(getDashboardState), pluck('conversationsResponse'), distinctUntilChanged<IConversationsResponse>());
     this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
@@ -142,6 +148,36 @@ export class DashboardFilesComponent implements OnInit {
       payload: true
     });
 
+    this.deleteMultipleFiles(files);
+  }
+
+  startBulkDeleteAll(files: IFile[]): void {
+
+    jQuery('[data-toggle="tooltip"]').tooltip('hide'); // close all tooltips
+
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_FILES_DELETING,
+      payload: true
+    });
+
+    this.store.dispatch({ type: dashboardActions.DASHBOARD_SET_BULK_DELETE_ALL });
+
+    this.deleteMultipleFiles(files.map(file => file.id), true);
+  }
+
+  stopBulkDeleteSelected(): void {
+    jQuery('[data-toggle="tooltip"]').tooltip('hide'); // close all tooltips
+    this.store.dispatch({
+      type: dashboardActions.DASHBOARD_SET_CAN_BULK_DELETE,
+      payload: false
+    });
+  }
+
+  downloadFiles(): void {
+    this.store.dispatch({ type: dashboardActions.DASHBOARD_DOWNLOAD_SELECTED_FILES });
+  }
+
+  deleteMultipleFiles(files: string[], bulk?: boolean): void {
     let interval = 1000;
 
     files.forEach((file, index, array) => {
@@ -156,6 +192,17 @@ export class DashboardFilesComponent implements OnInit {
 
         if (index === array.length - 1) {
 
+          this.store.dispatch({ type: dashboardActions.DASHBOARD_GET_ALL_FILES });
+
+          if (bulk) {
+            this.filesService.getFiles({ count: 999 })
+              .subscribe((response: IFilesResponse) => {
+                if (!!response?.files?.length) {
+                  this.deleteMultipleFiles(response.files.map(item => item.id), true);
+                }
+              });
+          }
+
           this.store.dispatch({
             type: dashboardActions.DASHBOARD_SET_FILES_DELETING,
             payload: false
@@ -164,17 +211,5 @@ export class DashboardFilesComponent implements OnInit {
 
       }, interval);
     });
-  }
-
-  stopBulkDeleteSelected(): void {
-    jQuery('[data-toggle="tooltip"]').tooltip('hide'); // close all tooltips
-    this.store.dispatch({
-      type: dashboardActions.DASHBOARD_SET_CAN_BULK_DELETE,
-      payload: false
-    });
-  }
-
-  downloadFiles(): void {
-    this.store.dispatch({ type: dashboardActions.DASHBOARD_DOWNLOAD_SELECTED_FILES });
   }
 }

@@ -5,3 +5,8 @@
 .btn.btn-outline-warning:hover {
   color: inherit !important;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -306,6 +306,15 @@ export class DashboardSetCanBulkDeleteFiles implements Action {
   }
 }
 
+export const DASHBOARD_SET_BULK_DELETE_ALL = '[Dashboard]: set bulk delete all';
+
+export class DashboardSetBulkDeleteAll implements Action {
+  readonly type = DASHBOARD_SET_BULK_DELETE_ALL;
+
+  constructor(public payload?: boolean) {
+  }
+}
+
 export type Actions =
   DashboardSetInitialState
   | DashboardSetFilesFilter
@@ -342,6 +351,7 @@ export type Actions =
   | DashboardSetAllSelectedFilesForDelete
   | DashboardDownloadAllSelectedFilesForDelete
   | DashboardSetFilesDeleting
-  | DashboardSetCanBulkDeleteFiles;
+  | DashboardSetCanBulkDeleteFiles
+  | DashboardSetBulkDeleteAll;
 
 

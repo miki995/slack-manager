@@ -17,6 +17,7 @@ export class FilesListComponent {
   @Input() users: IUser[];
   @Input() loading: boolean;
   @Input() selectedFilesForDelete: string[];
+  @Input() filesDeleting: boolean;
 
   @Output() filesQueryParamsChange = new EventEmitter<IFilesQueryParams>();
   @Output() fileDetailChange = new EventEmitter<string>();

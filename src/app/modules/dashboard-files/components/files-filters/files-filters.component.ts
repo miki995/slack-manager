@@ -18,6 +18,7 @@ export class FilesFiltersComponent implements AfterViewInit {
 
   @Input() filesQueryParams: IFilesQueryParams;
   @Input() channels: any[];
+  @Input() filesDeleting: boolean;
 
   @Input() set dates(data: IFilesQueryParams) {
     if (!data.ts_from && !data.ts_to) {

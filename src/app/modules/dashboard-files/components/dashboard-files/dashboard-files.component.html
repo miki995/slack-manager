@@ -21,14 +21,17 @@
         [filesQueryParams]="filesQueryParams$ | async"
         [dates]="filesQueryParams$ | async"
         [channels]="(conversationsResponse$ | async)?.channels"
+        [filesDeleting]="filesDeleting$ | async"
         (filesQueryParamsOverride)="onFilesQueryParamsOverride($event)"
         (filesQueryParamsChange)="onFilesQueryParamsChange($event)"
       >
       </sc-dashboard-files-filters>
       <sc-file-actions
       [selectedFilesForDelete]="selectedFilesForDelete$ | async"
+      [allFiles]="(allFilesResponse$ | async)?.files"
       [filesDeleting]="filesDeleting$ | async"
       (startBulkDeleteSelected)="startBulkDeleteSelected($event)"
+      (startBulkDeleteAll)="startBulkDeleteAll($event)"
       (stopBulkDeleteSelected)="stopBulkDeleteSelected()"
       (downloadFiles)="downloadFiles()"
       >
@@ -39,12 +42,14 @@
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <sc-dashboard-files-count
+            [filesDeleting]="filesDeleting$ | async"
             [selectedCount]="(filesQueryParams$ | async)?.count"
             (changedCount)="onCountChanged($event)">
             </sc-dashboard-files-count>
           </div>
           <div class="col-sm-12 col-md-6">
             <sc-dashboard-files-search
+            [filesDeleting]="filesDeleting$ | async"
             [searchTerm]="(filesQueryParams$ | async)?.searchTerm"
             (searchTermChange)="onSearchTermChange($event)">
             </sc-dashboard-files-search>
@@ -58,6 +63,7 @@
               [users]="(usersResponse$ | async)?.members"
               [loading]="dashFilesLoading$ | async"
               [selectedFilesForDelete]="selectedFilesForDelete$ | async"
+              [filesDeleting]="filesDeleting$ | async"
               (filesQueryParamsChange)="onFilesQueryParamsOverride($event)"
               (fileDetailChange)="getFileDetail($event)"
               (fileDelete)="deleteFile($event)"

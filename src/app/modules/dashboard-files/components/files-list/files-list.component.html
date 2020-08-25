@@ -51,12 +51,12 @@
   <svg:rect x="782" y="56" rx="3" ry="3" width="72" height="33" />
   <svg:rect x="933" y="54" rx="3" ry="3" width="24" height="33" />
 </content-loader>
-<table *ngIf="!loading" id="table-files" class="table table-borderless table-hover dataTable no-footer">
+<table *ngIf="!loading && files?.length" id="table-files" class="table table-borderless table-hover dataTable no-footer">
   <thead>
   <tr>
     <th>
       <div class="custom-control custom-checkbox">
-        <input (input)="setAllFilesSelectedForDelete.emit()" type="checkbox" class="custom-control-input" id="files-select-all">
+        <input (input)="setAllFilesSelectedForDelete.emit()" [disabled]="filesDeleting" [checked]="selectedFilesForDelete?.length === files?.length" type="checkbox" class="custom-control-input" id="files-select-all">
         <label class="custom-control-label" for="files-select-all"></label>
       </div>
     </th>
@@ -72,7 +72,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let file of files  | slice : 0 : 100; let index = index; trackBy: trackByIndex">
-    <td class="dt-body-center"><div class="custom-control custom-checkbox"><input (input)="setFileSelectedForDelete.emit(file?.id)" type="checkbox" [checked]="selectedFilesForDelete?.includes(file?.id)" class="custom-control-input" id="customCheck{{ index }}"><label class="custom-control-label" for="customCheck{{ index }}"></label></div></td>
+    <td class="dt-body-center"><div class="custom-control custom-checkbox"><input (input)="setFileSelectedForDelete.emit(file?.id)" [disabled]="filesDeleting" type="checkbox" [checked]="selectedFilesForDelete?.includes(file?.id)" class="custom-control-input" id="customCheck{{ index }}"><label class="custom-control-label" for="customCheck{{ index }}"></label></div></td>
     <td>
       <a class="d-flex align-items-center">
         <figure class="avatar avatar-sm mr-3">
@@ -105,10 +105,10 @@
           <i class="ti-more-alt"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" data-sidebar-target="#view-detail" (click)="fileDetailChange.emit(file?.id)">View Details</a>
+          <a *ngIf="!filesDeleting" class="dropdown-item" data-sidebar-target="#view-detail" (click)="fileDetailChange.emit(file?.id)">View Details</a>
           <a class="dropdown-item" ngxClipboard [cbContent]="file?.url_private">Share</a>
           <a class="dropdown-item" [href]="file?.url_private_download">Download</a>
-          <a class="dropdown-item" (click)="fileDelete.emit(file?.id)">Delete</a>
+          <a *ngIf="!filesDeleting" class="dropdown-item" (click)="fileDelete.emit(file?.id)">Delete</a>
         </div>
       </div>
     </td>

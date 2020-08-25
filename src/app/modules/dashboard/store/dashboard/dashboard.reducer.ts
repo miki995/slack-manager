@@ -362,6 +362,18 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         filesDeleting: !action.payload
       };
 
+    case dashboardActions.DASHBOARD_SET_BULK_DELETE_ALL:
+
+      return {
+        ...state,
+        filesResponse: state.allFilesResponse,
+        selectedFilesForDelete: state.allFilesResponse.files.map(item => item.id),
+        filesQueryParams: {
+          ...state.filesQueryParams,
+          count: EFilesCount.count999
+        }
+      };
+
     default:
       return state;
   }

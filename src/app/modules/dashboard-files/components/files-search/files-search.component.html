@@ -1,5 +1,5 @@
 <div id="table-files_filter" class="dataTables_filter">
   <label>Search:
-    <input #input [value]="searchTerm" (input)="searchTermChange.emit(input?.value)" type="search" class="form-control form-control-sm" placeholder="" aria-controls="table-files">
+    <input #input [value]="searchTerm" [disabled]="filesDeleting" (input)="searchTermChange.emit(input?.value)" type="search" class="form-control form-control-sm" placeholder="" aria-controls="table-files">
   </label>
 </div>
