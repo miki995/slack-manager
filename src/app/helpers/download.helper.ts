@@ -1,24 +1,20 @@
-import * as JSZip from 'jszip';
-import * as FileSaver from 'file-saver';
-import { FilesService } from '../services/files.service';
+export function downloadAll(urls: string[]): void {
+  const link = document.createElement('a');
+  let interval = 1000;
 
-export async function createZip(files: string[], zipName: string, filesService: FilesService): Promise<any> {
-  const zip = new JSZip();
-  const name = zipName + '.zip';
+  link.setAttribute('download', null);
+  link.style.display = 'none';
 
-  for (const file of files) {
-    const fileData: any = await getFile(file, filesService);
-    const b: any = new Blob([ fileData ]);
-    zip.file(file.substring(file.lastIndexOf('/') + 1), b);
-  }
+  document.body.appendChild(link);
 
-  zip.generateAsync({ type: 'blob' }).then((content) => {
-    if (content) {
-      FileSaver.saveAs(content, name);
-    }
+  urls.forEach((url) => {
+    interval += 1000;
+
+    setTimeout(() => {
+      link.setAttribute('href', url);
+      link.click();
+    }, interval);
   });
-}
 
-export async function getFile(url: string, filesService: FilesService): Promise<any> {
-  return await filesService.downloadFile(url).toPromise();
+  document.body.removeChild(link);
 }

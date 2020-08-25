@@ -28,7 +28,7 @@
       <div id="file-actions" *ngIf="(selectedFilesForDelete$ | async)?.length">
         <ul class="list-inline">
           <li class="list-inline-item mb-0">
-            <a scTooltip (click)="downloadFiles()" class="btn btn-outline-light cursor-pointer" data-toggle="tooltip" title="Download">
+            <a scTooltip (click)="downloadFiles()" class="btn btn-outline-light cursor-pointer" data-toggle="tooltip" title="Download selected files">
               <i class="ti-download"></i>
             </a>
           </li>

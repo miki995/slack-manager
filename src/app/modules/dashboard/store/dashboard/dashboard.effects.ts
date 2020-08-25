@@ -10,8 +10,7 @@ import { IFile, IFilesQueryParams } from '../../../../models/file-filter';
 import { ConversationsService } from '../../../../services/conversations.service';
 import { UsersService } from '../../../../services/users.service';
 import { ClipboardService, IClipboardResponse } from 'ngx-clipboard';
-import { createZip } from '../../../../helpers/download.helper';
-import { HttpClient } from '@angular/common/http';
+import { downloadAll } from '../../../../helpers/download.helper';
 
 const getFilesTriggers = [
   dashboardActions.DASHBOARD_SET_FILES_FILTER,
@@ -201,9 +200,7 @@ export class DashboardEffects {
       map(([ action, files, selectedFilesForDelete ]: [ dashboardActions.DashboardDownloadAllSelectedFilesForDelete, IFile[], string[] ]) => {
 
         const urls: string[] = files.filter(file => selectedFilesForDelete.includes(file.id)).map(file => file.url_private_download);
-        createZip(urls, 'slack-cleaner-backup', this.filesService).then(res => {
-          console.error(res);
-        });
+        downloadAll(urls);
       })
     );
 
