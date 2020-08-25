@@ -249,6 +249,7 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       const allFilesResponseIndex = state.allFilesResponse.files.findIndex(file => file.id === action.payload);
       const filesResponseIndex = state.filesResponse.files.findIndex(file => file.id === action.payload);
       const searchedFilesResponseIndex = state.searchedFiles.findIndex(file => file.id === action.payload);
+      const selectedFilesIndex = state.selectedFilesForDelete.findIndex(file => file === action.payload);
 
       const allFiles = [ ...state.allFilesResponse.files ];
       if (allFilesResponseIndex !== -1) {
@@ -261,6 +262,11 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       const newSearchedFiles = [ ...state.searchedFiles ];
       if (searchedFilesResponseIndex !== -1) {
         newSearchedFiles.splice(searchedFilesResponseIndex, 1);
+      }
+
+      const newSelectedFiles = [ ...state.selectedFilesForDelete ];
+      if (selectedFilesIndex !== -1) {
+        newSelectedFiles.splice(selectedFilesIndex, 1);
       }
 
       const newFilePercentages: IFilePercentage[] = detectFileTypePercentage(allFiles);
@@ -281,7 +287,8 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         filePercentages: newFilePercentages,
         usedStorage: newUsedStorage,
         usedStoragePercentage: Math.ceil(Number(((newUsedStorage * 100) / state.maxStorage).toFixed(2))),
-        recentFiles: sortFiles(allFiles, { date: EFilesSortByDate.newest }).splice(0, 5)
+        recentFiles: sortFiles(allFiles, { date: EFilesSortByDate.newest }).splice(0, 5),
+        selectedFilesForDelete: newSelectedFiles
       };
 
     case dashboardActions.DASHBOARD_DELETE_FILE_FAIL:
