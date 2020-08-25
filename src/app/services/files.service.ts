@@ -13,6 +13,7 @@ export class FilesService {
   private fileUrl = config.apiEndpoint + '/api/files/info?';  // URL to file info web api
   private fileDeleteUrl = config.apiEndpoint + '/api/files/delete?';  // URL to file delete web api
   private filesSearchUrl = config.apiEndpoint + '/api/search/files?';  // URL to file search web api
+  private filesDownloadUrl = config.apiEndpoint + '/api/files/download?';  // URL to file download web api
 
   constructor(private httpService: HttpService) {
   }
@@ -52,5 +53,11 @@ export class FilesService {
     let params = new HttpParams().set('query', query);
     params = params.append('count', EFilesCount.count10);
     return this.httpService.get(`${ (this.filesSearchUrl) }${ params.toString() }`);
+  }
+
+  downloadFile(url: string): Observable<any> {
+
+    const params = new HttpParams().set('url', url);
+    return this.httpService.get(`${ (this.filesDownloadUrl) }${ params.toString() }`);
   }
 }

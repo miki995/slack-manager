@@ -10,6 +10,7 @@ import { IFile, IFilesQueryParams } from '../../../../models/file-filter';
 import { ConversationsService } from '../../../../services/conversations.service';
 import { UsersService } from '../../../../services/users.service';
 import { ClipboardService, IClipboardResponse } from 'ngx-clipboard';
+import { downloadAll } from '../../../../helpers/download.helper';
 
 const getFilesTriggers = [
   dashboardActions.DASHBOARD_SET_FILES_FILTER,
@@ -202,6 +203,21 @@ export class DashboardEffects {
             catchError((error) => of(new dashboardActions.DashboardSearchFilesFail(error))),
             map((response) => new dashboardActions.DashboardSearchFilesSuccess(response))
           );
+      })
+    );
+
+  @Effect({ dispatch: false })
+  downloadAllFilesSelectedForDelete$ = this.actions$
+    .pipe(
+      ofType(dashboardActions.DASHBOARD_DOWNLOAD_SELECTED_FILES),
+      withLatestFrom(
+        this.store.pipe(select(getDashboardState), pluck('filesResponse', 'files'), distinctUntilChanged<IFile[]>()),
+        this.store.pipe(select(getDashboardState), pluck('selectedFilesForDelete'), distinctUntilChanged<string[]>())
+      ),
+      map(([ action, files, selectedFilesForDelete ]: [ dashboardActions.DashboardDownloadAllSelectedFilesForDelete, IFile[], string[] ]) => {
+
+        const urls: string[] = files.filter(file => selectedFilesForDelete.includes(file.id)).map(file => file.url_private_download);
+        downloadAll(urls);
       })
     );
 
