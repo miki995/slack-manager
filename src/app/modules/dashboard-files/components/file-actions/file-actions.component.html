@@ -1,5 +1,10 @@
 <div id="file-actions" *ngIf="selectedFilesForDelete?.length">
   <ul class="list-inline">
+    <li class="list-inline-item mb-0">
+      <a scTooltip (click)="downloadFiles.emit()" class="btn btn-outline-light cursor-pointer" data-toggle="tooltip" title="Download selected files">
+        <i class="ti-download"></i>
+      </a>
+    </li>
     <li *ngIf="!filesDeleting" class="list-inline-item mb-0">
       <a (click)="startBulkDeleteSelected.emit(selectedFilesForDelete)" scTooltip class="btn btn-outline-danger cursor-pointer" data-toggle="tooltip" title="Delete selected files">
         <i class="ti-trash"></i>

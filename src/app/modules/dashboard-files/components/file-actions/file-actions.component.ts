@@ -13,4 +13,5 @@ export class FileActionsComponent {
 
   @Output() startBulkDeleteSelected = new EventEmitter<string[]>();
   @Output() stopBulkDeleteSelected = new EventEmitter<string[]>();
+  @Output() downloadFiles = new EventEmitter<any>();
 }

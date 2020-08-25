@@ -173,4 +173,8 @@ export class DashboardFilesComponent implements OnInit {
       payload: false
     });
   }
+
+  downloadFiles(): void {
+    this.store.dispatch({ type: dashboardActions.DASHBOARD_DOWNLOAD_SELECTED_FILES });
+  }
 }
