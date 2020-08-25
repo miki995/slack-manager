@@ -1,9 +1,13 @@
-import { AfterViewInit, Directive, ElementRef } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, OnDestroy } from '@angular/core';
 
 @Directive({
   selector: '[scTooltip]'
 })
-export class TooltipDirective implements AfterViewInit {
+export class TooltipDirective implements AfterViewInit, OnDestroy {
+
+  @HostListener('mouseleave', ['$event']) onLeave( e: MouseEvent ): void {
+    jQuery('[data-toggle="tooltip"]').tooltip('hide'); // close all tooltips
+  }
 
   constructor(
     private readonly elementRef: ElementRef,
@@ -12,5 +16,9 @@ export class TooltipDirective implements AfterViewInit {
 
   ngAfterViewInit(): void {
     jQuery(this.elementRef.nativeElement).tooltip();
+  }
+
+  ngOnDestroy(): void {
+    jQuery('[data-toggle="tooltip"]').tooltip('hide'); // close all tooltips
   }
 }

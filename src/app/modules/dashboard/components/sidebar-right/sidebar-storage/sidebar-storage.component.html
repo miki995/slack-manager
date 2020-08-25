@@ -31,7 +31,7 @@
   <div *ngIf="!filesLoading" class="sidebar-content">
     <p class="center">Percentage used</p>
     <mwl-gauge
-      *ngIf="value"
+      *ngIf="value >= 0"
       class="two"
       [max]="100"
       [dialStartAngle]="180"

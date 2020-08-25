@@ -9,6 +9,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 export class FilesSearchComponent {
 
   @Input() searchTerm: string;
+  @Input() filesDeleting: boolean;
 
   @Output() searchTermChange = new EventEmitter<string>();
 }

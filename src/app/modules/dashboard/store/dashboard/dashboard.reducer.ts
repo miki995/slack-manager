@@ -32,8 +32,11 @@ export interface IDashboard {
   fileDetail?: IFile;
   fileDetailLoading?: boolean;
   fileDeleting: boolean;
-  searchedFiles?: IFile[];
+  searchedFiles: IFile[];
   searchingFiles: boolean;
+  selectedFilesForDelete: string[];
+  filesDeleting: boolean;
+  canBulkDelete: boolean;
 }
 
 const initialState: IDashboard = {
@@ -52,7 +55,11 @@ const initialState: IDashboard = {
   dashFilesLoading: false,
   usersLoading: false,
   fileDeleting: false,
-  searchingFiles: false
+  searchingFiles: false,
+  searchedFiles: [],
+  selectedFilesForDelete: [],
+  filesDeleting: false,
+  canBulkDelete: true
 };
 
 export function dashboardReducer(state: IDashboard = initialState, action: dashboardActions.Actions): IDashboard {
@@ -229,6 +236,7 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       };
 
     case dashboardActions.DASHBOARD_DELETE_FILE:
+    case dashboardActions.DASHBOARD_BULK_DELETE_FILE:
 
       return {
         ...state,
@@ -236,22 +244,29 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       };
 
     case dashboardActions.DASHBOARD_DELETE_FILE_SUCCESS:
+    case dashboardActions.DASHBOARD_BULK_DELETE_FILE_SUCCESS:
 
       const allFilesResponseIndex = state.allFilesResponse.files.findIndex(file => file.id === action.payload);
       const filesResponseIndex = state.filesResponse.files.findIndex(file => file.id === action.payload);
       const searchedFilesResponseIndex = state.searchedFiles.findIndex(file => file.id === action.payload);
+      const selectedFilesIndex = state.selectedFilesForDelete.findIndex(file => file === action.payload);
 
-      const allFiles = [ ...state.allFilesResponse.files];
+      const allFiles = [ ...state.allFilesResponse.files ];
       if (allFilesResponseIndex !== -1) {
         allFiles.splice(allFilesResponseIndex, 1);
       }
-      const newFiles = [ ...state.filesResponse.files];
+      const newFiles = [ ...state.filesResponse.files ];
       if (filesResponseIndex !== -1) {
         newFiles.splice(filesResponseIndex, 1);
       }
-      const newSearchedFiles = [ ...state.searchedFiles];
+      const newSearchedFiles = [ ...state.searchedFiles ];
       if (searchedFilesResponseIndex !== -1) {
         newSearchedFiles.splice(searchedFilesResponseIndex, 1);
+      }
+
+      const newSelectedFiles = [ ...state.selectedFilesForDelete ];
+      if (selectedFilesIndex !== -1) {
+        newSelectedFiles.splice(selectedFilesIndex, 1);
       }
 
       const newFilePercentages: IFilePercentage[] = detectFileTypePercentage(allFiles);
@@ -272,10 +287,12 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
         filePercentages: newFilePercentages,
         usedStorage: newUsedStorage,
         usedStoragePercentage: Math.ceil(Number(((newUsedStorage * 100) / state.maxStorage).toFixed(2))),
-        recentFiles: sortFiles(allFiles, { date: EFilesSortByDate.newest }).splice(0, 5)
+        recentFiles: sortFiles(allFiles, { date: EFilesSortByDate.newest }).splice(0, 5),
+        selectedFilesForDelete: newSelectedFiles
       };
 
     case dashboardActions.DASHBOARD_DELETE_FILE_FAIL:
+    case dashboardActions.DASHBOARD_BULK_DELETE_FILE_FAIL:
 
       return {
         ...state,
@@ -302,6 +319,59 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
       return {
         ...state,
         searchingFiles: false
+      };
+
+    case dashboardActions.DASHBOARD_SET_ALL_SELECTED_FILES_FOR_DELETE:
+
+      const shouldClear = state.selectedFilesForDelete.length === state.filesResponse.files.length;
+      const selectedFilesForDelete = shouldClear ? [] : state.filesResponse.files.map(file => file.id);
+
+      return {
+        ...state,
+        selectedFilesForDelete
+      };
+
+    case dashboardActions.DASHBOARD_SET_SELECTED_FILE_FOR_DELETE:
+
+      const selectedFiles = [...state.selectedFilesForDelete];
+      const fileIndex = selectedFiles?.length ? selectedFiles.findIndex(selectedFile => selectedFile === action.payload) : -1;
+
+      if (fileIndex !== -1) {
+        selectedFiles.splice(fileIndex, 1);
+      } else {
+        selectedFiles.push(action.payload);
+      }
+
+      return {
+        ...state,
+        selectedFilesForDelete: selectedFiles
+      };
+
+    case dashboardActions.DASHBOARD_SET_FILES_DELETING:
+
+      return {
+        ...state,
+        filesDeleting: action.payload
+      };
+
+    case dashboardActions.DASHBOARD_SET_CAN_BULK_DELETE:
+
+      return {
+        ...state,
+        canBulkDelete: action.payload,
+        filesDeleting: !action.payload
+      };
+
+    case dashboardActions.DASHBOARD_SET_BULK_DELETE_ALL:
+
+      return {
+        ...state,
+        filesResponse: state.allFilesResponse,
+        selectedFilesForDelete: state.allFilesResponse.files.map(item => item.id),
+        filesQueryParams: {
+          ...state.filesQueryParams,
+          count: EFilesCount.count999
+        }
       };
 
     default:

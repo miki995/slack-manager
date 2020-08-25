@@ -20,6 +20,7 @@ export class FilesCountComponent {
   ];
 
   @Input() selectedCount: EFilesCount;
+  @Input() filesDeleting: boolean;
 
   @Output() changedCount = new EventEmitter<EFilesCount>();
 }
