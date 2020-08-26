@@ -475,6 +475,7 @@
 
 		.anime-ready & {
 			visibility: visible;
+      overflow-y: scroll !important;
 		}
 	}
 }

@@ -49,7 +49,7 @@ export class HttpService {
     return this.httpClient
       .get(`${url}&${this.httpParams.toString()}`, options)
       .pipe(
-        retry(20),
+        retry(6),
         catchError(this.handleError)
       );
   }
