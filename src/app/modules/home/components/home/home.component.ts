@@ -1,4 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { distinctUntilChanged, pluck } from 'rxjs/operators';
+import { IAppState } from '../../../../store';
 
 declare var ScrollReveal: any;
 declare const sr: any;
@@ -12,9 +16,14 @@ declare const anime: any;
 export class HomeComponent implements OnInit, AfterViewInit {
 
   date;
+  loadingPage$: Observable<boolean>;
+
+  constructor(private readonly store: Store<IAppState>) {
+  }
 
   ngOnInit(): void {
     this.date = new Date().getFullYear();
+    this.loadingPage$ = this.store.pipe(select('layout'), pluck('loadingPage'), distinctUntilChanged<boolean>());
   }
 
   ngAfterViewInit(): void {
@@ -45,6 +54,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       /* global anime */
       const heroAnimation = anime.timeline({ autoplay: false });
       const strokedElement = document.querySelector('.stroke-animation');
+
+      if (!strokedElement) {
+        return;
+      }
 
       strokedElement.setAttribute('stroke-dashoffset', anime.setDashoffset(strokedElement));
 

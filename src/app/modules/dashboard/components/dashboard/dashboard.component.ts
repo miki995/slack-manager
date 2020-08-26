@@ -67,6 +67,11 @@ export class DashboardComponent implements OnInit {
   signOut(): void {
     localStorage.setItem(SLACK_MANAGER_TOKEN, undefined);
     this.router.navigateByUrl('/');
+
+    setTimeout(() => {
+      jQuery('.overlay.show').removeClass('show');
+      jQuery('.html').click();
+    }, 10);
   }
 
   setTheme(change?: boolean): void {
