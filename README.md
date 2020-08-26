@@ -1,4 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -174,12 +173,8 @@ Project Link: [Slack Manager](https://www.producthunt.com/posts/slack-cleaner)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/all-contributors/miki995/slack-manager/master?style=flat-square
-[contributors-url]: https://github.com/miki995/slack-manager/graphs/contributors
 [issues-shield]: https://img.shields.io/github/issues/miki995/slack-manager.svg?style=flat-square
 [issues-url]: https://github.com/miki995/slack-manager/issues
-[license-shield]: https://img.shields.io/github/license/miki995/slack-manager.svg?style=flat-square
-[license-url]: https://github.com/miki995/slack-manager/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/miki95
 [product-screenshot1]: https://ph-files.imgix.net/b51bf3f5-0d3a-4e5e-a773-c99885798d7b.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=751.4124293785311&h=380&fit=max&dpr=2
