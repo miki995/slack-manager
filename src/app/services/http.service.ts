@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
 import { catchError, map, retry } from 'rxjs/operators';
+import { SLACK_MANAGER_TOKEN } from '../helpers/token.helper';
 
 @Injectable()
 export class HttpService {
@@ -20,7 +21,7 @@ export class HttpService {
   }
 
   public setToken(token?: string): void {
-    this.httpParams = this.httpParams.set('token', token ? token : localStorage.getItem('slack-cleaner-token'));
+    this.httpParams = this.httpParams.set('token', token ? token : localStorage.getItem(SLACK_MANAGER_TOKEN));
   }
 
   post(url: string, data?: string): Observable<any> {

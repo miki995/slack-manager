@@ -1,2 +1,2 @@
-export const SLACK_CLEANER_TOKEN = 'slack-cleaner-token';
-export const SLACK_CLEANER_THEME = 'slack-cleaner-theme';
+export const SLACK_MANAGER_TOKEN = 'slack-manager-token';
+export const SLACK_MANAGER_THEME = 'slack-manager-theme';
