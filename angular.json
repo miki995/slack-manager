@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "slack-cleaner": {
+    "slack-manager": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/slack-cleaner",
+            "outputPath": "dist/slack-manager",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -81,19 +81,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "slack-cleaner:build",
+            "browserTarget": "slack-manager:build",
             "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "slack-cleaner:build:production"
+              "browserTarget": "slack-manager:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "slack-cleaner:build"
+            "browserTarget": "slack-manager:build"
           }
         },
         "test": {
@@ -149,18 +149,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "slack-cleaner:serve"
+            "devServerTarget": "slack-manager:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "slack-cleaner:serve:production"
+              "devServerTarget": "slack-manager:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "slack-cleaner",
+  "defaultProject": "slack-manager",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"

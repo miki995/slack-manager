@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'slack-cleaner'`, () => {
+  it(`should have as title 'slack-manager'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('slack-cleaner');
+    expect(app.title).toEqual('slack-manager');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('slack-cleaner app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('slack-manager app is running!');
   });
 });

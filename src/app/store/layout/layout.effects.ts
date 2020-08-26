@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
-import { SLACK_CLEANER_TOKEN } from '../../helpers/token.helper';
+import { SLACK_MANAGER_TOKEN } from '../../helpers/token.helper';
 
 @Injectable()
 export class LayoutEffects {
@@ -23,7 +23,7 @@ export class LayoutEffects {
             map((response) => {
 
               if (response.ok) {
-                localStorage.setItem(SLACK_CLEANER_TOKEN, response.authed_user.access_token);
+                localStorage.setItem(SLACK_MANAGER_TOKEN, response.authed_user.access_token);
                 this.httpService.setToken(response.authed_user.access_token);
                 setTimeout(() => {
                   this.router.navigateByUrl('/dashboard/home');
