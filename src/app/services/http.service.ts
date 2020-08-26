@@ -48,7 +48,7 @@ export class HttpService {
     return this.httpClient
       .get(`${url}&${this.httpParams.toString()}`, options)
       .pipe(
-        retry(2),
+        retry(20),
         catchError(this.handleError)
       );
   }
