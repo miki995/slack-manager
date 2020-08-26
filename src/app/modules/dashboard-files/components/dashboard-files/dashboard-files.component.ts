@@ -9,6 +9,8 @@ import { IConversationsResponse } from '../../../../models/conversation';
 import { IUsersResponse } from '../../../../models/user';
 import { FilesService } from '../../../../services/files.service';
 
+declare let gtag: any;
+
 @Component({
   selector: 'sc-dashboard-files',
   templateUrl: './dashboard-files.component.html',
@@ -152,6 +154,11 @@ export class DashboardFilesComponent implements OnInit {
   }
 
   startBulkDeleteAll(files: IFile[]): void {
+
+    gtag({
+      category: 'bulk_delete',
+      action: `files length: ${files.length}`
+    });
 
     jQuery('[data-toggle="tooltip"]').tooltip('hide'); // close all tooltips
 
