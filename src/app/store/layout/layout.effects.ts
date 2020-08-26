@@ -25,7 +25,9 @@ export class LayoutEffects {
               if (response.ok) {
                 localStorage.setItem(SLACK_CLEANER_TOKEN, response.authed_user.access_token);
                 this.httpService.setToken(response.authed_user.access_token);
-                this.router.navigateByUrl('/dashboard/home');
+                setTimeout(() => {
+                  this.router.navigateByUrl('/dashboard/home');
+                }, 3000);
               }
 
               return new layoutActions.LayoutExchangeCodeForTokenSuccess(response);

@@ -42,7 +42,7 @@
     </mwl-gauge>
     <div>
       <div class="list-group list-group-flush mb-3">
-        <a *ngFor="let filePercentage of filePercentages | slice: 1 : filePercentages.length" class="list-group-item px-0 d-flex align-items-center">
+        <a *ngFor="let filePercentage of filePercentages | slice: 1 : filePercentages?.length" class="list-group-item px-0 d-flex align-items-center">
           <div class="mr-3">
             <figure class="avatar">
               <span class="avatar-title bg-primary-bright text-primary rounded">
