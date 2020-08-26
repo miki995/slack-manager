@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   api: 'http://localhost:3000',
   redirectUri: 'http://localhost:4200/',
+  ga: 'UA-154138019-1'
 };
 
 /*
