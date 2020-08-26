@@ -19,6 +19,7 @@ export class DashboardHomeComponent implements OnInit {
   filePercentages$: Observable<IFilePercentage[]>;
   recentFiles$: Observable<IFile[]>;
   usersResponse$: Observable<IUsersResponse>;
+  usedStoragePercentage$: Observable<number>;
 
   constructor(
     private readonly store: Store<IDashboardState>,
@@ -30,6 +31,7 @@ export class DashboardHomeComponent implements OnInit {
     this.filePercentages$ = this.store.pipe(select(getDashboardState), pluck('filePercentages'), distinctUntilChanged<IFilePercentage[]>());
     this.recentFiles$ = this.store.pipe(select(getDashboardState), pluck('recentFiles'), distinctUntilChanged<IFile[]>());
     this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
+    this.usedStoragePercentage$ = this.store.pipe(select(getDashboardState), pluck('usedStoragePercentage'), distinctUntilChanged<number>());
   }
 
   setFileType(fileType: string): void {

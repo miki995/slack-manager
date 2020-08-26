@@ -67,13 +67,18 @@ export class DashboardComponent implements OnInit {
   signOut(): void {
     localStorage.setItem(SLACK_MANAGER_TOKEN, undefined);
     this.router.navigateByUrl('/');
+
+    setTimeout(() => {
+      jQuery('.overlay.show').removeClass('show');
+      jQuery('.html').click();
+    }, 10);
   }
 
   setTheme(change?: boolean): void {
 
     const value = localStorage.getItem(SLACK_MANAGER_THEME);
     const shouldTakeNewValue = value === 'light' ? 'dark' : 'light';
-    const newValue = change ? shouldTakeNewValue : value ? value : '';
+    const newValue = change ? shouldTakeNewValue : value ? value : 'light';
 
     localStorage.setItem(SLACK_MANAGER_THEME, newValue.toString());
     if (newValue === 'light') {
