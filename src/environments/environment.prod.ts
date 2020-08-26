@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  api: 'http://localhost:3000',
-  redirectUri: 'http://localhost:4200/',
+  api: 'https://slackcleaner2.herokuapp.com/',
+  redirectUri: 'https://slackcleaner2.herokuapp.com/',
 };
