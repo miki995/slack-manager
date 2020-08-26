@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit {
 
     const value = localStorage.getItem(SLACK_MANAGER_THEME);
     const shouldTakeNewValue = value === 'light' ? 'dark' : 'light';
-    const newValue = change ? shouldTakeNewValue : value ? value : '';
+    const newValue = change ? shouldTakeNewValue : value ? value : 'light';
 
     localStorage.setItem(SLACK_MANAGER_THEME, newValue.toString());
     if (newValue === 'light') {
