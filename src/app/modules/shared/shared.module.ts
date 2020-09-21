@@ -9,7 +9,7 @@ import { FileTypePipe } from './pipes/file-type.pipe';
 import { ArraySearchPipe } from './pipes/array-search.pipe';
 import { FolderColorPipe } from './pipes/folder-color.pipe';
 import { FilesService } from '../../services/files.service';
-import { ConversationsService } from '../../services/conversations.service';
+import { ConversationsService } from '../../services/conversations/conversations.service';
 import { UsersService } from '../../services/users.service';
 import { GetUserProfilePipe } from './pipes/get-user.pipe';
 import { ContentLoaderModule } from '@ngneat/content-loader';

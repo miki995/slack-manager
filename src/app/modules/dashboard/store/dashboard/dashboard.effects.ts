@@ -7,10 +7,11 @@ import { FilesService } from '../../../../services/files.service';
 import { select, Store } from '@ngrx/store';
 import { getDashboardState, IDashboardState } from '../index';
 import { IFile, IFilesQueryParams } from '../../../../models/file-filter';
-import { ConversationsService } from '../../../../services/conversations.service';
+import { ConversationsService } from '../../../../services/conversations/conversations.service';
 import { UsersService } from '../../../../services/users.service';
 import { ClipboardService, IClipboardResponse } from 'ngx-clipboard';
 import { downloadAll } from '../../../../helpers/download.helper';
+import { IConversationsResponse } from '../../../../models/conversation';
 
 const getFilesTriggers = [
   dashboardActions.DASHBOARD_SET_FILES_FILTER,
@@ -127,7 +128,7 @@ export class DashboardEffects {
         return this.conversationsService.getConversations()
           .pipe(
             catchError((error) => of(new dashboardActions.DashboardGetConversationsFail(error))),
-            map((response) => new dashboardActions.DashboardGetConversationsSuccess(response))
+            map((response: IConversationsResponse) => new dashboardActions.DashboardGetConversationsSuccess(response))
           );
       })
     );

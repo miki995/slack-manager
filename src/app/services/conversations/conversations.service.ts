@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpService } from './http.service';
-import { config } from '../config/config';
+import { HttpService } from '../http.service';
+import { config } from '../../config/config';
+import { IConversationsResponse } from '../../models/conversation';
 
 @Injectable()
 export class ConversationsService {
@@ -13,7 +14,7 @@ export class ConversationsService {
   constructor(private httpService: HttpService) {
   }
 
-  getConversations(): Observable<any> {
+  getConversations(): Observable<IConversationsResponse> {
 
     let params = new HttpParams();
 
