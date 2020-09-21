@@ -3,10 +3,11 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import * as layoutActions from './layout.actions';
 import { of } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { SLACK_MANAGER_TOKEN } from '../../helpers/token.helper';
+import { IExchangeTokenResponse } from '../../models/exchange-token-response';
 
 @Injectable()
 export class LayoutEffects {
@@ -20,7 +21,7 @@ export class LayoutEffects {
         return this.authService.exchangeCodeForToken(action.payload)
           .pipe(
             catchError((error) => of(new layoutActions.LayoutExchangeCodeForTokenFail(error))),
-            map((response) => {
+            map((response: IExchangeTokenResponse) => {
 
               if (response.ok) {
                 localStorage.setItem(SLACK_MANAGER_TOKEN, response.authed_user.access_token);
@@ -28,7 +29,7 @@ export class LayoutEffects {
                 this.router.navigateByUrl('/dashboard/home');
               }
 
-              return new layoutActions.LayoutExchangeCodeForTokenSuccess(response);
+              return new layoutActions.LayoutExchangeCodeForTokenSuccess();
             })
           );
       })

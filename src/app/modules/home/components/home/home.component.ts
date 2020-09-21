@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { distinctUntilChanged, pluck } from 'rxjs/operators';
 import { IAppState } from '../../../../store';
+import { config } from '../../../../config/config';
 
 declare var ScrollReveal: any;
 declare const sr: any;
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   date;
   loadingPage$: Observable<boolean>;
+  signInLink = config.signIn;
 
   constructor(private readonly store: Store<IAppState>) {
   }

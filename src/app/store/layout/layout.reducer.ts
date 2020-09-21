@@ -23,7 +23,6 @@ export function layoutReducer(state: ILayout = initialState, action: layoutActio
     case layoutActions.LAYOUT_EXCHANGE_CODE_FOR_TOKEN_SUCCESS:
 
       return {
-        user: action.payload,
         loadingPage: false
       };
 

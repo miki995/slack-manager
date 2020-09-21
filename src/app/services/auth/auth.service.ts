@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpService } from './http.service';
-import { config } from '../config/config';
+import { config } from '../../config/config';
+import { HttpService } from '../http.service';
+import { IExchangeTokenResponse } from '../../models/exchange-token-response';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +14,7 @@ export class AuthService {
   constructor(private httpService: HttpService) {
   }
 
-  exchangeCodeForToken(code: string): Observable<any> {
+  exchangeCodeForToken(code: string): Observable<IExchangeTokenResponse> {
     let exchangeHttpParams = new HttpParams().set('code', code);
     exchangeHttpParams = exchangeHttpParams.append('redirectUri', config.redirectUri);
 

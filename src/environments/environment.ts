@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   api: 'http://localhost:3000',
   redirectUri: 'http://localhost:4200/',
-  ga: 'UA-154138019-1'
+  ga: 'UA-154138019-1',
+  signIn: 'https://slack.com/oauth/v2/authorize?client_id=511475946403.1296558517926&scope=&user_scope=channels:read,files:read,files:write,groups:read,users.profile:read,users:read,search:read'
 };
 
 /*

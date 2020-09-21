@@ -14,7 +14,7 @@ export class LayoutExchangeCodeForToken implements Action {
 export class LayoutExchangeCodeForTokenSuccess implements Action {
   readonly type = LAYOUT_EXCHANGE_CODE_FOR_TOKEN_SUCCESS;
 
-  constructor(public payload: string) {
+  constructor(public payload?: any) {
   }
 }
 
