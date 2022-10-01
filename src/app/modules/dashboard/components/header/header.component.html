@@ -123,6 +123,24 @@
                       </div>
                     </a>
                   </li>
+                  <li>
+                    <a href="#"
+                       class="list-group-item d-flex hide-show-toggler">
+                      <div>
+                        <figure class="avatar mr-3">
+                            <span
+                              class="avatar-title bg-info-bright text-info rounded-circle">
+                                <i class="fa fa-heart"></i>
+                            </span>
+                        </figure>
+                      </div>
+                      <div class="flex-grow-1">
+                        <button class="btn btn-lg btn-block btn-primary" (click)="donate()">
+                          <i class="mr-3"></i> Donate
+                        </button>
+                      </div>
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -165,6 +183,11 @@
                       aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
+                </div>
+                <div class="mb-4">
+                  <button class="btn btn-lg btn-block btn-primary" (click)="donate()">
+                    <i class="fa fa-heart mr-3"></i> Donate
+                  </button>
                 </div>
               </div>
             </div>

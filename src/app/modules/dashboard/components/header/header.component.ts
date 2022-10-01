@@ -20,4 +20,8 @@ export class HeaderComponent {
   @Output() changeTheme = new EventEmitter<boolean>();
   @Output() searchTermChange = new EventEmitter<string>();
   @Output() deleteFile = new EventEmitter<string>();
+
+  donate(){
+    window.open('https://paypal.me/MiroslavMaksimovic?country.x=BA&locale.x=en_US', '_blank');
+  }
 }
