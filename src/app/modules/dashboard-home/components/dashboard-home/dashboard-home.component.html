@@ -1,38 +1,53 @@
 <sc-dashboard-home-upgrade *ngIf="(usedStoragePercentage$ | async) > 90">
 </sc-dashboard-home-upgrade>
 
-<ng-container *ngIf="(recentFiles$ | async)?.length; else noProducts">
-  <sc-dashboard-home-stats
-    [filePercentages]="filePercentages$ | async">
-  </sc-dashboard-home-stats>
-
-  <sc-dashboard-home-quick-access
-    [filePercentages]="filePercentages$ | async"
-    (setFileType)="setFileType($event)">
-  </sc-dashboard-home-quick-access>
-
-  <sc-dashboard-recent-files
-    [recentFiles]="recentFiles$ | async"
-    [users]="(usersResponse$ | async)?.members"
-    (seeAllFiles)="setFileType('View All')"
-    (fileDetailChange)="getFileDetail($event)"
-    (fileDelete)="deleteFile($event)"
-  >
-  </sc-dashboard-recent-files>
-
+<ng-container *ngIf="filesLoading$ | async; else loaded">
+  <content-loader width="500" height="800" class="mg-left-35" xmlns:svg="svg">
+    <svg:circle cx="39" cy="21" r="8" />
+    <svg:rect x="54" y="16" rx="5" ry="5" width="220" height="10" />
+    <svg:circle cx="39" cy="51" r="8" />
+    <svg:rect x="54" y="46" rx="5" ry="5" width="220" height="10" />
+    <svg:circle cx="39" cy="81" r="8" />
+    <svg:rect x="54" y="76" rx="5" ry="5" width="220" height="10" />
+    <svg:circle cx="39" cy="111" r="8" />
+    <svg:rect x="54" y="106" rx="5" ry="5" width="220" height="10" />
+  </content-loader>
 </ng-container>
 
-<ng-template #noProducts>
-  <div class="row">
-    <div class="col-xl-12">
-      <div class="table-responsive">
-        <div id="table-files_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="no-files">
-                <div class="title text-center mt-5"><h4>No files found</h4></div>
-                <div class="text-center">
-                  <img class="no-files" width="500" height="500" src="assets/images/mean_at_work.svg" alt="no files found"/>
+<ng-template #loaded>
+  <ng-container *ngIf="(recentFiles$ | async)?.length; else noProducts">
+    <sc-dashboard-home-stats
+      [filePercentages]="filePercentages$ | async">
+    </sc-dashboard-home-stats>
+
+    <sc-dashboard-home-quick-access
+      [filePercentages]="filePercentages$ | async"
+      (setFileType)="setFileType($event)">
+    </sc-dashboard-home-quick-access>
+
+    <sc-dashboard-recent-files
+      [recentFiles]="recentFiles$ | async"
+      [users]="(usersResponse$ | async)?.members"
+      (seeAllFiles)="setFileType('View All')"
+      (fileDetailChange)="getFileDetail($event)"
+      (fileDelete)="deleteFile($event)"
+    >
+    </sc-dashboard-recent-files>
+
+  </ng-container>
+
+  <ng-template #noProducts>
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="table-responsive">
+          <div id="table-files_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="no-files">
+                  <div class="title text-center mt-5"><h4>No files found</h4></div>
+                  <div class="text-center">
+                    <img class="no-files" width="500" height="500" src="assets/images/mean_at_work.svg" alt="no files found"/>
+                  </div>
                 </div>
               </div>
             </div>
@@ -40,5 +55,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </ng-template>
+
 </ng-template>

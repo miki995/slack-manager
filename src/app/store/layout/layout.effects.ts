@@ -25,7 +25,7 @@ export class LayoutEffects {
               if (response.ok) {
                 localStorage.setItem(SLACK_MANAGER_TOKEN, response.authed_user.access_token);
                 this.httpService.setToken(response.authed_user.access_token);
-                this.router.navigateByUrl('/dashboard/home');
+                this.router.navigateByUrl('/dashboard/home').then();
               }
 
               return new layoutActions.LayoutExchangeCodeForTokenSuccess(response);

@@ -18,6 +18,7 @@ export class DashboardHomeComponent implements OnInit {
 
   filePercentages$: Observable<IFilePercentage[]>;
   recentFiles$: Observable<IFile[]>;
+  filesLoading$: Observable<boolean>;
   usersResponse$: Observable<IUsersResponse>;
   usedStoragePercentage$: Observable<number>;
 
@@ -30,6 +31,7 @@ export class DashboardHomeComponent implements OnInit {
   ngOnInit(): void {
     this.filePercentages$ = this.store.pipe(select(getDashboardState), pluck('filePercentages'), distinctUntilChanged<IFilePercentage[]>());
     this.recentFiles$ = this.store.pipe(select(getDashboardState), pluck('recentFiles'), distinctUntilChanged<IFile[]>());
+    this.filesLoading$ = this.store.pipe(select(getDashboardState), pluck('filesLoading'), distinctUntilChanged<boolean>());
     this.usersResponse$ = this.store.pipe(select(getDashboardState), pluck('usersResponse'), distinctUntilChanged<IUsersResponse>());
     this.usedStoragePercentage$ = this.store.pipe(select(getDashboardState), pluck('usedStoragePercentage'), distinctUntilChanged<number>());
   }

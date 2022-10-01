@@ -9,15 +9,17 @@ import { UpgradeComponent } from './components/upgrade/upgrade.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { QuickAccessComponent } from './components/quick-access/quick-access.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 @NgModule({
   declarations: [ DashboardHomeComponent, HomeChartComponent, RecentFilesComponent, UpgradeComponent, StatsComponent, QuickAccessComponent ],
-  imports: [
-    CommonModule,
-    DashboardHomeRoutingModule,
-    SharedModule,
-    ClipboardModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardHomeRoutingModule,
+        SharedModule,
+        ClipboardModule,
+        ContentLoaderModule
+    ]
 })
 export class DashboardHomeModule {
 }

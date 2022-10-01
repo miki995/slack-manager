@@ -115,14 +115,14 @@ export function dashboardReducer(state: IDashboard = initialState, action: dashb
 
     case dashboardActions.DASHBOARD_GET_ALL_FILES_SUCCESS:
 
-      const filePercentages: IFilePercentage[] = detectFileTypePercentage(action.payload.files);
-      const usedStorage = getSize(action.payload.files);
+      const filePercentages: IFilePercentage[] = detectFileTypePercentage(action.payload?.files);
+      const usedStorage = getSize(action.payload?.files);
 
       return {
         ...state,
         allFilesResponse: action.payload,
         filePercentages,
-        recentFiles: sortFiles(action.payload.files, { date: EFilesSortByDate.newest }).splice(0, 5),
+        recentFiles: sortFiles(action.payload?.files, { date: EFilesSortByDate.newest }).splice(0, 5),
         usedStorage,
         usedStoragePercentage: Math.ceil(Number(((usedStorage * 100) / state.maxStorage).toFixed(2))),
         filesLoading: false
