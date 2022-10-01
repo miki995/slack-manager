@@ -23,9 +23,6 @@ export class LayoutEffects {
             map((response) => {
 
               if (response.ok) {
-
-                response = { ...response, authed_user: { ...response?.authed_user, access_token: `Bearer ${response?.authed_user?.access_token}`}};
-
                 localStorage.setItem(SLACK_MANAGER_TOKEN, response.authed_user.access_token);
                 this.httpService.setToken(response.authed_user.access_token);
                 this.router.navigateByUrl('/dashboard/home').then();
